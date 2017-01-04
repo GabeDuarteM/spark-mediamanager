@@ -1,0 +1,34 @@
+import { connect } from 'react-redux'
+import { getAllVideos } from '../actions/videos'
+import PosterList from '../components/PosterList'
+
+const getVisiblePosters = (posters, filter) => {
+  switch (filter) {
+    default:
+    case 'SERIES':
+      return posters.series
+    case 'ANIMES':
+      return posters.animes
+    case 'MOVIES':
+      return posters.movies
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    posters: getVisiblePosters(state.videos, state.filters.visibility)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllVideos: (videos) => dispatch(getAllVideos(videos))
+  }
+}
+
+const VisiblePosters = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PosterList)
+
+export default VisiblePosters

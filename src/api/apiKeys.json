@@ -1,0 +1,6 @@
+{
+  "trakt": {
+    "clientId": "Insert your clientId here",
+    "clientSecret": "Insert your clientSecret here"
+  }
+}
