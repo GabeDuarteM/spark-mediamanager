@@ -28,7 +28,10 @@ async function installExtensions () {
 
 async function createWindow () {
   await installExtensions()
-  win = new BrowserWindow({ width: 1024, height: 728 })
+
+  const size = getDefaultSize()
+
+  win = new BrowserWindow(size)
 
   win.loadURL('http://localhost:3000/')
   win.webContents.openDevTools()
@@ -54,6 +57,23 @@ async function createWindow () {
       }]).popup(win)
     })
   }
+}
+
+function getDefaultSize () {
+  const monWidth = require('electron').screen.getPrimaryDisplay().size.width
+  let size
+
+  if (monWidth >= 1920) {
+    size = { height: 930, width: 1843 }
+  } else if (monWidth >= 1600) {
+    size = { height: 780, width: 1583 }
+  } else if (monWidth >= 1360) {
+    size = { height: 700, width: 1323 }
+  } else if (monWidth >= 1280) {
+    size = { height: 650, width: 1063 }
+  }
+
+  return size
 }
 
 app.on('ready', createWindow)

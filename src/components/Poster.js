@@ -32,7 +32,7 @@ const Poster = ({ poster, showSubtitle, size }) => {
   if (showSubtitle) {
     cardContent = (
       <CardMedia
-        overlay={<CardTitle title={poster.title} subtitle={'2016'} />}
+        overlay={<CardTitle title={trimIfNecessary(poster.title)} subtitle={poster.year} />}
       >
         {img}
       </CardMedia>
@@ -52,6 +52,14 @@ const Poster = ({ poster, showSubtitle, size }) => {
       </Paper>
     </div>
   )
+}
+
+function trimIfNecessary (title) {
+  var length = 14
+  var trimmedString = title.length > length
+                      ? title.substring(0, length - 3) + '...'
+                      : title
+  return trimmedString
 }
 
 export default Poster
