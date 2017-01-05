@@ -1,6 +1,5 @@
 import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
-import muiTheme from '../app.material-ui.theme'
 
 const styles = {
   app: {
@@ -15,8 +14,7 @@ const styles = {
     flex: '0 1 auto'
   },
   tab: {
-    cursor: 'default !important',
-    color: muiTheme.palette.secondaryTextColor
+    cursor: 'default !important'
   }
 }
 

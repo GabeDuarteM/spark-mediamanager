@@ -12,7 +12,7 @@ export default getMuiTheme({
     accent3Color: deepOrangeA100,
     textColor: fullWhite,
     secondaryTextColor: fade(fullWhite, 0.7),
-    alternateTextColor: blueGrey800,
+    alternateTextColor: fade(fullWhite, 0.7),
     canvasColor: blueGrey800,
     borderColor: fade(fullWhite, 0.3),
     disabledColor: fade(fullWhite, 0.3),

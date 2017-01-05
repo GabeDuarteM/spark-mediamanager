@@ -55,8 +55,8 @@ const Poster = ({ poster, showSubtitle, size }) => {
 }
 
 function trimIfNecessary (title) {
-  var length = 14
-  var trimmedString = title.length > length
+  const length = 14
+  const trimmedString = title.length > length
                       ? title.substring(0, length - 3) + '...'
                       : title
   return trimmedString

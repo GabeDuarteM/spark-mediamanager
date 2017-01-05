@@ -1,4 +1,6 @@
 import React from 'react'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import Poster from './Poster'
 
 const styles = {
@@ -7,6 +9,11 @@ const styles = {
     flexWrap: 'wrap',
     marginBottom: 50,
     height: '100%'
+  },
+  fabAdd: {
+    position: 'fixed',
+    bottom: 24,
+    right: 24
   }
 }
 
@@ -25,6 +32,9 @@ const PosterListComponent = ({ posters }) => (
         )
       }
     </div>
+    <FloatingActionButton style={styles.fabAdd}>
+      <ContentAdd />
+    </FloatingActionButton>
   </div>
 )
 

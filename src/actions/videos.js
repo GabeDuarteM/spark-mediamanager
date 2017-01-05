@@ -3,6 +3,8 @@ const GET_MOVIES = { type: 'GET_MOVIES' }
 const GET_SERIES = { type: 'GET_SERIES' }
 const GET_ALL_VIDEOS = { type: 'GET_ALL_VIDEOS' }
 
+const OPEN_VIDEO_EDIT = { type: 'OPEN_VIDEO_EDIT' }
+
 export const getAnimes = (videos) => {
   return { ...GET_ANIMES, payload: videos }
 }
@@ -17,4 +19,8 @@ export const getSeries = (videos) => {
 
 export const getAllVideos = (videos) => {
   return { ...GET_ALL_VIDEOS, payload: videos }
+}
+
+export const openVideoEdit = (video) => {
+  return { ...OPEN_VIDEO_EDIT, payload: video }
 }
