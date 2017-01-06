@@ -12,20 +12,20 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: ''
+    publicPath: '/'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
     // Creates the index.html page based on the template and insert the assets in it.
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
     }),
     // Prevents emitting the bundle if the compilation/linting has failed
     new webpack.NoErrorsPlugin()

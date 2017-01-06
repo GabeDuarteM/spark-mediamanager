@@ -32,9 +32,9 @@ async function createWindow () {
   const size = getDefaultSize()
 
   win = new BrowserWindow(size)
+  win.setMenu(null)
 
   win.loadURL('http://localhost:3000/')
-  win.webContents.openDevTools()
 
   win.on('closed', () => {
     win = null
@@ -45,7 +45,6 @@ async function createWindow () {
   })
 
   if (process.env.NODE_ENV === 'development') {
-    win.openDevTools()
     win.webContents.on('context-menu', (e, props) => {
       const { x, y } = props
 

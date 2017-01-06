@@ -1,10 +1,10 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route } from 'react-router'
 import Home from './containers/Home'
-import VisiblePosters from './containers/VisiblePosters'
+import EditVideo from './containers/EditVideo'
 
 export default (
   <Route path='/' component={Home}>
-    <IndexRoute component={VisiblePosters} />
+    <Route path='EditVideo/:videoId' component={EditVideo} />
   </Route>
 )

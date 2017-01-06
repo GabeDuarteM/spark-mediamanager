@@ -5,6 +5,8 @@ const video = (state = {}, action) => {
     case 'GET_SERIES':
     case 'GET_ALL_VIDEOS':
       return action.payload
+    case 'OPEN_VIDEO_EDIT':
+      return { ...state, ...action.payload }
     default:
       return state
   }
@@ -31,6 +33,11 @@ export const videos = (state = {}, action) => {
       return {
         ...state,
         videos: video(undefined, action)
+      }
+    case 'OPEN_VIDEO_EDIT':
+      return {
+        ...state,
+        videoEdit: video(state.videoEdit, action)
       }
     default:
       return state

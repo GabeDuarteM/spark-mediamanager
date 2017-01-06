@@ -12,8 +12,12 @@ import db from './api/db'
 import './app.global.css'
 
 const initialState = {
-  videos: { series: db.getSeries() },
-  filters: { visibility: 'SERIES' }
+  videos: {
+    series: db.getSeries()
+  },
+  filters: {
+    visibility: 'SERIES'
+  }
 }
 
 const store = configureStore(initialState)

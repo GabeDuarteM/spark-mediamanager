@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { Card, CardMedia, CardTitle } from 'material-ui/Card'
 import Paper from 'material-ui/Paper'
 
@@ -44,11 +45,13 @@ const Poster = ({ poster, showSubtitle, size }) => {
   return (
     <div id='poster'>
       <Paper style={size} className={styles.posterShadow} zDepth={4}>
-        <div style={size} className={styles.poster}>
-          <Card style={size}>
-            {cardContent}
-          </Card>
-        </div>
+        <Link to={'/EditVideo/' + poster._id} className='linkless-link'>
+          <div style={size} className={styles.poster}>
+            <Card style={size}>
+              {cardContent}
+            </Card>
+          </div>
+        </Link>
       </Paper>
     </div>
   )

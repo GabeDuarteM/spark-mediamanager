@@ -2,6 +2,7 @@ import React from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Poster from './Poster'
+import { push } from 'react-router-redux'
 
 const styles = {
   posterList: {
@@ -17,7 +18,7 @@ const styles = {
   }
 }
 
-const PosterListComponent = ({ posters }) => (
+const PosterListComponent = ({ children, posters }) => (
   <div id='posterList' style={{ flex: '1 1 auto', overflow: 'auto' }}>
     <div style={styles.posterList}>
       {
@@ -32,9 +33,10 @@ const PosterListComponent = ({ posters }) => (
         )
       }
     </div>
-    <FloatingActionButton style={styles.fabAdd}>
+    <FloatingActionButton style={styles.fabAdd} onClick={() => push('/EditVideo/1')}>
       <ContentAdd />
     </FloatingActionButton>
+    {children}
   </div>
 )
 

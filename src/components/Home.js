@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
+import VisiblePosters from '../containers/VisiblePosters'
 
 const styles = {
   app: {
@@ -25,6 +26,7 @@ const App = ({ children }) => (
       <Tab label='Filmes' style={styles.tab} />
       <Tab label='Animes' style={styles.tab} />
     </Tabs>
+    <VisiblePosters />
     {children}
   </div>
 )

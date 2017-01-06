@@ -17,6 +17,13 @@ body {
   height: inherit;
 }
 
+.linkless-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* Scroll customization */
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -31,3 +38,4 @@ body {
     margin-top: 50px;
     background: transparent;
 }
+/* Scroll customization */
