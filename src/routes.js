@@ -5,6 +5,6 @@ import EditVideo from './containers/EditVideo'
 
 export default (
   <Route path='/' component={Home}>
-    <Route path='EditVideo/:videoId' component={EditVideo} />
+    <Route path='EditVideo' component={EditVideo} />
   </Route>
 )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getAllVideos } from '../actions/videos'
+import { editVideoOpen } from '../actions/videos'
 import PosterList from '../components/PosterList'
 
 const getVisiblePosters = (posters, filter) => {
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllVideos: (videos) => dispatch(getAllVideos(videos))
+    setEditVideo: (videoId) => dispatch(editVideoOpen(videoId))
   }
 }
 

@@ -3,8 +3,9 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
+var webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
 
-module.exports = {
+var options = {
   entry: [
     path.join(__dirname, 'src/index.js')
   ],
@@ -62,9 +63,14 @@ module.exports = {
       }
     ]
   },
+  target: 'electron',
   standard: {
     parser: 'babel-eslint',
     emitErrors: true
   },
   bail: true
 }
+
+options.target = webpackTargetElectronRenderer(options)
+
+module.exports = options

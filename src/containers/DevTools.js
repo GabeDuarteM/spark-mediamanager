@@ -16,7 +16,7 @@ function CompleteDevTools () {
 }
 
 function BlankDevTools () {
-  return <h1>Please sign up.</h1>
+  return <div />
 }
 
 function DevTools (props) {

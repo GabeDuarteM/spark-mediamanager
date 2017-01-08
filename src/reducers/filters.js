@@ -1,7 +1,7 @@
 const filter = (state = {}, action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':
-      return action.filter
+      return action.payload
     default:
       return state
   }
@@ -12,7 +12,7 @@ export const filters = (state = {}, action) => {
     case 'SET_VISIBILITY_FILTER':
       return {
         ...state,
-        filters: { visibility: filter(undefined, action) }
+        visibility: filter(state, action)
       }
     default:
       return state

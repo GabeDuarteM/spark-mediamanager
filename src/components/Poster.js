@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { Card, CardMedia, CardTitle } from 'material-ui/Card'
 import Paper from 'material-ui/Paper'
+import './Poster.css'
 
 const styles = {
   poster: {
@@ -20,7 +21,10 @@ const styles = {
   }
 }
 
-const Poster = ({ poster, showSubtitle, size }) => {
+const Poster = ({ poster, showSubtitle, size, contentStyle, setEditVideo, link, className }) => {
+  if (!poster) {
+    return <div />
+  }
   let cardContent
   const img = (
     <img
@@ -42,16 +46,32 @@ const Poster = ({ poster, showSubtitle, size }) => {
     cardContent = img
   }
 
+  let insidePaper
+
+  if (link) {
+    insidePaper = (
+      <Link to={link} onClick={() => setEditVideo(poster._id)} className='linkless-link'>
+        <div style={size} className={styles.poster}>
+          <Card style={size}>
+            {cardContent}
+          </Card>
+        </div>
+      </Link>
+    )
+  } else {
+    insidePaper = (
+      <div style={size} className={styles.poster}>
+        <Card style={size}>
+          {cardContent}
+        </Card>
+      </div>
+    )
+  }
+
   return (
-    <div id='poster'>
+    <div id='poster' style={{...size, ...contentStyle}} className={className}>
       <Paper style={size} className={styles.posterShadow} zDepth={4}>
-        <Link to={'/EditVideo/' + poster._id} className='linkless-link'>
-          <div style={size} className={styles.poster}>
-            <Card style={size}>
-              {cardContent}
-            </Card>
-          </div>
-        </Link>
+        {insidePaper}
       </Paper>
     </div>
   )

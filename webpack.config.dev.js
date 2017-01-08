@@ -1,8 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
 
-module.exports = {
+var options = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
@@ -44,3 +45,7 @@ module.exports = {
     emitErrors: true
   }
 }
+
+options.target = webpackTargetElectronRenderer(options)
+
+module.exports = options

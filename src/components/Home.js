@@ -19,12 +19,12 @@ const styles = {
   }
 }
 
-const App = ({ children }) => (
+const App = ({ children, setVisibilityFilter }) => (
   <div id='app' style={styles.app}>
     <Tabs style={styles.tabs}>
-      <Tab label='Séries' style={styles.tab} />
-      <Tab label='Filmes' style={styles.tab} />
-      <Tab label='Animes' style={styles.tab} />
+      <Tab label='Series' style={styles.tab} onClick={() => setVisibilityFilter('SERIES')} />
+      <Tab label='Movies' style={styles.tab} onClick={() => setVisibilityFilter('MOVIES')} />
+      <Tab label='Animes' style={styles.tab} onClick={() => setVisibilityFilter('ANIMES')} />
     </Tabs>
     <VisiblePosters />
     {children}

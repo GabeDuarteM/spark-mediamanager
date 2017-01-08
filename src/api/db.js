@@ -45,8 +45,11 @@ const getSeries = () => {
     {
       _id: 8,
       title: 'Gotham',
-      posterImg: 'https://walter.trakt.tv/images/shows/000/060/278/posters/thumb/f7197c2856.jpg.webp',
-      year: '2016'
+      posterImg: 'https://walter.trakt.tv/images/shows/000/060/278/posters/thumb/a6b5b31941.jpg.webp',
+      fanartImg: 'https://walter.trakt.tv/images/shows/000/060/278/fanarts/full/6cb6bd4982.jpg.webp',
+      year: '2016',
+      overview: 'The story behind Detective James Gordon\'s rise to prominence in Gotham City in the years before Batman\'s arrival.',
+      path: 'D:\\Users\\gabri\\Videos\\Series\\Gotham'
     },
     {
       _id: 9,

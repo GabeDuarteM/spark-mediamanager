@@ -13,7 +13,10 @@ import './app.global.css'
 
 const initialState = {
   videos: {
-    series: db.getSeries()
+    series: db.getSeries(),
+    animes: [],
+    movies: [],
+    editVideo: {}
   },
   filters: {
     visibility: 'SERIES'
