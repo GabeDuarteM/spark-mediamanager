@@ -14,9 +14,9 @@ import './app.global.css'
 const initialState = {
   videos: {
     series: db.getSeries(),
-    animes: [],
-    movies: [],
-    editVideo: {}
+    animes: null,
+    movies: null,
+    editVideo: null
   },
   filters: {
     visibility: 'SERIES'

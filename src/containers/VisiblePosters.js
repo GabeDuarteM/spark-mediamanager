@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import { editVideoOpen } from '../actions/videos'
 import PosterList from '../components/PosterList'
 
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setEditVideo: (videoId) => dispatch(editVideoOpen(videoId))
+    setEditVideo: (videoId) => dispatch(editVideoOpen(videoId)),
+    openSearch: () => dispatch(push('/EditVideo/Search'))
   }
 }
 

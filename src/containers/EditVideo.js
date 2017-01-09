@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import { editVideoSetPath } from '../actions/videos'
+import { push } from 'react-router-redux'
+import { editVideoSetPath, editVideoClose } from '../actions/videos'
 import EditVideoComponent from '../components/EditVideo'
 
 function mapStateToProps (state, ownProps) {
@@ -10,7 +11,7 @@ function mapStateToProps (state, ownProps) {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleClose: () => dispatch(ownProps.router.push('/')),
+    handleClose: () => { dispatch(push('/')); dispatch(editVideoClose()) },
     setVideoPath: (path) => dispatch(editVideoSetPath(path))
   }
 }

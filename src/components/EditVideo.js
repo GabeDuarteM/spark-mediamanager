@@ -10,6 +10,18 @@ import TextField from 'material-ui/TextField'
 import Fanart from '../containers/Fanart'
 import FileSelector from '../components/FileSelector'
 
+const createVideoStub = () => {
+  return {
+    _id: '',
+    title: '',
+    path: '',
+    overview: '',
+    posterImg: '',
+    fanartImg: '',
+    year: ''
+  }
+}
+
 const EditVideo = (props) => {
   const styles = {
     dialog: {
@@ -17,11 +29,16 @@ const EditVideo = (props) => {
       paddingBottom: 24
     },
     fanart: {
-      margin: '-24px -24px 0px -24px'
+      margin: '-24px -24px 0px -24px',
+      height: 250,
+      width: 768
     },
     actions: {
       div: {
         marginTop: 15,
+        float: 'left'
+      },
+      divDropdown: {
         float: 'left'
       },
       buttons: {
@@ -46,11 +63,15 @@ const EditVideo = (props) => {
 
   const size = { height: 186, width: 124 }
   const { video, handleClose, setVideoPath } = props
+  let videoNormalized
+  let videoStub = createVideoStub()
 
   const actions = [
     <FlatButton label='Cancel' primary onTouchTap={handleClose} />,
     <FlatButton label='Save' primary />
   ]
+
+  videoNormalized = video || videoStub
 
   return (
     <div id='addResultContent'>
@@ -61,11 +82,11 @@ const EditVideo = (props) => {
         contentStyle={styles.dialog}
         open
       >
-        <Fanart showPoster poster={video} posterSize={size} contentStyle={styles.fanart} />
+        <Fanart showPoster poster={videoNormalized} posterSize={size} contentStyle={styles.fanart} />
         <div>
-          <div style={styles.actions.div}>
-            <SelectField value={video._id}>
-              <MenuItem value={video._id} primaryText={video.title} />
+          <div style={videoNormalized === videoStub ? styles.actions.divDropdown : styles.actions.div}>
+            <SelectField menuStyle={{ height: 56, margin: 0 }} value={videoNormalized._id} hintText='Select'>
+              <MenuItem value={videoNormalized._id} primaryText={videoNormalized.title} />
             </SelectField>
           </div>
           <div style={styles.actions.div}>
@@ -77,7 +98,7 @@ const EditVideo = (props) => {
             </IconButton>
             <FileSelector
               contentStyle={styles.actions.fileSelector}
-              value={video.path}
+              value={videoNormalized.path}
               selectCallback={(path) => { if (path && path.length > 0) { setVideoPath(path[0]) } }}
               onChange={(evt, val) => setVideoPath(val)} />
           </div>
@@ -90,7 +111,7 @@ const EditVideo = (props) => {
             rowsMax={4}
             style={{cursor: 'text'}}
             textareaStyle={{color: 'white'}}
-            value={video.overview}
+            value={videoNormalized.overview}
           />
         </div>
       </Dialog>

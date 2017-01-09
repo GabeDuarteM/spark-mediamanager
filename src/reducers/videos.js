@@ -22,6 +22,11 @@ export const videos = (state = {}, action) => {
         ...state,
         editVideo: video(state, action)
       }
+    case 'EDIT_VIDEO_CLOSE':
+      return {
+        ...state,
+        editVideo: null
+      }
     case 'EDIT_VIDEO_SET_PATH':
       return {
         ...state,

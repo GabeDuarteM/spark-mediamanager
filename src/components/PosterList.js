@@ -18,29 +18,35 @@ const styles = {
   }
 }
 
-const PosterListComponent = ({ children, posters, setEditVideo }) => (
-  <div id='posterList' style={{ flex: '1 1 auto', overflow: 'auto' }}>
-    <div style={styles.posterList}>
-      {
-        posters.map((poster, i) =>
-          (<div key={i} style={{ margin: 10 }}>
-            <Poster
-              poster={poster}
-              key={i}
-              showSubtitle
-              setEditVideo={setEditVideo}
-              className='poster'
-              link='/EditVideo'
-            />
-          </div>)
-        )
-      }
+const PosterListComponent = ({ children, posters, setEditVideo, openSearch }) => {
+  let posterList = null
+
+  if (posters) {
+    posterList = posters.map((poster, i) =>
+      (<div key={i} style={{ margin: 10 }}>
+        <Poster
+          poster={poster}
+          key={i}
+          showSubtitle
+          setEditVideo={setEditVideo}
+          className='poster'
+          link='/EditVideo'
+        />
+      </div>)
+    )
+  }
+
+  return (
+    <div id='posterList' style={{ flex: '1 1 auto', overflow: 'auto' }}>
+      <div style={styles.posterList}>
+        {posterList}
+      </div>
+      <FloatingActionButton style={styles.fabAdd} onClick={() => openSearch()}>
+        <ContentAdd />
+      </FloatingActionButton>
+      {children}
     </div>
-    <FloatingActionButton style={styles.fabAdd}>
-      <ContentAdd />
-    </FloatingActionButton>
-    {children}
-  </div>
-)
+  )
+}
 
 export default PosterListComponent

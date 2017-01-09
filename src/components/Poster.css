@@ -1,3 +1,5 @@
+/* Necessary to be on a separate css file because of the ':hover' selector */
+
 .poster {
   transition: all .2s ease-in-out;
 }
