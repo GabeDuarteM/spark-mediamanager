@@ -63,13 +63,13 @@ function getDefaultSize () {
   let size
 
   if (monWidth >= 1920) {
-    size = { height: 930, width: 1731 }
+    size = { height: 930, width: 1811 }
   } else if (monWidth >= 1600) {
-    size = { height: 780, width: 1311 }
+    size = { height: 780, width: 1371 }
   } else if (monWidth >= 1360) {
-    size = { height: 700, width: 1101 }
+    size = { height: 700, width: 1151 }
   } else if (monWidth >= 1280) {
-    size = { height: 650, width: 891 }
+    size = { height: 650, width: 1151 }
   }
 
   return size
