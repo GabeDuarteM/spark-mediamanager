@@ -24,7 +24,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setEditVideo: (videoId) => dispatch(editVideoOpen(videoId)),
-    openSearch: () => dispatch(push('/EditVideo/Search'))
+    openSearch: () => dispatch(push('/Search')),
+    closeSearch: () => dispatch(push('/EditVideo'))
   }
 }
 

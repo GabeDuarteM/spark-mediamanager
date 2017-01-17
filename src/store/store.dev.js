@@ -15,7 +15,7 @@ export default function configureStore (initialState) {
   const store = createStore(rootReducer, initialState, enhancer)
 
   if (module.hot) {
-    // START: "Fix" to the Router redux + React hot loader console error annoyance
+    // "Fix" to the Router redux + React hot loader console error annoyance
     // Error: "You cannot change <Router routes>; it will be ignored"
     // More info at https://github.com/gaearon/react-hot-loader/issues/298
     const orgError = console.error

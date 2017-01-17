@@ -1,47 +1,45 @@
 import React from 'react'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
-// import TextField from 'material-ui/TextField'
-// import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-// import CircularProgress from 'material-ui/CircularProgress'
+import TextField from 'material-ui/TextField'
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import CircularProgress from 'material-ui/CircularProgress'
 
-// const styles = {
-//   fabAddContent: {
-//     position: 'fixed',
-//     bottom: 30,
-//     right: 30,
-//     zIndex: 1
-//   },
-//   content: {
-//     display: 'inline-block !important',
-//     width: '100px !important'
-//   },
-//   contentGroup: {
-//     marginTop: 10
-//   },
-//   hidden: {
-//     visibility: 'hidden',
-//     height: 0
-//   },
-//   loadingSearch: {
-//     visibility: 'visible',
-//     display: 'table',
-//     margin: '0 auto',
-//     marginTop: 50
-//   }
-//
-// }
+const styles = {
+  content: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex'
+  },
+  contentItem: {
+    display: 'flex',
+    width: 'inherit',
+    margin: '0px 15px'
+  }
+}
 
-const Search = ({ handleClose, handleSubmit }) => {
+const Search = ({ handleClose, handleSubmit, handleRadioChange, handleTextChange, handleLoading, typeText, openLoading }) => {
   const actions = [
-    <FlatButton label='Cancelar' primary onTouchTap={handleClose} />,
-    <FlatButton label='Procurar' primary onTouchTap={handleSubmit} />
+    <FlatButton label='Cancel' primary onTouchTap={handleClose} />,
+    <FlatButton label='Search' primary onTouchTap={handleSubmit} onClick={() => { handleTextChange(document.getElementById('SearchText').value); handleLoading(); console.log(openLoading) }} />
   ]
 
   return (
     <div id='searchContents'>
       <Dialog actions={actions} modal={false} open onRequestClose={handleClose}>
-        <div />
+        <div>
+          <RadioButtonGroup style={styles.content} name='type' defaultSelected='serie' onChange={(evt, val) => handleRadioChange(val)}>
+            <RadioButton style={styles.contentItem} value='serie' label='Serie' />
+            <RadioButton style={styles.contentItem} value='movie' label='Movie' />
+            <RadioButton style={styles.contentItem} value='anime' label='Anime' />
+          </RadioButtonGroup>
+          <TextField id='SearchText' floatingLabelText={typeText} fullWidth />
+        </div>
+      </Dialog>
+      <Dialog modal={false} open={openLoading}>
+        <div style={{margin: '0 auto', display: 'table'}}>
+          <CircularProgress />
+        </div>
       </Dialog>
     </div>
   )

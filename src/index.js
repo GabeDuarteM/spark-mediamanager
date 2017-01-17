@@ -16,7 +16,13 @@ const initialState = {
     series: db.getSeries(),
     animes: null,
     movies: null,
-    editVideo: null
+    editVideo: null,
+    searchVideo: {
+      type: 'serie',
+      typeText: 'Serie',
+      text: null,
+      loading: false
+    }
   },
   filters: {
     visibility: 'SERIES'
