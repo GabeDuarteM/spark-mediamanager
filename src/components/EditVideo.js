@@ -22,7 +22,7 @@ const createVideoStub = () => {
   }
 }
 
-const EditVideo = (props) => {
+const EditVideo = ({ video, handleClose, setVideoPath, children }) => {
   const styles = {
     dialog: {
       padding: 0,
@@ -62,7 +62,6 @@ const EditVideo = (props) => {
   }
 
   const size = { height: 186, width: 124 }
-  const { video, handleClose, setVideoPath, children } = props
   let videoNormalized
   let videoStub = createVideoStub()
 

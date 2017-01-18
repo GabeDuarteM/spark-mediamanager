@@ -18,11 +18,18 @@ const styles = {
   }
 }
 
-const Search = ({ handleClose, handleSubmit, handleRadioChange, handleTextChange, handleLoading, typeText, openLoading }) => {
+const Search = ({ handleClose, handleSubmit, handleRadioChange, handleTextChange, handleLoading, type, typeText, openLoading }) => {
   const actions = [
     <FlatButton label='Cancel' primary onTouchTap={handleClose} />,
-    <FlatButton label='Search' primary onTouchTap={handleSubmit} onClick={() => { handleTextChange(document.getElementById('SearchText').value); handleLoading(); console.log(openLoading) }} />
+    <FlatButton label='Search' primary onTouchTap={() => searchOnClick()} />
   ]
+
+  const searchOnClick = () => {
+    const query = document.getElementById('SearchText').value
+    handleTextChange(query)
+    handleLoading()
+    handleSubmit(type, query, handleLoading)
+  }
 
   return (
     <div id='searchContents'>

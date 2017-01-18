@@ -1,4 +1,4 @@
-import apiKeys from './apiKeys.json'
+import apiKeys from './apiKeys.js'
 
 export const search = (type, query, callback) => {
   let treatedType
@@ -34,6 +34,9 @@ export const search = (type, query, callback) => {
         jsonWhithoutDupes.push(e)
       }
     })
-    callback(jsonWhithoutDupes)
+
+    if (callback && typeof callback === 'function') {
+      callback(jsonWhithoutDupes)
+    }
   })
 }

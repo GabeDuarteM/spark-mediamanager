@@ -5,7 +5,7 @@ import EditVideoComponent from '../components/EditVideo'
 
 function mapStateToProps (state, ownProps) {
   return {
-    video: state.videos.editVideo
+    video: state.videos.editVideo.video
   }
 }
 
