@@ -18,7 +18,9 @@ const styles = {
   }
 }
 
-const Search = ({ handleClose, handleSubmit, handleRadioChange, handleTextChange, handleLoading, type, typeText, openLoading }) => {
+const Search = (props) => {
+  let { handleClose, handleSubmit, handleRadioChange, handleTextChange, handleLoading, type, typeText, openLoading } = props
+
   const actions = [
     <FlatButton label='Cancel' primary onTouchTap={handleClose} />,
     <FlatButton label='Search' primary onTouchTap={() => searchOnClick()} />
@@ -26,9 +28,10 @@ const Search = ({ handleClose, handleSubmit, handleRadioChange, handleTextChange
 
   const searchOnClick = () => {
     const query = document.getElementById('SearchText').value
+
     handleTextChange(query)
     handleLoading()
-    handleSubmit(type, query, handleLoading)
+    handleSubmit(type, query)
   }
 
   return (

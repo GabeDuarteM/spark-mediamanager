@@ -15,12 +15,11 @@ const video = (state = {}, action) => {
     case 'EDIT_VIDEO_SET_VIDEO_LIST':
       return {
         ...state,
-        videoList: action.payload.map((elem) => {
+        videoList: action.payload.results.map((elem) => {
           return {
-            ...elem.show,
-            path: path.join('defaultPath', elem.show.title),
-            overview: '',
-            posterImg: '',
+            path: path.join('defaultPath', elem.name),
+            overview: elem.overview,
+            posterImg: elem.poster_path,
             fanartImg: ''
           }
         })

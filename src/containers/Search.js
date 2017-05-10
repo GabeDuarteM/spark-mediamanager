@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { searchVideoChangeType, searchVideoChangeText, searchVideoClose, searchVideoChangeLoading, editVideoSetVideoList } from '../actions/videos'
 import SearchComponent from '../components/Search'
-import { search } from '../api/trakt'
+import { search } from '../api/tmdb'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,13 +18,12 @@ const mapDispatchToProps = (dispatch) => {
     handleTextChange: (newText) => dispatch(searchVideoChangeText(newText)),
     handleClose: () => { dispatch(push('/')); dispatch(searchVideoClose()) },
     handleLoading: () => dispatch(searchVideoChangeLoading()),
-    handleSubmit: (type, query, callback) => {
-      search(type, query, (jsonList) => {
-        dispatch(editVideoSetVideoList(jsonList))
-        if (callback && typeof callback === 'function') {
-          callback()
-        }
-      })
+    handleSubmit: (type, query) => {
+      search(type, query)
+        .then(data => {
+          dispatch(editVideoSetVideoList(data))
+          dispatch(searchVideoChangeLoading())
+        })
     }
   }
 }
