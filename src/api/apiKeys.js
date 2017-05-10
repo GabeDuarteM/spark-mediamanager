@@ -1,3 +1,3 @@
 export default {
-  tmdb: '[api_key]'
+  tmdb: 'Insert your API key here'
 }
