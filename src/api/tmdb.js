@@ -14,7 +14,7 @@ export const search = (type, query) => new Promise((resolve, reject) => {
       typeTvdb = 'movie'
       break
     default:
-      reject({ message: 'Tried make a search at the API with an incorrect type: ' + type })
+      reject(new Error('Tried make a search at the API with an incorrect type: ' + type))
   }
 
   fetch(`${baseUrl}/search/${typeTvdb}?api_key=${apiKeys.tmdb}&query=${query}`)

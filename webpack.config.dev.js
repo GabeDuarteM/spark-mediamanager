@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
 
 var options = {
   devtool: 'cheap-module-eval-source-map',
@@ -29,23 +28,33 @@ var options = {
       filename: 'index.html'
     }),
     // Prevents emitting the bundle if the compilation/linting has failed
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    preLoaders: [
-        { test: /\.jsx?$/, loader: 'standard', exclude: /(node_modules)/ }
-    ],
-    loaders: [
-        { test: /\.js$/, loaders: ['babel'], include: path.join(__dirname, 'src') },
-        { test: /\.css$/, loader: 'style!css', include: path.join(__dirname, 'src') }
-    ]
+    rules: [{
+      test: /\.jsx?$/,
+      enforce: 'pre',
+      exclude: /node_modules/,
+      use: [{
+        loader: 'standard-loader',
+        options: {
+          error: true,
+          parser: 'babel-eslint'
+        }
+      }]
+    },
+    {
+      test: /\.js$/,
+      include: path.join(__dirname, 'src'),
+      use: [{ loader: 'babel-loader' }]
+    },
+    {
+      test: /\.css$/,
+      include: path.join(__dirname, 'src'),
+      use: [ 'style-loader', 'css-loader' ]
+    }]
   },
-  standard: {
-    parser: 'babel-eslint',
-    emitErrors: true
-  }
+  target: 'electron'
 }
-
-options.target = webpackTargetElectronRenderer(options)
 
 module.exports = options

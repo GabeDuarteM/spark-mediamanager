@@ -3,7 +3,6 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
-var webpackTargetElectronRenderer = require('webpack-target-electron-renderer')
 
 var options = {
   entry: [
@@ -14,8 +13,6 @@ var options = {
     filename: 'assets/js/[name]-[hash].min.js'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-
     // Creates the index.html page based on the template and insert the assets in it.
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
@@ -43,34 +40,39 @@ var options = {
     new CleanWebpackPlugin(['dist']),
 
     // Prevents emitting the bundle if the compilation/linting has failed
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
 
   module: {
-    preLoaders: [
-        { test: /\.jsx?$/, loader: 'standard', exclude: /(node_modules)/ }
-    ],
-    loaders: [
-      {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      },
-      {
-        test: /\.css$/,
-        // Extracts the css portion out of the js files. Increases performance.
-        loader: ExtractTextPlugin.extract('style', 'css')
-      }
-    ]
+
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      enforce: 'pre',
+      use: [{
+        loader: 'standard-loader',
+        options: {
+          error: true,
+          parser: 'babel-eslint'
+        }
+      }]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [{ loader: 'babel-loader' }]
+    },
+    {
+      test: /\.css$/,
+      // Extracts the css portion out of the js files. Increases performance.
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+      })
+    }]
   },
   target: 'electron',
-  standard: {
-    parser: 'babel-eslint',
-    emitErrors: true
-  },
   bail: true
 }
-
-options.target = webpackTargetElectronRenderer(options)
 
 module.exports = options
