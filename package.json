@@ -21,7 +21,6 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --progress --colors",
     "build-dev": "cross-env NODE_ENV=development webpack --config webpack.config.dev.js --progress --colors"
   },
-  "// ALERT //": "Change the 'standard-loader' package below to just 'standard-loader' (without the 'GabrielDuarteM/' prefix) when this pull request is accepted: https://github.com/timoxley/standard-loader/pull/72",
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
