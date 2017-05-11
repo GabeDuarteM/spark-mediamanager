@@ -1,10 +1,10 @@
 {
-  "name": "react-redux-electron",
+  "name": "spark-mediamanager",
   "version": "0.1.0",
-  "description": "An electron boilerplate providing support for React, React Hot Reload 3, Redux, React Router and Webpack.",
-  "main": "main.js",
-  "repository": "https://github.com/GabrielQDuarte/react-webpack-minimal.git",
-  "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielQDuarte)",
+  "description": "A tool to keep track and organize all your media. Rename all of them according to a customized format.",
+  "main": "server.js",
+  "repository": "https://github.com/GabrielDuarteM/spark-mediamanager",
+  "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM)",
   "license": "MIT",
   "standard": {
     "parser": "babel-eslint",
