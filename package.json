@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development concurrently \"npm run start-server\" \"electron -r babel-register -r babel-polyfill .\" --kill-others -s first",
+    "start": "cross-env NODE_ENV=development concurrently \"yarn run start-server\" \"electron -r babel-register -r babel-polyfill .\" --kill-others -s first",
     "start-server": "cross-env NODE_ENV=development node server",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix | snazzy",

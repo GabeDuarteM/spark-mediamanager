@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { searchVideoChangeType, searchVideoChangeText, searchVideoClose, searchVideoChangeLoading, editVideoSetVideoList } from '../actions/videos'
 import SearchComponent from '../components/Search'
-import { search } from '../api/tmdb'
+import { search } from '../helpers/api/tmdb'
 
 const mapStateToProps = (state) => {
   return {

@@ -1,4 +1,5 @@
 import apiKeys from './apiKeys'
+import { handleError } from '../errorHandler'
 
 const baseUrl = 'https://api.themoviedb.org/3'
 
@@ -20,5 +21,7 @@ export const search = (type, query) => new Promise((resolve, reject) => {
   fetch(`${baseUrl}/search/${typeTvdb}?api_key=${apiKeys.tmdb}&query=${query}`)
     .then(data => data.json())
     .then(data => resolve(data))
-    .catch(data => reject(data))
+    .catch(data => {
+      reject(handleError(new Error('There was an error trying to search for content.'), data))
+    })
 })
