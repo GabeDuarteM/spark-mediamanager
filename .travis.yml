@@ -6,3 +6,6 @@ before_script:
 script:
   - npm run build-dev
   - npm run build
+os:
+  - linux
+  - osx
