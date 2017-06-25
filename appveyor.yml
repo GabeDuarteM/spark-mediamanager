@@ -1,0 +1,21 @@
+environment:
+  nodejs_version: "Stable"
+
+branches:
+  only:
+  - master
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install
+
+test_script:
+  - node --version && npm --version && yarn --version
+  - yarn lint
+  - yarn build-dev
+  - yarn build
+
+build: off

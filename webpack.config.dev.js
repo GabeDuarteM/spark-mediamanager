@@ -28,7 +28,8 @@ var options = {
       filename: 'index.html'
     }),
     // Prevents emitting the bundle if the compilation/linting has failed
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   module: {
     rules: [{
