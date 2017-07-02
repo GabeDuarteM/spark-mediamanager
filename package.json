@@ -14,8 +14,10 @@
     }
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development concurrently \"yarn run start-server\" \"electron -r babel-register -r babel-polyfill .\" --kill-others -s first",
-    "start-server": "cross-env NODE_ENV=development node server",
+    "start": "yarn start-dev",
+    "start-server": "node server",
+    "start-electron": "electron -r babel-register -r babel-polyfill .",
+    "start-dev": "cross-env NODE_ENV=development concurrently \"yarn start-server\" \"yarn start-electron\" --kill-others -s first",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix | snazzy",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --progress --colors",
