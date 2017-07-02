@@ -1,0 +1,21 @@
+{
+  "extends": ["prettier", "prettier/react", "plugin:react/recommended"],
+  "rules": {
+    "react/prop-types": "off",
+    "prettier/prettier": ["error", { "semi": false }]
+  },
+  "plugins": ["react", "prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
+}
