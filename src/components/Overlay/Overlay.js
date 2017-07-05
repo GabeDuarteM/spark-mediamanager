@@ -19,9 +19,9 @@ const styles = createStyleSheet("Overlay", theme => ({
 @withStyles(styles)
 class Overlay extends Component {
   render(props) {
-    const { classes, children, ...rest } = this.props
+    const { classes, children, className, ...rest } = this.props
     return (
-      <div className={classes.overlay} {...rest}>
+      <div className={`${className} ${classes.overlay}`} {...rest}>
         {children}
       </div>
     )

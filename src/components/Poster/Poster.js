@@ -36,7 +36,7 @@ class Poster extends Component {
       <Paper
         style={{ backgroundImage: `url(${poster.posterImg})` }}
         className={classes.poster}
-        elevation={24}
+        elevation={15}
         {...rest}
       >
         {showSubtitle

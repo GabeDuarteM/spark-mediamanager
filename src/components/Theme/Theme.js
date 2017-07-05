@@ -3,10 +3,7 @@ import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
 import createPalette from "material-ui/styles/palette"
 
 class Theme extends Component {
-  getTheme(type) {
-    if (!type) {
-      type = "dark"
-    }
+  getTheme(type = "dark") {
     return createMuiTheme({
       palette: createPalette({
         type

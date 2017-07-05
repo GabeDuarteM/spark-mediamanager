@@ -5,8 +5,7 @@ import { withStyles, createStyleSheet } from "material-ui/styles"
 const styles = createStyleSheet("PosterList", theme => ({
   posterList: {
     display: "flex",
-    flexWrap: "wrap",
-    backgroundColor: theme.palette.background.default
+    flexWrap: "wrap"
   }
 }))
 
@@ -21,9 +20,9 @@ class PosterList extends Component {
   }
 
   render() {
-    const { children, classes, posters = [] } = this.props
+    const { children, classes, className, posters = [] } = this.props
     return (
-      <div className={classes.posterList}>
+      <div className={`${className} ${classes.posterList}`}>
         {this.sortPosters(posters).map((poster, i) =>
           <Poster poster={poster} key={i} />
         )}

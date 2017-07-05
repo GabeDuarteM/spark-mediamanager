@@ -7,9 +7,12 @@ import { truncate } from "../../commonCss"
 
 const styles = createStyleSheet("PosterOverlay", theme => {
   return {
-    truncate: truncate,
+    title: {
+      ...truncate,
+      height: 23
+    },
     overlay: {
-      padding: 16
+      padding: "16px !important"
     }
   }
 })
@@ -19,8 +22,8 @@ class PosterOverlay extends Component {
   render(props) {
     const { title, year, classes } = this.props
     return (
-      <Overlay style={{ padding: 16 }}>
-        <Typography className={classes.truncate} type="title">
+      <Overlay className={classes.overlay}>
+        <Typography className={classes.title} type="title">
           {title}
         </Typography>
         <Typography type="body2">
