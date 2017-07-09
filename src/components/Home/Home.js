@@ -4,8 +4,9 @@ import Tabs, { Tab } from "material-ui/Tabs"
 import AppBar from "material-ui/AppBar"
 import Button from "material-ui/Button"
 import { Add } from "material-ui-icons"
+import { injectIntl } from "react-intl"
 
-import PosterList from "../Poster/PosterList"
+import PosterList from "../PosterList/PosterList"
 
 const styles = createStyleSheet("Home", theme => ({
   root: {
@@ -24,6 +25,7 @@ const styles = createStyleSheet("Home", theme => ({
   }
 }))
 
+@injectIntl
 @withStyles(styles)
 class Home extends Component {
   state = {
@@ -34,14 +36,14 @@ class Home extends Component {
     this.setState({ index })
   }
   render() {
-    const { children, classes, posters = [] } = this.props
+    const { children, classes, intl, posters = [] } = this.props
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
-            <Tab label="Séries" />
-            <Tab label="Filmes" />
-            <Tab label="Animes" />
+            <Tab label={intl.formatMessage({ id: "common.series" })} />
+            <Tab label={intl.formatMessage({ id: "common.movies" })} />
+            <Tab label={intl.formatMessage({ id: "common.animes" })} />
           </Tabs>
         </AppBar>
         {this.state.index === 0 &&

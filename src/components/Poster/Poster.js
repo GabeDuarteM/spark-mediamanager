@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Paper from "material-ui/Paper"
 import { withStyles, createStyleSheet } from "material-ui/styles"
 
-import PosterOverlay from "./PosterOverlay"
+import PosterOverlay from "../PosterOverlay/PosterOverlay"
 
 const styles = createStyleSheet("Poster", theme => {
   return {

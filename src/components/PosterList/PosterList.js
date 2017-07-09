@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Poster from "./Poster"
+import Poster from "../Poster/Poster"
 import { withStyles, createStyleSheet } from "material-ui/styles"
 
 const styles = createStyleSheet("PosterList", theme => ({

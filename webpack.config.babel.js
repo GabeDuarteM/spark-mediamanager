@@ -38,6 +38,7 @@ function getBaseConfig() {
                 babelrc: false,
                 presets: [["es2015", { modules: false }], "react", "stage-0"],
                 plugins: [
+                  "react",
                   "react-hot-loader/babel",
                   "transform-decorators-legacy"
                 ]

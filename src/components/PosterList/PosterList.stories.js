@@ -135,14 +135,14 @@ const posters = [
 
 storiesOf("PosterList", module)
   .add("dark theme", () =>
-    <ComponentWrapper>
+    <ComponentWrapper locale="pt">
       <Theme>
         <PosterList posters={posters} />
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
-    <ComponentWrapper>
+    <ComponentWrapper locale="en">
       <Theme type="light">
         <PosterList posters={posters} />
       </Theme>

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Paper from "material-ui/Paper"
+import { Paper } from "material-ui"
 import { withStyles, createStyleSheet } from "material-ui/styles"
 
 import { truncate } from "../../commonCss"
@@ -18,7 +18,7 @@ const styles = createStyleSheet("Overlay", theme => ({
 
 @withStyles(styles)
 class Overlay extends Component {
-  render(props) {
+  render() {
     const { classes, children, className, ...rest } = this.props
     return (
       <div className={`${className} ${classes.overlay}`} {...rest}>

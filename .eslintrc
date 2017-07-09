@@ -1,10 +1,22 @@
 {
-  "extends": ["prettier", "prettier/react", "plugin:react/recommended"],
+  "extends": [
+    "prettier",
+    "prettier/react",
+    "plugin:react/recommended"
+  ],
   "rules": {
     "react/prop-types": "off",
-    "prettier/prettier": ["error", { "semi": false }]
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": false
+      }
+    ]
   },
-  "plugins": ["react", "prettier"],
+  "plugins": [
+    "react",
+    "prettier"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {

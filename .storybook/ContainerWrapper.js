@@ -9,20 +9,20 @@ function getMessages(locale) {
   return require(`../src/locales/${locale}.json`)
 }
 
-const ComponentWrapper = ({ children, locale }) =>
+const ContainerWrapper = ({ children, locale }) =>
   <IntlProvider locale={locale} messages={getMessages(locale)}>
-    <div
-      className="ComponentWrapper"
-      style={{
-        display: "flex",
-        height: "100vh",
-        userSelect: "none"
-      }}
-    >
-      <div className="ComponentWrapper" style={{ margin: "auto" }}>
-        {children}
-      </div>
+    <div>
+      <style>
+        {`
+        html,
+        body {
+          margin: 0;
+          user-select: none;
+        }
+      `}
+      </style>
+      {children}
     </div>
   </IntlProvider>
 
-export default ComponentWrapper
+export default ContainerWrapper

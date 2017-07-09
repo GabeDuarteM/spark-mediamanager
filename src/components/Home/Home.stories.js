@@ -2,7 +2,7 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import Theme from "../Theme/Theme"
 
-import ComponentWrapper from "../../../.storybook/ComponentWrapper"
+import ContainerWrapper from "../../../.storybook/ContainerWrapper"
 
 import Home from "./Home"
 
@@ -139,12 +139,16 @@ const posters = {
 
 storiesOf("Home", module)
   .add("dark theme", () =>
-    <Theme>
-      <Home posters={posters} />
-    </Theme>
+    <ContainerWrapper locale="pt">
+      <Theme>
+        <Home posters={posters} />
+      </Theme>
+    </ContainerWrapper>
   )
   .add("light theme", () =>
-    <Theme type="light">
-      <Home posters={posters} />
-    </Theme>
+    <ContainerWrapper locale="en">
+      <Theme type="light">
+        <Home posters={posters} />
+      </Theme>
+    </ContainerWrapper>
   )

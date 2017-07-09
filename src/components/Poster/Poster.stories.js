@@ -16,21 +16,21 @@ const poster = {
 
 storiesOf("Poster", module)
   .add("dark theme", () =>
-    <ComponentWrapper>
+    <ComponentWrapper locale="pt">
       <Theme>
         <Poster poster={poster} />
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
-    <ComponentWrapper>
+    <ComponentWrapper locale="en">
       <Theme type="light">
         <Poster poster={poster} />
       </Theme>
     </ComponentWrapper>
   )
   .add("no subtitle", () =>
-    <ComponentWrapper>
+    <ComponentWrapper locale="pt">
       <Theme>
         <Poster showSubtitle={false} poster={poster} />
       </Theme>
