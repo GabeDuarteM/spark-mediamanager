@@ -36,7 +36,7 @@ class Poster extends Component {
     } = this.props
     return (
       <Paper
-        style={{ backgroundImage: `url(${poster.posterImg})` }}
+        style={{ backgroundImage: `url(${poster.posterImage})` }}
         className={classes.poster}
         elevation={15}
         {...rest}

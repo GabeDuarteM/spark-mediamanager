@@ -2545,9 +2545,17 @@ flow-bin@^0.49.1:
   version "0.49.1"
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.49.1.tgz#c9e456b3173a7535a4ffaf28956352c63bb8e3e9"
 
-flow-scripts@^0.3.0:
+flow-scripts@@GabrielDuarteM/flow-scripts:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/flow-scripts/-/flow-scripts-0.3.0.tgz#b79561958c8d8404a0b2c712b3477d1db89b0491"
+  dependencies:
+    commander "^2.9.0"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+
+"flow-scripts@https://github.com/GabrielDuarteM/flow-scripts.git":
+  version "0.3.0"
+  resolved "https://github.com/GabrielDuarteM/flow-scripts.git#27520cc9859a90e46239dc150a9052d7230c2076"
   dependencies:
     commander "^2.9.0"
     glob "^7.1.2"

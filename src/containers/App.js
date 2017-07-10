@@ -6,7 +6,7 @@ import en from "react-intl/locale-data/en"
 import pt from "react-intl/locale-data/pt"
 
 import Theme from "../components/Theme/Theme"
-import Home from "../components/Home/Home"
+import HomeContainer from "./HomeContainer/HomeContainer"
 
 addLocaleData([...en, ...pt])
 
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <IntlProvider locale="pt" messages={getMessages("pt")}>
       <Theme>
-        <Home />
+        <HomeContainer />
       </Theme>
     </IntlProvider>
   )

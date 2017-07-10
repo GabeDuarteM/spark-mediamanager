@@ -47,7 +47,6 @@ function getBaseConfig() {
                   "flow"
                 ],
                 plugins: [
-                  "react",
                   "react-hot-loader/babel",
                   "transform-decorators-legacy"
                 ]

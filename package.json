@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --env.env=dev",
+    "debug-webpack-errors": "webpack --display-error-details --env.env=dev",
     "build": "webpack --env.env=prod",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
@@ -40,7 +41,7 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "flow-bin": "^0.49.1",
-    "flow-scripts": "@GabrielDuarteM/flow-scripts",
+    "flow-scripts": "https://github.com/GabrielDuarteM/flow-scripts.git",
     "flow-typed": "^2.1.2",
     "html-webpack-plugin": "^2.29.0",
     "prettier": "^1.5.2",
