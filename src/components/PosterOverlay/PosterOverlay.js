@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react"
 import Typography from "material-ui/Typography"
 import { withStyles, createStyleSheet } from "material-ui/styles"
@@ -21,7 +23,7 @@ const styles = createStyleSheet("PosterOverlay", theme => {
 
 @withStyles(styles)
 class PosterOverlay extends Component {
-  render(props) {
+  render() {
     const { title, year, classes } = this.props
     return (
       <Overlay className={classes.overlay}>

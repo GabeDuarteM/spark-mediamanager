@@ -24,6 +24,9 @@ jspm_packages/
 # Optional eslint cache
 .eslintcache
 
+# Flow type definitions
+flow-typed/npm
+
 # Optional REPL history
 .node_repl_history
 

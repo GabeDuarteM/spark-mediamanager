@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react"
 import Paper from "material-ui/Paper"
 import { withStyles, createStyleSheet } from "material-ui/styles"
@@ -24,7 +26,7 @@ const styles = createStyleSheet("Poster", theme => {
 
 @withStyles(styles)
 class Poster extends Component {
-  render(props) {
+  render() {
     const {
       classes,
       children,

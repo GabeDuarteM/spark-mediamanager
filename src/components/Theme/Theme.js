@@ -1,9 +1,11 @@
+// @flow
+
 import React, { Component } from "react"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
 import createPalette from "material-ui/styles/palette"
 
 class Theme extends Component {
-  getTheme(type = "dark") {
+  getTheme(type: string = "dark") {
     return createMuiTheme({
       palette: createPalette({
         type
@@ -11,7 +13,7 @@ class Theme extends Component {
     })
   }
 
-  render(props) {
+  render() {
     const { children, type } = this.props
     return (
       <MuiThemeProvider theme={this.getTheme(type)}>

@@ -1,10 +1,14 @@
+// @flow
+
 import webpack from "webpack"
 import { join, resolve } from "path"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import ExtractTextPlugin from "extract-text-webpack-plugin"
 import CleanWebpackPlugin from "clean-webpack-plugin"
 
-function getMergedConfig({ env }) {
+type WebpackProps = { env: string }
+
+function getMergedConfig({ env }: WebpackProps) {
   const baseConfig = getBaseConfig()
   const specificConfig = getSpecificConfig(env, baseConfig)
   return { ...baseConfig, ...specificConfig }
@@ -36,7 +40,12 @@ function getBaseConfig() {
               loader: "babel-loader",
               options: {
                 babelrc: false,
-                presets: [["es2015", { modules: false }], "react", "stage-0"],
+                presets: [
+                  ["es2015", { modules: false }],
+                  "react",
+                  "stage-0",
+                  "flow"
+                ],
                 plugins: [
                   "react",
                   "react-hot-loader/babel",

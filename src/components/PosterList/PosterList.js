@@ -1,6 +1,9 @@
+// @flow
+
 import React, { Component } from "react"
 import Poster from "../Poster/Poster"
 import { withStyles, createStyleSheet } from "material-ui/styles"
+import type { PosterT } from "../../typings"
 
 const styles = createStyleSheet("PosterList", theme => ({
   posterList: {
@@ -11,8 +14,8 @@ const styles = createStyleSheet("PosterList", theme => ({
 
 @withStyles(styles)
 class PosterList extends Component {
-  sortPosters(posters) {
-    return posters.sort((posterA, posterB) => {
+  sortPosters(posters: PosterT[]): PosterT[] {
+    return posters.sort((posterA, posterB): number => {
       if (posterA.title < posterB.title) return -1
       if (posterA.title > posterB.title) return 1
       return 0
