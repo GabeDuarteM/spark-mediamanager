@@ -39,6 +39,7 @@ type Props = {
   intl: IntlShape,
   posters: { series: PosterT[], movies: PosterT[], animes: PosterT[] }
 }
+
 type State = {
   selectedTabIndex: number,
   visiblePosters: PosterT[]
@@ -46,7 +47,7 @@ type State = {
 
 @injectIntl
 @withStyles(styles)
-class Home extends Component<Props, Props, State> {
+class Home extends Component {
   state: State
 
   props: Props
@@ -59,16 +60,25 @@ class Home extends Component<Props, Props, State> {
     }
   }
 
-  handleTabChange(): void {
-    switch (this.state.selectedTabIndex) {
+  handleTabChange(event: Event, selectedTabIndex: number): void {
+    switch (selectedTabIndex) {
       case 0:
-        this.setState({ visiblePosters: this.props.posters.series })
+        this.setState({
+          visiblePosters: this.props.posters.series,
+          selectedTabIndex
+        })
         break
       case 1:
-        this.setState({ visiblePosters: this.props.posters.movies })
+        this.setState({
+          visiblePosters: this.props.posters.movies,
+          selectedTabIndex
+        })
         break
       case 2:
-        this.setState({ visiblePosters: this.props.posters.animes })
+        this.setState({
+          visiblePosters: this.props.posters.animes,
+          selectedTabIndex
+        })
         break
 
       default:
@@ -87,7 +97,7 @@ class Home extends Component<Props, Props, State> {
         <AppBar position="static">
           <Tabs
             index={this.state.selectedTabIndex}
-            onChange={this.handleTabChange}
+            onChange={this.handleTabChange.bind(this)}
             centered
           >
             <Tab
