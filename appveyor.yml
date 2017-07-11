@@ -1,0 +1,19 @@
+environment:
+  nodejs_version: "Stable"
+
+branches:
+  only:
+  - mui-v1
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install
+
+test_script:
+  - node --version && npm --version && yarn --version
+  - yarn build-ci
+
+build: off

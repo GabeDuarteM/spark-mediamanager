@@ -19,7 +19,8 @@ function getBaseConfig() {
         inject: "body",
         filename: "index.html"
       }),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin(),
+      new CleanWebpackPlugin(["build"])
     ],
     output: {
       path: join(__dirname, "build"),
@@ -88,7 +89,6 @@ function getProdConfig(baseConfig) {
         comments: false,
         compress: true
       }),
-      new CleanWebpackPlugin(["build"]),
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: function(module) {

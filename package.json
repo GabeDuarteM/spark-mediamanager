@@ -6,14 +6,16 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --env.env=dev",
+    "test": "jest",
+    "lint": "eslint .",
     "debug-webpack-errors": "webpack --display-error-details --env.env=dev",
     "debug-webpack-errors-prod": "webpack --display-error-details --env.env=prod",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
+    "build-ci": "yarn test && yarn lint && yarn build-dev && yarn build",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
-    "build-storybook": "build-storybook",
-    "check": ""
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "material-ui": "next",
@@ -42,6 +44,7 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
     "jss-module-loader": "^1.2.1",
     "prettier": "^1.5.2",
     "style-loader": "^0.18.2",
