@@ -55,10 +55,6 @@ function getBaseConfig() {
           options: {
             limit: 10000
           }
-        },
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
         }
       ]
     }
@@ -103,7 +99,20 @@ function getProdConfig(baseConfig) {
         name: "manifest",
         minChunks: Infinity
       })
-    ]
+    ],
+    module: {
+      ...baseConfig.module,
+      rules: [
+        ...baseConfig.module.rules,
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+          })
+        }
+      ]
+    }
   }
 }
 
@@ -130,6 +139,16 @@ function getDevConfig(baseConfig) {
       port: 3000,
       contentBase: resolve(__dirname, "build"),
       publicPath: "/"
+    },
+    module: {
+      ...baseConfig.module,
+      rules: [
+        ...baseConfig.module.rules,
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"]
+        }
+      ]
     }
   }
 }
