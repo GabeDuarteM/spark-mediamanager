@@ -1,14 +1,10 @@
-// @flow
-
 import webpack from "webpack"
 import { join, resolve } from "path"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import ExtractTextPlugin from "extract-text-webpack-plugin"
 import CleanWebpackPlugin from "clean-webpack-plugin"
 
-type WebpackProps = { env: string }
-
-function getMergedConfig({ env }: WebpackProps) {
+function getMergedConfig({ env }) {
   const baseConfig = getBaseConfig()
   const specificConfig = getSpecificConfig(env, baseConfig)
   return { ...baseConfig, ...specificConfig }
@@ -40,12 +36,7 @@ function getBaseConfig() {
               loader: "babel-loader",
               options: {
                 babelrc: false,
-                presets: [
-                  ["es2015", { modules: false }],
-                  "react",
-                  "stage-0",
-                  "flow"
-                ],
+                presets: [["es2015", { modules: false }], "react", "stage-0"],
                 plugins: [
                   "react-hot-loader/babel",
                   "transform-decorators-legacy"
@@ -64,6 +55,10 @@ function getBaseConfig() {
           options: {
             limit: 10000
           }
+        },
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"]
         }
       ]
     }
@@ -135,16 +130,6 @@ function getDevConfig(baseConfig) {
       port: 3000,
       contentBase: resolve(__dirname, "build"),
       publicPath: "/"
-    },
-    module: {
-      ...baseConfig.module,
-      rules: [
-        ...baseConfig.module.rules,
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
-        }
-      ]
     }
   }
 }

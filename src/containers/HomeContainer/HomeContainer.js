@@ -1,9 +1,6 @@
-// @flow
-
 import React, { Component } from "react"
 
 import HomeComponent from "../../components/Home/Home"
-import type { PosterT } from "../../typings"
 
 class HomeContainer extends Component {
   state: {

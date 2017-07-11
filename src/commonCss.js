@@ -1,5 +1,3 @@
-// @flow
-
 export const truncate = {
   display: "block",
   whiteSpace: "nowrap",

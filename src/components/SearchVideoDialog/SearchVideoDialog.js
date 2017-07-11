@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react"
 import Button from "material-ui/Button"
 import Dialog, {
@@ -35,7 +33,7 @@ export default class SearchVideoDialog extends Component {
     selectedType: "serie"
   }
 
-  handleChange = (event: any): void => {
+  handleChange = event => {
     this.setState({ selectedType: event.currentTarget.value })
   }
 

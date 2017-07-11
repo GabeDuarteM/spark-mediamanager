@@ -1,11 +1,9 @@
-// @flow
-
 import React, { Component } from "react"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
 import createPalette from "material-ui/styles/palette"
 
 class Theme extends Component {
-  getTheme(type: string = "dark") {
+  getTheme(type = "dark") {
     return createMuiTheme({
       palette: createPalette({
         type

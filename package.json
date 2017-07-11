@@ -8,10 +8,11 @@
     "start": "webpack-dev-server --env.env=dev",
     "debug-webpack-errors": "webpack --display-error-details --env.env=dev",
     "build": "webpack --env.env=prod",
+    "build-dev": "webpack --env.env=dev",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
     "build-storybook": "build-storybook",
-    "postinstall": "yarn flow-typed install && flow-scripts stub "
+    "check": ""
   },
   "dependencies": {
     "material-ui": "next",
@@ -23,30 +24,27 @@
     "react-router": "^4.1.1"
   },
   "devDependencies": {
-    "@storybook/react": "^3.1.7",
+    "@storybook/react": "^3.1.8",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
-    "eslint": "^4.1.1",
+    "eslint": "^4.2.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^7.1.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "flow-bin": "^0.49.1",
-    "flow-scripts": "https://github.com/GabrielDuarteM/flow-scripts.git",
-    "flow-typed": "^2.1.2",
+    "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
+    "jss-module-loader": "^1.2.1",
     "prettier": "^1.5.2",
     "style-loader": "^0.18.2",
-    "webpack": "2.6.1",
-    "webpack-dev-server": "^2.5.0"
+    "webpack": "3.1.0",
+    "webpack-dev-server": "^2.5.1"
   }
 }

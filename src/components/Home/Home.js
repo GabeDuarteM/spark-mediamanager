@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react"
 import { withStyles, createStyleSheet } from "material-ui/styles"
 import Tabs, { Tab } from "material-ui/Tabs"
@@ -7,10 +5,8 @@ import AppBar from "material-ui/AppBar"
 import Button from "material-ui/Button"
 import { Add } from "material-ui-icons"
 import { injectIntl } from "react-intl"
-import type { IntlShape } from "react-intl"
 
 import PosterList from "../PosterList/PosterList"
-import type { PosterT } from "../../typings"
 
 const styles = createStyleSheet("Home", theme => ({
   root: {
@@ -29,30 +25,10 @@ const styles = createStyleSheet("Home", theme => ({
   }
 }))
 
-type Props = {
-  children: React.ReactElement<HTMLElement>,
-  classes: {
-    root: string,
-    posterList: string,
-    fabButton: string
-  },
-  intl: IntlShape,
-  posters: { series: PosterT[], movies: PosterT[], animes: PosterT[] }
-}
-
-type State = {
-  selectedTabIndex: number,
-  visiblePosters: PosterT[]
-}
-
 @injectIntl
 @withStyles(styles)
 class Home extends Component {
-  state: State
-
-  props: Props
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props)
     this.state = {
       selectedTabIndex: 0,
@@ -60,7 +36,7 @@ class Home extends Component {
     }
   }
 
-  handleTabChange(event: Event, selectedTabIndex: number): void {
+  handleTabChange(event, selectedTabIndex) {
     switch (selectedTabIndex) {
       case 0:
         this.setState({

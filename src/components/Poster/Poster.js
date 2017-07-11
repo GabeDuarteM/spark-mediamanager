@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react"
 import Paper from "material-ui/Paper"
 import { withStyles, createStyleSheet } from "material-ui/styles"
