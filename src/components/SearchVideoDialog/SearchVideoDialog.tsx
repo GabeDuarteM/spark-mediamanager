@@ -1,15 +1,11 @@
-import React, { Component } from "react"
+import * as React from "react"
 import Button from "material-ui/Button"
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from "material-ui/Dialog"
+import Dialog, { DialogActions, DialogContent, DialogContentText } from "material-ui/Dialog"
 import { LabelRadio, RadioGroup } from "material-ui/Radio"
 import TextField from "material-ui/TextField"
 import { injectIntl } from "react-intl"
 import { withStyles, createStyleSheet } from "material-ui/styles"
+import { compose } from "recompose"
 
 const styles = createStyleSheet("SearchVideoDialog", theme => ({
   dialog: {
@@ -26,9 +22,22 @@ const styles = createStyleSheet("SearchVideoDialog", theme => ({
   }
 }))
 
-@injectIntl
-@withStyles(styles)
-export default class SearchVideoDialog extends Component {
+interface IProps {
+  classNames: string
+}
+
+interface IHocProps {
+  intl: ReactIntl.InjectedIntl
+  classes: {
+    dialog: string
+    radioGroup: string
+    input: string
+  }
+}
+
+type IFullProps = IProps & IHocProps
+
+class SearchVideoDialog extends React.Component<IFullProps, {}> {
   state = {
     selectedType: "serie"
   }
@@ -49,18 +58,9 @@ export default class SearchVideoDialog extends Component {
                 selectedValue={this.state.selectedType}
                 onChange={this.handleChange}
               >
-                <LabelRadio
-                  label={intl.formatMessage({ id: "common.serie" })}
-                  value="serie"
-                />
-                <LabelRadio
-                  label={intl.formatMessage({ id: "common.movie" })}
-                  value="movie"
-                />
-                <LabelRadio
-                  label={intl.formatMessage({ id: "common.anime" })}
-                  value="anime"
-                />
+                <LabelRadio label={intl.formatMessage({ id: "common.serie" })} value="serie" />
+                <LabelRadio label={intl.formatMessage({ id: "common.movie" })} value="movie" />
+                <LabelRadio label={intl.formatMessage({ id: "common.anime" })} value="anime" />
               </RadioGroup>
               <TextField
                 type="text"
@@ -76,10 +76,10 @@ export default class SearchVideoDialog extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleRequestClose} color="primary">
+            <Button color="primary">
               {intl.formatMessage({ id: "common.cancel" })}
             </Button>
-            <Button onClick={this.handleRequestClose} color="primary">
+            <Button color="primary">
               {intl.formatMessage({ id: "common.search" })}
             </Button>
           </DialogActions>
@@ -88,3 +88,5 @@ export default class SearchVideoDialog extends Component {
     )
   }
 }
+
+export default compose(injectIntl, withStyles(styles))(SearchVideoDialog)

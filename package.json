@@ -24,10 +24,25 @@
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
     "react-intl": "^2.3.0",
-    "react-router": "^4.1.1"
+    "react-router": "^4.1.2",
+    "recompose": "^0.24.0"
   },
   "devDependencies": {
-    "@storybook/react": "^3.1.8",
+    "@storybook/react": "^3.1.9",
+    "@types/extract-text-webpack-plugin": "^2.1.0",
+    "@types/html-webpack-plugin": "^2.28.0",
+    "@types/jest": "^20.0.5",
+    "@types/node": "^8.0.17",
+    "@types/react": "^15.6.0",
+    "@types/react-dom": "^15.5.1",
+    "@types/react-hot-loader": "^3.0.3",
+    "@types/react-intl": "^2.3.1",
+    "@types/react-redux": "^4.4.47",
+    "@types/recompose": "^0.23.2",
+    "@types/redux": "^3.6.0",
+    "@types/webpack": "^3.0.5",
+    "@types/webpack-env": "^1.13.0",
+    "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -38,7 +53,7 @@
     "babel-register": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^7.1.0",
@@ -46,9 +61,13 @@
     "html-webpack-plugin": "^2.29.0",
     "jest": "^20.0.4",
     "jss-module-loader": "^1.2.1",
-    "prettier": "^1.5.2",
+    "prettier": "^1.5.3",
     "style-loader": "^0.18.2",
-    "webpack": "3.1.0",
-    "webpack-dev-server": "^2.5.1"
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "tslint-react": "^3.1.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
   }
 }

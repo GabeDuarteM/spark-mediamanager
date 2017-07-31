@@ -1,7 +1,8 @@
-import React from "react"
+import * as React from "react"
+
 import { IntlProvider, addLocaleData } from "react-intl"
-import en from "react-intl/locale-data/en"
-import pt from "react-intl/locale-data/pt"
+import * as en from "react-intl/locale-data/en"
+import * as pt from "react-intl/locale-data/pt"
 
 import Theme from "../components/Theme/Theme"
 import HomeContainer from "./HomeContainer/HomeContainer"

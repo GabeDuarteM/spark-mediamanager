@@ -1,10 +1,13 @@
-import React, { Component } from "react"
+import IPoster from "../../types/IPoster"
+import * as React from "react"
 import { withStyles, createStyleSheet } from "material-ui/styles"
 import Tabs, { Tab } from "material-ui/Tabs"
 import AppBar from "material-ui/AppBar"
 import Button from "material-ui/Button"
 import { Add } from "material-ui-icons"
 import { injectIntl } from "react-intl"
+import * as ReactIntl from "react-intl"
+import { compose } from "recompose"
 
 import PosterList from "../PosterList/PosterList"
 
@@ -25,10 +28,30 @@ const styles = createStyleSheet("Home", theme => ({
   }
 }))
 
-@injectIntl
-@withStyles(styles)
-class Home extends Component {
-  constructor(props) {
+interface IProps {
+  posters: {
+    series: IPoster[]
+    movies: IPoster[]
+    animes: IPoster[]
+  }
+}
+
+interface IInjectedProps {
+  classes: {
+    root: string
+    posterList: string
+    fabButton: string
+  }
+  intl: ReactIntl.InjectedIntl
+}
+
+interface IState {
+  selectedTabIndex: number
+  visiblePosters: IPoster[]
+}
+
+class Home extends React.PureComponent<IProps & IInjectedProps, IState> {
+  constructor(props: IProps & IInjectedProps) {
     super(props)
     this.state = {
       selectedTabIndex: 0,
@@ -58,24 +81,17 @@ class Home extends Component {
         break
 
       default:
-        throw new Error(
-          `Recieved an invalid video type at handleTabChange. Arg: ${this.state
-            .selectedTabIndex}`
-        )
+        throw new Error(`Recieved an invalid video type at handleTabChange. Arg: ${this.state.selectedTabIndex}`)
     }
   }
 
   render() {
-    const { children, classes, intl, posters = [] } = this.props
+    const { classes, intl } = this.props
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs
-            index={this.state.selectedTabIndex}
-            onChange={this.handleTabChange.bind(this)}
-            centered
-          >
+          <Tabs index={this.state.selectedTabIndex} onChange={this.handleTabChange.bind(this)} centered>
             <Tab
               label={intl.formatMessage({
                 id: "common.series",
@@ -96,10 +112,7 @@ class Home extends Component {
             />
           </Tabs>
         </AppBar>
-        <PosterList
-          className={classes.posterList}
-          posters={this.state.visiblePosters}
-        />
+        <PosterList className={classes.posterList} posters={this.state.visiblePosters} />
         <Button fab color="primary" className={classes.fabButton}>
           <Add />
         </Button>
@@ -108,4 +121,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default compose<IProps, IProps>(injectIntl, withStyles(styles))(Home)
