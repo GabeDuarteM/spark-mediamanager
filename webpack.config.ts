@@ -97,6 +97,7 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
     module: {
       ...baseConfig.module,
       rules: [
+        ...(baseConfig.module as any).rules,
         {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
