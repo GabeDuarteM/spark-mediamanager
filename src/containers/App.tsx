@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { IntlProvider, addLocaleData } from "react-intl"
+import { addLocaleData, IntlProvider } from "react-intl"
 import * as en from "react-intl/locale-data/en"
 import * as pt from "react-intl/locale-data/pt"
 
@@ -9,7 +9,7 @@ import HomeContainer from "./HomeContainer/HomeContainer"
 
 addLocaleData([...en, ...pt])
 
-function getMessages(locale) {
+function getMessages(locale: string) {
   return require(`../locales/${locale}.json`)
 }
 

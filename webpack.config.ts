@@ -1,8 +1,8 @@
-import * as webpack from "webpack"
-import { join, resolve } from "path"
-import * as HtmlWebpackPlugin from "html-webpack-plugin"
-import * as ExtractTextPlugin from "extract-text-webpack-plugin"
 import * as CleanWebpackPlugin from "clean-webpack-plugin"
+import * as ExtractTextPlugin from "extract-text-webpack-plugin"
+import * as HtmlWebpackPlugin from "html-webpack-plugin"
+import { join, resolve } from "path"
+import * as webpack from "webpack"
 
 type IWebpackEnv = "dev" | "prod"
 
@@ -13,26 +13,13 @@ interface IWebpackConfigParams {
 function getMergedConfig({ env }: IWebpackConfigParams): webpack.Configuration {
   const baseConfig: webpack.Configuration = getBaseConfig()
   const specificConfig: webpack.Configuration = getSpecificConfig(env, baseConfig)
+
   return { ...baseConfig, ...specificConfig }
 }
 
 function getBaseConfig(): webpack.Configuration {
   return {
     entry: [resolve("src", "index.tsx")],
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: join("src", "index.html"),
-        inject: "body",
-        filename: "index.html"
-      }),
-      new webpack.NoEmitOnErrorsPlugin(),
-      new CleanWebpackPlugin(["dist"])
-    ],
-    output: {
-      path: resolve("dist"),
-      filename: "[hash].bundle.js",
-      publicPath: "/"
-    },
     module: {
       rules: [
         {
@@ -46,14 +33,28 @@ function getBaseConfig(): webpack.Configuration {
           use: ["url-loader?limit=10000", "img-loader"]
         },
         {
-          test: /\.(ttf|otf|eot|svg|woff2?)(\?.+)?$/,
           loader: "url-loader",
           options: {
             limit: 10000
-          }
+          },
+          test: /\.(ttf|otf|eot|svg|woff2?)(\?.+)?$/
         }
       ]
     },
+    output: {
+      filename: "[hash].bundle.js",
+      path: resolve("dist"),
+      publicPath: "/"
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        inject: "body",
+        template: join("src", "index.html")
+      }),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new CleanWebpackPlugin(["dist"])
+    ],
     resolve: {
       extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     }
@@ -67,6 +68,19 @@ function getSpecificConfig(env: IWebpackEnv, baseConfig: webpack.Configuration):
 function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration {
   return {
     devtool: "source-map",
+    module: {
+      ...baseConfig.module,
+      rules: [
+        ...(baseConfig.module as any).rules,
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+          })
+        }
+      ]
+    },
     output: {
       ...baseConfig.output,
       filename: "assets/js/[name].[chunkhash].bundle.js"
@@ -84,36 +98,39 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
         compress: true
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
         minChunks: module => {
           return module.context && module.context.indexOf("node_modules") !== -1
-        }
+        },
+        name: "vendor"
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: "manifest",
-        minChunks: Infinity
+        minChunks: Infinity,
+        name: "manifest"
       })
-    ],
+    ]
+  }
+}
+
+function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration {
+  return {
+    devServer: {
+      contentBase: resolve("dist"),
+      hot: true,
+      port: 3000,
+      publicPath: "/"
+    },
+    devtool: "source-map",
+    entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
     module: {
       ...baseConfig.module,
       rules: [
         ...(baseConfig.module as any).rules,
         {
           test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: "css-loader"
-          })
+          use: ["style-loader", "css-loader"]
         }
       ]
-    }
-  }
-}
-
-function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration {
-  return {
-    devtool: "source-map",
-    entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
+    },
     output: {
       ...baseConfig.output,
       filename: "[name].[hash].bundle.js"
@@ -127,23 +144,7 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin()
-    ],
-    devServer: {
-      hot: true,
-      port: 3000,
-      contentBase: resolve("dist"),
-      publicPath: "/"
-    },
-    module: {
-      ...baseConfig.module,
-      rules: [
-        ...(baseConfig.module as any).rules,
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
-        }
-      ]
-    }
+    ]
   }
 }
 

@@ -1,13 +1,12 @@
-import React from "react"
+import * as React from "react"
+
 import { storiesOf } from "@storybook/react"
-import { MuiThemeProvider } from "material-ui/styles"
-import { withStyles, createStyleSheet } from "material-ui/styles"
 import Button from "material-ui/Button"
 import Paper from "material-ui/Paper"
 
 import Theme from "./Theme"
 
-const StoryWrapper = ({ children }) =>
+const StoryWrapper: React.StatelessComponent<{}> = ({ children }) =>
   <div
     className="storyWrapper"
     style={{
@@ -29,7 +28,7 @@ const StoryWrapper = ({ children }) =>
     </div>
   </div>
 
-const ThemeDemo = () =>
+const ThemeDemo: React.StatelessComponent<{}> = () =>
   <Paper
     style={{
       margin: "auto",

@@ -1,9 +1,10 @@
 import * as React from "react"
-import Typography from "material-ui/Typography"
-import { withStyles, createStyleSheet } from "material-ui/styles"
 
-import Overlay from "../Overlay/Overlay"
+import { createStyleSheet, withStyles } from "material-ui/styles"
+import Typography from "material-ui/Typography"
+
 import { truncate } from "../../commonCss"
+import Overlay from "../Overlay/Overlay"
 
 const styles = createStyleSheet("PosterOverlay", theme => {
   return {
@@ -21,7 +22,7 @@ const styles = createStyleSheet("PosterOverlay", theme => {
 
 interface IProps {
   title: string
-  year: string
+  year?: string
 }
 
 interface IInjectedProps {
@@ -43,4 +44,4 @@ const PosterOverlay = ({ title, year, classes }: IFullProps) =>
     </Typography>
   </Overlay>
 
-export default withStyles(styles)(PosterOverlay)
+export default withStyles<IProps>(styles)(PosterOverlay)

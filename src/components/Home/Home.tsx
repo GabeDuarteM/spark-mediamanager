@@ -1,14 +1,15 @@
-import IPoster from "../../types/IPoster"
 import * as React from "react"
-import { withStyles, createStyleSheet } from "material-ui/styles"
-import Tabs, { Tab } from "material-ui/Tabs"
+
+import { Add } from "material-ui-icons"
 import AppBar from "material-ui/AppBar"
 import Button from "material-ui/Button"
-import { Add } from "material-ui-icons"
+import { createStyleSheet, withStyles } from "material-ui/styles"
+import Tabs, { Tab } from "material-ui/Tabs"
 import { injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
 import { compose } from "recompose"
 
+import IPoster from "../../@types/IPoster"
 import PosterList from "../PosterList/PosterList"
 
 const styles = createStyleSheet("Home", theme => ({
@@ -36,7 +37,7 @@ interface IProps {
   }
 }
 
-interface IInjectedProps {
+interface IHocProps {
   classes: {
     root: string
     posterList: string
@@ -50,8 +51,8 @@ interface IState {
   visiblePosters: IPoster[]
 }
 
-class Home extends React.PureComponent<IProps & IInjectedProps, IState> {
-  constructor(props: IProps & IInjectedProps) {
+class Home extends React.Component<IProps & IHocProps, IState> {
+  constructor(props: IProps & IHocProps) {
     super(props)
     this.state = {
       selectedTabIndex: 0,
@@ -59,33 +60,7 @@ class Home extends React.PureComponent<IProps & IInjectedProps, IState> {
     }
   }
 
-  handleTabChange(event, selectedTabIndex) {
-    switch (selectedTabIndex) {
-      case 0:
-        this.setState({
-          visiblePosters: this.props.posters.series,
-          selectedTabIndex
-        })
-        break
-      case 1:
-        this.setState({
-          visiblePosters: this.props.posters.movies,
-          selectedTabIndex
-        })
-        break
-      case 2:
-        this.setState({
-          visiblePosters: this.props.posters.animes,
-          selectedTabIndex
-        })
-        break
-
-      default:
-        throw new Error(`Recieved an invalid video type at handleTabChange. Arg: ${this.state.selectedTabIndex}`)
-    }
-  }
-
-  render() {
+  public render() {
     const { classes, intl } = this.props
 
     return (
@@ -118,6 +93,32 @@ class Home extends React.PureComponent<IProps & IInjectedProps, IState> {
         </Button>
       </div>
     )
+  }
+
+  public handleTabChange(event: any, selectedTabIndex: number): void {
+    switch (selectedTabIndex) {
+      case 0:
+        this.setState({
+          visiblePosters: this.props.posters.series,
+          selectedTabIndex
+        })
+        break
+      case 1:
+        this.setState({
+          visiblePosters: this.props.posters.movies,
+          selectedTabIndex
+        })
+        break
+      case 2:
+        this.setState({
+          visiblePosters: this.props.posters.animes,
+          selectedTabIndex
+        })
+        break
+
+      default:
+        throw new Error(`Recieved an invalid video type at handleTabChange. Arg: ${this.state.selectedTabIndex}`)
+    }
   }
 }
 

@@ -1,10 +1,11 @@
 import * as React from "react"
+
 import Button from "material-ui/Button"
 import Dialog, { DialogActions, DialogContent, DialogContentText } from "material-ui/Dialog"
 import { LabelRadio, RadioGroup } from "material-ui/Radio"
+import { createStyleSheet, withStyles } from "material-ui/styles"
 import TextField from "material-ui/TextField"
 import { injectIntl } from "react-intl"
-import { withStyles, createStyleSheet } from "material-ui/styles"
 import { compose } from "recompose"
 
 const styles = createStyleSheet("SearchVideoDialog", theme => ({
@@ -23,7 +24,8 @@ const styles = createStyleSheet("SearchVideoDialog", theme => ({
 }))
 
 interface IProps {
-  classNames: string
+  classNames?: string
+  open: boolean
 }
 
 interface IHocProps {
@@ -38,16 +40,13 @@ interface IHocProps {
 type IFullProps = IProps & IHocProps
 
 class SearchVideoDialog extends React.Component<IFullProps, {}> {
-  state = {
+  public state = {
     selectedType: "serie"
   }
 
-  handleChange = event => {
-    this.setState({ selectedType: event.currentTarget.value })
-  }
-
-  render() {
+  public render() {
     const { intl, classes, classNames, ...rest } = this.props
+
     return (
       <div>
         <Dialog className={classNames || ""} {...rest}>
@@ -87,6 +86,10 @@ class SearchVideoDialog extends React.Component<IFullProps, {}> {
       </div>
     )
   }
+
+  private handleChange = (event: React.ChangeEvent<any>) => {
+    this.setState({ selectedType: event.currentTarget.value })
+  }
 }
 
-export default compose(injectIntl, withStyles(styles))(SearchVideoDialog)
+export default compose<IProps, IProps>(injectIntl, withStyles(styles))(SearchVideoDialog)

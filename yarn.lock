@@ -122,9 +122,20 @@
     react-split-pane "^0.1.63"
     redux "^3.6.0"
 
+"@types/cheerio@*":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
+
 "@types/clean-css@*":
   version "3.4.30"
   resolved "https://registry.yarnpkg.com/@types/clean-css/-/clean-css-3.4.30.tgz#0052c136f5248002428e3638b37de4a39818641d"
+
+"@types/enzyme@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-2.8.4.tgz#0a75487091978a77178920fa0437c0f13a8e2dcd"
+  dependencies:
+    "@types/cheerio" "*"
+    "@types/react" "*"
 
 "@types/extract-text-webpack-plugin@^2.1.0":
   version "2.1.0"
@@ -201,6 +212,23 @@
 "@types/source-map@*":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.5.0.tgz#dd34bbd8e32fe4e74f2e3d8ac07f8aa5b45a47ac"
+
+"@types/storybook__addon-actions@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-actions/-/storybook__addon-actions-3.0.1.tgz#e76b6cc3e6221d6578962a2ae59c3c33b6762453"
+
+"@types/storybook__addon-knobs@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-knobs/-/storybook__addon-knobs-3.0.1.tgz#503b48243dc1276576d88ceee4695fc2e612c512"
+  dependencies:
+    "@types/react" "*"
+
+"@types/storybook__react@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.2.tgz#f0ecc2e17e306ae680244356776bb5a4e1c7a945"
+  dependencies:
+    "@types/node" "*"
+    "@types/react" "*"
 
 "@types/tapable@*":
   version "0.2.3"

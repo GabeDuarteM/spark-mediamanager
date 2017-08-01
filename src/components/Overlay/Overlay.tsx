@@ -1,9 +1,10 @@
 import * as React from "react"
-import { withStyles, createStyleSheet } from "material-ui/styles"
+
+import { createStyleSheet, withStyles } from "material-ui/styles"
 
 import { truncate } from "../../commonCss"
 
-const styles = createStyleSheet("Overlay", theme => ({
+const stylesheet = createStyleSheet("Overlay", theme => ({
   overlay: {
     background: theme.palette.background.default,
     opacity: 0.7,
@@ -16,22 +17,22 @@ const styles = createStyleSheet("Overlay", theme => ({
 }))
 
 interface IProps {
-  children: React.ReactElement<any>
+  children: React.ReactElement<{}> | Array<React.ReactElement<{}>>
   className: string
 }
 
-interface IInjectedProps {
+interface IHocProps {
   classes: {
     overlay: string
     truncate: string
   }
 }
 
-type IFullProps = IProps & IInjectedProps
+type IFullProps = IProps & IHocProps
 
 const Overlay = ({ classes, children, className, ...rest }: IFullProps) =>
   <div className={`${className} ${classes.overlay}`} {...rest}>
     {children}
   </div>
 
-export default withStyles(styles)(Overlay)
+export default withStyles<IProps>(stylesheet)(Overlay)

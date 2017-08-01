@@ -1,15 +1,20 @@
-import React from "react"
-import { IntlProvider, addLocaleData } from "react-intl"
-import en from "react-intl/locale-data/en"
-import pt from "react-intl/locale-data/pt"
+import * as React from "react"
+import { addLocaleData, IntlProvider } from "react-intl"
+import * as en from "react-intl/locale-data/en"
+import * as pt from "react-intl/locale-data/pt"
 
 addLocaleData([...en, ...pt])
 
-function getMessages(locale) {
+function getMessages(locale: string) {
   return require(`../src/locales/${locale}.json`)
 }
 
-const ComponentWrapper = ({ children, locale }) =>
+interface IProps {
+  children: React.ReactElement<any>
+  locale: string
+}
+
+const ComponentWrapper = ({ children, locale }: IProps) =>
   <IntlProvider locale={locale} messages={getMessages(locale)}>
     <div
       className="ComponentWrapper"

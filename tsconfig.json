@@ -3,6 +3,7 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "strictNullChecks": true,
+    "strict": true,
     "removeComments": true,
     "allowJs": true,
     "module": "commonjs",
@@ -10,10 +11,12 @@
     "lib": ["es6", "dom"],
     "jsx": "react",
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": ["./node_modules/@types", "../@types"]
   },
   "exclude": ["./node_modules"]
 }

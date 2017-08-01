@@ -1,6 +1,7 @@
 import * as React from "react"
+
 import Dialog, { DialogActions, DialogContent, DialogContentText } from "material-ui/Dialog"
-import { withStyles, createStyleSheet } from "material-ui/styles"
+import { createStyleSheet, withStyles } from "material-ui/styles"
 
 const styles = createStyleSheet("VideoDetails", theme => ({
   fanart: {
@@ -11,7 +12,8 @@ const styles = createStyleSheet("VideoDetails", theme => ({
 }))
 
 interface IProps {
-  classNames: string
+  classNames?: string
+  open: boolean
 }
 
 interface IHocProps {
@@ -22,8 +24,8 @@ interface IHocProps {
 
 type IFullProps = IProps & IHocProps
 
-const VideoDetails = ({ classNames, classes, ...rest }: IFullProps) =>
-  <Dialog {...rest}>
+const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, open, ...rest }) =>
+  <Dialog open={open} {...rest}>
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentText>
         <div className={classes.fanart}>
@@ -34,4 +36,4 @@ const VideoDetails = ({ classNames, classes, ...rest }: IFullProps) =>
     <DialogActions />
   </Dialog>
 
-export default withStyles(styles)(VideoDetails)
+export default withStyles<IProps>(styles)(VideoDetails)
