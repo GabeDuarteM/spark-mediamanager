@@ -20,6 +20,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-alpha.19",
     "react": "^15.6.1",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.3",
+    "@types/classnames": "^2.2.0",
     "@types/enzyme": "^2.8.4",
     "@types/extract-text-webpack-plugin": "^2.1.0",
     "@types/html-webpack-plugin": "^2.28.0",

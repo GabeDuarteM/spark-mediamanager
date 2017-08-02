@@ -5,9 +5,8 @@ import { createStyleSheet, withStyles } from "material-ui/styles"
 
 const styles = createStyleSheet("VideoDetails", theme => ({
   fanart: {
-    height: 300,
-    width: 300,
-    backgroundColor: "blue"
+    height: 450,
+    width: 768
   }
 }))
 
@@ -25,7 +24,7 @@ interface IHocProps {
 type IFullProps = IProps & IHocProps
 
 const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, open, ...rest }) =>
-  <Dialog open={open} {...rest}>
+  <Dialog open={open} {...rest} maxWidth="xs">
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentText>
         <div className={classes.fanart}>
