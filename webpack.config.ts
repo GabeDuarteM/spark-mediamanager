@@ -29,6 +29,11 @@ function getBaseConfig(): webpack.Configuration {
           test: /\.(t|j)sx?$/
         },
         {
+          enforce: "pre",
+          loader: "source-map-loader",
+          test: /\.js$/
+        },
+        {
           test: /\.(jpe?g|png|gif|svg)$/i,
           use: ["url-loader?limit=10000", "img-loader"]
         },
