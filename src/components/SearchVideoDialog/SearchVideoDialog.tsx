@@ -1,10 +1,9 @@
 import * as React from "react"
 
-import Button from "material-ui/Button"
-import Dialog, { DialogActions, DialogContent, DialogContentText } from "material-ui/Dialog"
-import { LabelRadio, RadioGroup } from "material-ui/Radio"
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, TextField } from "material-ui"
+import { FormControl, FormControlLabel } from "material-ui/Form"
+import Radio, { RadioGroup } from "material-ui/Radio"
 import { createStyleSheet, withStyles } from "material-ui/styles"
-import TextField from "material-ui/TextField"
 import { injectIntl } from "react-intl"
 import { compose } from "recompose"
 
@@ -52,15 +51,29 @@ class SearchVideoDialog extends React.Component<IFullProps, {}> {
         <Dialog className={classNames || ""} {...rest}>
           <DialogContent>
             <DialogContentText className={classes.dialog}>
-              <RadioGroup
-                className={classes.radioGroup}
-                selectedValue={this.state.selectedType}
-                onChange={this.handleChange}
-              >
-                <LabelRadio label={intl.formatMessage({ id: "common.serie" })} value="serie" />
-                <LabelRadio label={intl.formatMessage({ id: "common.movie" })} value="movie" />
-                <LabelRadio label={intl.formatMessage({ id: "common.anime" })} value="anime" />
-              </RadioGroup>
+              <FormControl>
+                <RadioGroup
+                  className={classes.radioGroup}
+                  selectedValue={this.state.selectedType}
+                  onChange={this.handleChange}
+                >
+                  <FormControlLabel
+                    control={<Radio />}
+                    label={intl.formatMessage({ id: "common.serie" })}
+                    value="serie"
+                  />
+                  <FormControlLabel
+                    control={<Radio />}
+                    label={intl.formatMessage({ id: "common.movie" })}
+                    value="movie"
+                  />
+                  <FormControlLabel
+                    control={<Radio />}
+                    label={intl.formatMessage({ id: "common.anime" })}
+                    value="anime"
+                  />
+                </RadioGroup>
+              </FormControl>
               <TextField
                 type="text"
                 className={classes.input}

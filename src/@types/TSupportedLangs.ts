@@ -1,0 +1,1 @@
+type TSupportedLangs = "pt" | "en"

@@ -4,16 +4,14 @@ import * as en from "react-intl/locale-data/en"
 import * as pt from "react-intl/locale-data/pt"
 import * as injectTapEventPlugin from "react-tap-event-plugin"
 
+import { getMessages } from "../src/utils/localeUtils"
+
 injectTapEventPlugin()
 addLocaleData([...en, ...pt])
 
-function getMessages(locale: string) {
-  return require(`../src/locales/${locale}.json`)
-}
-
 interface IProps {
   children: React.ReactElement<any>
-  locale: string
+  locale: TSupportedLangs
 }
 
 const ComponentWrapper = ({ children, locale }: IProps) =>

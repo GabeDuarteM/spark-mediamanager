@@ -3,15 +3,13 @@ import { addLocaleData, IntlProvider } from "react-intl"
 import * as en from "react-intl/locale-data/en"
 import * as pt from "react-intl/locale-data/pt"
 
-addLocaleData([...en, ...pt])
+import { getMessages } from "../src/utils/localeUtils"
 
-function getMessages(locale: string): any {
-  return require(`../src/locales/${locale}.json`)
-}
+addLocaleData([...en, ...pt])
 
 interface IProps {
   children: React.ReactElement<any>
-  locale: string
+  locale: TSupportedLangs
 }
 
 const ContainerWrapper = ({ children, locale }: IProps) =>

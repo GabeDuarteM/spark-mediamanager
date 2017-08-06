@@ -5,13 +5,10 @@ import * as en from "react-intl/locale-data/en"
 import * as pt from "react-intl/locale-data/pt"
 
 import Theme from "../components/Theme/Theme"
+import { getMessages } from "../utils/localeUtils"
 import HomeContainer from "./HomeContainer/HomeContainer"
 
 addLocaleData([...en, ...pt])
-
-function getMessages(locale: string) {
-  return require(`../locales/${locale}.json`)
-}
 
 const App = () => {
   return (

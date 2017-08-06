@@ -1,12 +1,17 @@
 import * as React from "react"
 
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, IconButton, TextField } from "material-ui"
-import { Settings, Tv } from "material-ui-icons"
+import { Search, Settings, Tv } from "material-ui-icons"
+import {} from "material-ui-icons"
 import { MenuItem, SelectField } from "material-ui-legacy"
 import { createStyleSheet, withStyles } from "material-ui/styles"
+import { FormattedMessage, injectIntl } from "react-intl"
+import * as ReactIntl from "react-intl"
+import { compose } from "recompose"
 
 import IPoster from "../../@types/IPoster"
 import Fanart from "../Fanart/Fanart"
+import IconTextField from "../IconTextField/IconTextField"
 
 const styleSheet = createStyleSheet("VideoDetails", theme => ({
   dialogRoot: {
@@ -22,12 +27,14 @@ const styleSheet = createStyleSheet("VideoDetails", theme => ({
     margin: [0, 24]
   },
   iconButton: {
-    marginTop: 24,
+    marginTop: 8,
     marginLeft: 8
+  },
+  select: {
+    marginTop: 8
   },
   path: {
     marginLeft: 8,
-    marginTop: 14,
     width: 344
   },
   overview: {
@@ -49,12 +56,14 @@ interface IHocProps {
     iconButton: string
     path: string
     overview: string
+    select: string
   }
+  intl: ReactIntl.InjectedIntl
 }
 
 type IFullProps = IProps & IHocProps
 
-const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, poster, open, ...rest }) =>
+const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, poster, open, intl, ...rest }) =>
   <Dialog open={open} {...rest} maxWidth="md">
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentText>
@@ -63,12 +72,10 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classe
             <Fanart poster={poster} />
           </div>
           <div className={classes.actions}>
-            <SelectField floatingLabelText="Frequency" value={2}>
-              <MenuItem value={1} primaryText="Never" />
-              <MenuItem value={2} primaryText="Every Night" />
-              <MenuItem value={3} primaryText="Weeknights" />
-              <MenuItem value={4} primaryText="Weekends" />
-              <MenuItem value={5} primaryText="Weekly" />
+            <SelectField className={classes.select} value={1}>
+              <MenuItem value={1} primaryText="Gotham" />
+              <MenuItem value={2} primaryText="Gotham 2" />
+              <MenuItem value={3} primaryText="Something similar to Gotham" />
             </SelectField>
             <IconButton className={classes.iconButton}>
               <Settings />
@@ -76,16 +83,30 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classe
             <IconButton className={classes.iconButton}>
               <Tv />
             </IconButton>
-            <TextField className={classes.path} label="Path" />
+            <IconTextField
+              IconSvg={Search}
+              className={classes.path}
+              placeholder={intl.formatMessage({ id: "videoDetails.path" })}
+            />
           </div>
-          <TextField label="Overview" multiline rows="3" defaultValue={poster.overview} className={classes.overview} />
+          <TextField
+            label={intl.formatMessage({ id: "videoDetails.overview" })}
+            multiline
+            rows="3"
+            defaultValue={poster.overview}
+            className={classes.overview}
+          />
         </div>
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button>Cancel</Button>
-      <Button>Save</Button>
+      <Button>
+        <FormattedMessage id="common.cancel" />
+      </Button>
+      <Button>
+        <FormattedMessage id="common.save" />
+      </Button>
     </DialogActions>
   </Dialog>
 
-export default withStyles<IProps>(styleSheet)(VideoDetails)
+export default compose<IFullProps, IProps>(withStyles(styleSheet), injectIntl)(VideoDetails)
