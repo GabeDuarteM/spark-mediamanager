@@ -31,7 +31,7 @@ const styleSheet = createStyleSheet("VideoDetails", theme => ({
     marginLeft: 8
   },
   select: {
-    marginTop: 8
+    marginTop: 4
   },
   path: {
     marginLeft: 8,
