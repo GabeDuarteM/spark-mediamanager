@@ -19,6 +19,13 @@
     "sb": "yarn storybook",
     "build-storybook": "build-storybook"
   },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "\\.test\\.(ts|tsx)$",
+    "moduleFileExtensions": ["ts", "tsx", "js"]
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "material-ui": "1.0.0-beta.4",
@@ -64,6 +71,7 @@
     "prettier": "^1.5.3",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
+    "ts-jest": "^20.0.10",
     "ts-node": "^3.3.0",
     "tslint": "^5.5.0",
     "tslint-react": "^3.1.0",
