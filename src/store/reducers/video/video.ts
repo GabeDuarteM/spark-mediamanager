@@ -1,8 +1,8 @@
 import { EVideoType } from "../../../@types/EVideoType"
 import IMovie from "../../../@types/IMovie"
 import ISerie from "../../../@types/ISerie"
-import { IUnknownAction } from "../../../@types/IUnknownAction"
 import IBaseReducer from "../IBaseReducer"
+import IUnknownAction from "../IUnknownAction"
 import IVideoState from "./IVideoState"
 import { VIDEO__ADD_VIDEO } from "./videoActions"
 
