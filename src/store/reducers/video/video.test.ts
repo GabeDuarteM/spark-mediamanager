@@ -1,10 +1,19 @@
+import { v4 } from "uuid"
+
 import { EVideoType } from "../../../@types/EVideoType"
 import IMovie from "../../../@types/IMovie"
 import ISerie from "../../../@types/ISerie"
 import IUnknownAction from "../IUnknownAction"
 import IVideoState from "./IVideoState"
 import video from "./video"
-import { addVideo, VIDEO__ADD_VIDEO } from "./videoActions"
+import {
+  addVideo,
+  editVideo,
+  removeVideo,
+  VIDEO__ADD_VIDEO,
+  VIDEO__EDIT_VIDEO,
+  VIDEO__REMOVE_VIDEO
+} from "./videoActions"
 
 // import { VIDEO__ADD_VIDEO } from "./videoActions"
 
@@ -56,6 +65,67 @@ describe("video reducer", () => {
       expect(actual).toEqual(expected)
     })
   })
+  describe(VIDEO__REMOVE_VIDEO, () => {
+    it("should remove an anime to the list", () => {
+      const state = returnMockedState()
+      const action = removeVideo(EVideoType.Anime, swordArtOnline.id)
+      const expected = { ...returnMockedState(), animes: [] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should remove a movie to the list", () => {
+      const state = returnMockedState()
+      const action = removeVideo(EVideoType.Movie, matrix.id)
+      const expected = { ...returnMockedState(), movies: [] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should remove a serie to the list", () => {
+      const state = returnMockedState()
+      const action = removeVideo(EVideoType.Serie, gameOfThrones.id)
+      const expected = { ...returnMockedState(), series: [] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+  })
+  describe(VIDEO__EDIT_VIDEO, () => {
+    it("should edit an anime on the list", () => {
+      const state = returnMockedState()
+      const editedVideo: ISerie = { ...swordArtOnline, title: "UPDATED" }
+      const action = editVideo(EVideoType.Anime, editedVideo)
+      const expected = { ...returnMockedState(), animes: [editedVideo] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should edit a movie on the list", () => {
+      const state = returnMockedState()
+      const editedVideo: IMovie = { ...matrix, title: "UPDATED" }
+      const action = editVideo(EVideoType.Movie, editedVideo)
+      const expected = { ...returnMockedState(), movies: [editedVideo] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should edit a serie on the list", () => {
+      const state = returnMockedState()
+      const editedVideo: ISerie = { ...gameOfThrones, title: "UPDATED" }
+      const action = editVideo(EVideoType.Serie, editedVideo)
+      const expected = { ...returnMockedState(), series: [editedVideo] }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+  })
 })
 
 const returnMockedState = (): IVideoState => ({
@@ -71,6 +141,7 @@ const returnInitialState = (): IVideoState => ({
 })
 
 const swordArtOnline: ISerie = {
+  id: v4(),
   title: "Sword Art Online",
   year: 2012,
   ids: {
@@ -111,6 +182,7 @@ const swordArtOnline: ISerie = {
 }
 
 const matrix: IMovie = {
+  id: v4(),
   title: "The Matrix",
   year: 1999,
   ids: {
@@ -170,6 +242,7 @@ const matrix: IMovie = {
   certification: "R"
 }
 const gameOfThrones: ISerie = {
+  id: v4(),
   title: "Game of Thrones",
   year: 2011,
   ids: {

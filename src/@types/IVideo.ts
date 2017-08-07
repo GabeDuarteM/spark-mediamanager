@@ -3,6 +3,7 @@ import IIds from "./IIds"
 import ILanguageTrakt from "./ILanguageTrakt"
 
 export default interface IVideo {
+  id: string
   title: string
   year: number
   ids: IIds

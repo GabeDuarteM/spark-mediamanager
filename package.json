@@ -24,7 +24,11 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -38,7 +42,8 @@
     "react-router": "^4.1.2",
     "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.24.0",
-    "typeface-roboto": "^0.0.33"
+    "typeface-roboto": "^0.0.33",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.2.3",
@@ -55,10 +60,10 @@
     "@types/react-redux": "^4.4.47",
     "@types/react-tap-event-plugin": "^0.0.30",
     "@types/recompose": "^0.23.3",
-    "@types/redux": "^3.6.0",
     "@types/storybook__addon-actions": "^3.0.1",
     "@types/storybook__addon-knobs": "^3.0.1",
     "@types/storybook__react": "^3.0.3",
+    "@types/uuid": "^3.4.0",
     "@types/webpack": "^3.0.5",
     "@types/webpack-env": "^1.13.0",
     "awesome-typescript-loader": "^3.2.2",
