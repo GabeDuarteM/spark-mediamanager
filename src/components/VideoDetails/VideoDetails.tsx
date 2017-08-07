@@ -9,7 +9,7 @@ import { FormattedMessage, injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
 import { compose } from "recompose"
 
-import IPoster from "../../@types/IPoster"
+import IVideo from "../../@types/IVideo"
 import Fanart from "../Fanart/Fanart"
 import IconTextField from "../IconTextField/IconTextField"
 
@@ -45,7 +45,7 @@ const styleSheet = createStyleSheet("VideoDetails", theme => ({
 interface IProps {
   classNames?: string
   open: boolean
-  poster: IPoster
+  video: IVideo
 }
 
 interface IHocProps {
@@ -63,13 +63,13 @@ interface IHocProps {
 
 type IFullProps = IProps & IHocProps
 
-const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, poster, open, intl, ...rest }) =>
+const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, video, open, intl, ...rest }) =>
   <Dialog open={open} {...rest} maxWidth="md">
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentText>
         <div className={classes.dialogRoot}>
           <div className={classes.fanart}>
-            <Fanart poster={poster} />
+            <Fanart poster={video} />
           </div>
           <div className={classes.actions}>
             <SelectField className={classes.select} value={1}>
@@ -93,7 +93,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classe
             label={intl.formatMessage({ id: "videoDetails.overview" })}
             multiline
             rows="3"
-            defaultValue={poster.overview}
+            defaultValue={video.api.overview}
             className={classes.overview}
           />
         </div>

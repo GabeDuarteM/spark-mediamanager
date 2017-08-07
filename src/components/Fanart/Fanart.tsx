@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { createStyleSheet, withStyles } from "material-ui/styles"
 
-import IPoster from "../../@types/IPoster"
+import IVideo from "../../@types/IVideo"
 import Poster from "../Poster/Poster"
 
 const styles = createStyleSheet("Fanart", {
@@ -20,7 +20,7 @@ const styles = createStyleSheet("Fanart", {
 })
 
 interface IProps {
-  poster: IPoster
+  poster: IVideo
 }
 
 interface IHocProps {
@@ -31,7 +31,7 @@ interface IHocProps {
 }
 
 const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ poster, classes }) =>
-  <div className={classes.fanart} style={{ backgroundImage: `url(${poster.fanartImage})` }}>
+  <div className={classes.fanart} style={{ backgroundImage: `url(${poster.api.backdrop})` }}>
     <Poster className={classes.poster} showSubtitle={false} poster={poster} hoverEffect={false} />
   </div>
 

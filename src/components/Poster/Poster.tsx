@@ -4,7 +4,7 @@ import * as classNames from "classnames"
 import Paper from "material-ui/Paper"
 import { createStyleSheet, withStyles } from "material-ui/styles"
 
-import IPoster from "../../@types/IPoster"
+import IVideo from "../../@types/IVideo"
 import PosterOverlay from "../PosterOverlay/PosterOverlay"
 
 const styles = createStyleSheet("Poster", theme => ({
@@ -33,7 +33,7 @@ interface IHocProps {
 }
 
 interface IProps {
-  poster: IPoster
+  poster: IVideo
   className?: string
   children?: React.ReactElement<{}>
   showSubtitle?: boolean
@@ -50,12 +50,12 @@ const Poster = ({
   ...rest
 }: IProps & IHocProps) =>
   <Paper
-    style={{ backgroundImage: `url(${poster.posterImage})` }}
+    style={{ backgroundImage: `url(${poster.api.poster})` }}
     className={classNames(classes.poster, { [classes.hoverEffect]: hoverEffect }, className)}
     elevation={15}
     {...rest}
   >
-    {showSubtitle ? <PosterOverlay title={poster.title} year={poster.year} /> : ""}
+    {showSubtitle ? <PosterOverlay title={poster.api.title} year={poster.api.year} /> : ""}
   </Paper>
 
 export default withStyles<IProps>(styles)(Poster)

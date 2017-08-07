@@ -9,7 +9,8 @@ import { injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
 import { compose } from "recompose"
 
-import IPoster from "../../@types/IPoster"
+import IVideo from "../../@types/IVideo"
+import IVideoState from "../../store/reducers/video/IVideoState"
 import PosterList from "../PosterList/PosterList"
 
 const styles = createStyleSheet("Home", theme => ({
@@ -30,11 +31,7 @@ const styles = createStyleSheet("Home", theme => ({
 }))
 
 interface IProps {
-  posters: {
-    series: IPoster[]
-    movies: IPoster[]
-    animes: IPoster[]
-  }
+  posters: IVideoState
 }
 
 interface IHocProps {
@@ -48,10 +45,10 @@ interface IHocProps {
 
 interface IState {
   selectedTabIndex: number
-  visiblePosters: IPoster[]
+  visiblePosters: IVideo[]
 }
 
-class Home extends React.Component<IProps & IHocProps, IState> {
+class Home extends React.PureComponent<IProps & IHocProps, IState> {
   constructor(props: IProps & IHocProps) {
     super(props)
     this.state = {

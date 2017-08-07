@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { createStyleSheet, withStyles } from "material-ui/styles"
-import IPoster from "../../@types/IPoster"
+import IVideo from "../../@types/IVideo"
 import Poster from "../Poster/Poster"
 
 const styles = createStyleSheet("PosterList", theme => ({
@@ -19,7 +19,7 @@ interface IHocProps {
 
 interface IProps {
   className?: string
-  posters: IPoster[]
+  posters: IVideo[]
 }
 
 type IFullProps = IProps & IHocProps
@@ -29,12 +29,12 @@ const PosterList = ({ classes, className, posters }: IFullProps) =>
     {sortPosters(posters).map((poster, i) => <Poster poster={poster} key={i} />)}
   </div>
 
-const sortPosters: (posters: IPoster[]) => IPoster[] = posters => {
+const sortPosters: (posters: IVideo[]) => IVideo[] = posters => {
   return posters.sort((posterA, posterB) => {
-    if (posterA.title < posterB.title) {
+    if (posterA.api.title < posterB.api.title) {
       return -1
     }
-    if (posterA.title > posterB.title) {
+    if (posterA.api.title > posterB.api.title) {
       return 1
     }
 

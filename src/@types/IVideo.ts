@@ -1,21 +1,8 @@
-import IGenreTrakt from "./IGenreTrakt"
-import IIds from "./IIds"
-import ILanguageTrakt from "./ILanguageTrakt"
+import IMovieApi from "./IMovieApi"
+import ISerieApi from "./ISerieApi"
 
 export default interface IVideo {
   id: string
-  title: string
-  year: number
-  ids: IIds
-  overview: string
-  runtime: number
-  certification: string
-  updated_at: string
-  trailer?: string
-  homepage: string
-  rating: number
-  votes: number
-  language: ILanguageTrakt
-  available_translations: ILanguageTrakt[]
-  genres: IGenreTrakt[]
+  path?: string
+  api: ISerieApi | IMovieApi
 }

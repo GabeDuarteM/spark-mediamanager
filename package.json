@@ -39,9 +39,11 @@
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
     "react-intl": "^2.3.0",
+    "react-redux": "^5.0.5",
     "react-router": "^4.1.2",
     "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.24.0",
+    "redux": "^3.7.2",
     "typeface-roboto": "^0.0.33",
     "uuid": "^3.1.0"
   },

@@ -22,7 +22,7 @@ const styles = createStyleSheet("PosterOverlay", theme => {
 
 interface IProps {
   title: string
-  year?: string
+  year?: number
 }
 
 interface IInjectedProps {

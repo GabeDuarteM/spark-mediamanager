@@ -1,30 +1,29 @@
 import { EVideoType } from "../../../@types/EVideoType"
-import IMovie from "../../../@types/IMovie"
-import ISerie from "../../../@types/ISerie"
+import IVideo from "../../../@types/IVideo"
 import IBaseAction from "../IBaseAction"
 
-export const VIDEO__ADD_VIDEO = "VIDEO/ADD_VIDEO"
-export const VIDEO__REMOVE_VIDEO = "VIDEO/REMOVE_VIDEO"
-export const VIDEO__EDIT_VIDEO = "VIDEO/EDIT_VIDEO"
+export const VIDEO__ADD = "VIDEO/ADD"
+export const VIDEO__REMOVE = "VIDEO/REMOVE"
+export const VIDEO__EDIT = "VIDEO/EDIT"
 
-export const addVideo = (videoType: EVideoType, video: ISerie | IMovie): IBaseAction => ({
-  type: VIDEO__ADD_VIDEO,
+export const add = (videoType: EVideoType, video: IVideo): IBaseAction => ({
+  type: VIDEO__ADD,
   payload: {
     video,
     videoType
   }
 })
 
-export const removeVideo = (videoType: EVideoType, id: string): IBaseAction => ({
-  type: VIDEO__REMOVE_VIDEO,
+export const remove = (videoType: EVideoType, id: string): IBaseAction => ({
+  type: VIDEO__REMOVE,
   payload: {
     id,
     videoType
   }
 })
 
-export const editVideo = (videoType: EVideoType, video: ISerie | IMovie): IBaseAction => ({
-  type: VIDEO__EDIT_VIDEO,
+export const edit = (videoType: EVideoType, video: IVideo): IBaseAction => ({
+  type: VIDEO__EDIT,
   payload: {
     video,
     videoType

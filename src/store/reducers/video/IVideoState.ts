@@ -1,8 +1,7 @@
-import IMovie from "../../../@types/IMovie"
-import ISerie from "../../../@types/ISerie"
+import IVideo from "../../../@types/IVideo"
 
 export default interface IVideoState {
-  animes: ISerie[]
-  movies: IMovie[]
-  series: ISerie[]
+  animes: IVideo[]
+  movies: IVideo[]
+  series: IVideo[]
 }

@@ -1,43 +1,39 @@
 import { EVideoType } from "../../../@types/EVideoType"
-import IMovie from "../../../@types/IMovie"
-import ISerie from "../../../@types/ISerie"
+import IVideo from "../../../@types/IVideo"
 import IBaseReducer from "../IBaseReducer"
 import IUnknownAction from "../IUnknownAction"
 import IVideoState from "./IVideoState"
-import { VIDEO__ADD_VIDEO, VIDEO__EDIT_VIDEO, VIDEO__REMOVE_VIDEO } from "./videoActions"
+import { VIDEO__ADD, VIDEO__EDIT, VIDEO__REMOVE } from "./videoActions"
 
 const video: IBaseReducer<IVideoState> = (state = { animes: [], movies: [], series: [] }, action = IUnknownAction) => {
   switch (action.type) {
-    case VIDEO__ADD_VIDEO:
-      return handleAddVideo(state, action.payload)
-    case VIDEO__REMOVE_VIDEO:
-      return handleRemoveVideo(state, action.payload)
-    case VIDEO__EDIT_VIDEO:
-      return handleEditVideo(state, action.payload)
+    case VIDEO__ADD:
+      return handleAdd(state, action.payload)
+    case VIDEO__REMOVE:
+      return handleRemove(state, action.payload)
+    case VIDEO__EDIT:
+      return handleEdit(state, action.payload)
     default:
       return state
   }
 }
 
-const handleAddVideo = (
-  state: IVideoState,
-  payload: { videoType: EVideoType; video: ISerie | IMovie }
-): IVideoState => {
+const handleAdd = (state: IVideoState, payload: { videoType: EVideoType; video: IVideo }): IVideoState => {
   switch (payload.videoType) {
     case EVideoType.Anime:
       return {
         ...state,
-        animes: [...state.animes, payload.video as ISerie]
+        animes: [...state.animes, payload.video]
       }
     case EVideoType.Movie:
       return {
         ...state,
-        movies: [...state.movies, payload.video as IMovie]
+        movies: [...state.movies, payload.video]
       }
     case EVideoType.Serie:
       return {
         ...state,
-        series: [...state.series, payload.video as ISerie]
+        series: [...state.series, payload.video]
       }
 
     default:
@@ -45,7 +41,7 @@ const handleAddVideo = (
   }
 }
 
-const handleRemoveVideo = (state: IVideoState, payload: { videoType: EVideoType; id: string }) => {
+const handleRemove = (state: IVideoState, payload: { videoType: EVideoType; id: string }) => {
   switch (payload.videoType) {
     case EVideoType.Anime:
       return {
@@ -68,25 +64,22 @@ const handleRemoveVideo = (state: IVideoState, payload: { videoType: EVideoType;
   }
 }
 
-const handleEditVideo = (
-  state: IVideoState,
-  payload: { videoType: EVideoType; video: ISerie | IMovie }
-): IVideoState => {
+const handleEdit = (state: IVideoState, payload: { videoType: EVideoType; video: IVideo }): IVideoState => {
   switch (payload.videoType) {
     case EVideoType.Anime:
       return {
         ...state,
-        animes: [...state.animes.map(x => (x.id === payload.video.id ? payload.video as ISerie : x))]
+        animes: [...state.animes.map(x => (x.id === payload.video.id ? payload.video : x))]
       }
     case EVideoType.Movie:
       return {
         ...state,
-        movies: [...state.movies.map(x => (x.id === payload.video.id ? payload.video as IMovie : x))]
+        movies: [...state.movies.map(x => (x.id === payload.video.id ? payload.video : x))]
       }
     case EVideoType.Serie:
       return {
         ...state,
-        series: [...state.series.map(x => (x.id === payload.video.id ? payload.video as ISerie : x))]
+        series: [...state.series.map(x => (x.id === payload.video.id ? payload.video : x))]
       }
 
     default:
