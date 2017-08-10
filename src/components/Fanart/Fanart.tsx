@@ -11,12 +11,12 @@ const styles = createStyleSheet("Fanart", {
     backgroundPosition: "50% 10%",
     height: 250,
     paddingTop: 30,
-    paddingLeft: 25
+    paddingLeft: 25,
   },
   poster: {
     height: "186px !important",
-    width: "124px !important"
-  }
+    width: "124px !important",
+  },
 })
 
 interface IProps {

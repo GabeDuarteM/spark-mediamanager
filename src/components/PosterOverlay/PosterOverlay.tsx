@@ -10,13 +10,13 @@ const styles = createStyleSheet("PosterOverlay", theme => {
   return {
     title: {
       ...truncate,
-      height: 23
+      height: 23,
     },
     overlay: {
       padding: "16px !important",
       borderTop: "2px solid",
-      borderColor: theme.palette.input.bottomLine
-    }
+      borderColor: theme.palette.input.bottomLine,
+    },
   }
 })
 

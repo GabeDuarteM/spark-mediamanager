@@ -21,8 +21,8 @@ const Theme: React.StatelessComponent<IProps> = ({ children, type }) =>
 const getTheme = (type: IType = "dark") => {
   return createMuiTheme({
     palette: createPalette({
-      type
-    })
+      type,
+    }),
   })
 }
 

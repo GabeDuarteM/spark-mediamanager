@@ -7,6 +7,7 @@ import { MenuItem, SelectField } from "material-ui-legacy"
 import { createStyleSheet, withStyles } from "material-ui/styles"
 import { FormattedMessage, injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
+import { withRouter } from "react-router"
 import { compose } from "recompose"
 
 import IVideo from "../../@types/IVideo"
@@ -17,29 +18,29 @@ const styleSheet = createStyleSheet("VideoDetails", theme => ({
   dialogRoot: {
     display: "flex",
     flexDirection: "column",
-    margin: [-24, -24, 0, -24]
+    margin: [-24, -24, 0, -24],
   },
   fanart: {
-    width: 768
+    width: 768,
   },
   actions: {
     display: "flex",
-    margin: [0, 24]
+    margin: [0, 24],
   },
   iconButton: {
     marginTop: 8,
-    marginLeft: 8
+    marginLeft: 8,
   },
   select: {
-    marginTop: 4
+    marginTop: 4,
   },
   path: {
     marginLeft: 8,
-    width: 344
+    width: 344,
   },
   overview: {
-    margin: [8, 24]
-  }
+    margin: [8, 24],
+  },
 }))
 
 interface IProps {
@@ -58,13 +59,27 @@ interface IHocProps {
     overview: string
     select: string
   }
+  history: any[]
   intl: ReactIntl.InjectedIntl
 }
 
 type IFullProps = IProps & IHocProps
 
-const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classes, video, open, intl, ...rest }) =>
-  <Dialog open={open} {...rest} maxWidth="md">
+const VideoDetails: React.StatelessComponent<IFullProps> = ({
+  classNames,
+  classes,
+  video,
+  open,
+  intl,
+  history,
+  ...rest,
+}) =>
+  <Dialog
+    open={open}
+    onRequestClose={() => history.push(location.pathname.replace("/videoDetails", ""))}
+    {...rest}
+    maxWidth="md"
+  >
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentText>
         <div className={classes.dialogRoot}>
@@ -100,7 +115,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classe
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button>
+      <Button onClick={() => history.push(location.pathname.replace("/videoDetails", ""))}>
         <FormattedMessage id="common.cancel" />
       </Button>
       <Button>
@@ -109,4 +124,4 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({ classNames, classe
     </DialogActions>
   </Dialog>
 
-export default compose<IFullProps, IProps>(withStyles(styleSheet), injectIntl)(VideoDetails)
+export default compose<IFullProps, IProps>(withStyles(styleSheet), injectIntl, withRouter)(VideoDetails)

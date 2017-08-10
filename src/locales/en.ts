@@ -10,12 +10,12 @@ const en: ILocaleBase = {
     series: "Series",
     cancel: "Cancel",
     search: "Search",
-    save: "Save"
+    save: "Save",
   },
   videoDetails: {
     path: "Path",
-    overview: "Overview"
-  }
+    overview: "Overview",
+  },
 }
 
 export default en

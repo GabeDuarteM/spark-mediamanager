@@ -13,14 +13,14 @@ storiesOf("PosterList", module)
   .add("dark theme", () =>
     <ComponentWrapper locale="pt">
       <Theme>
-        <PosterList posters={posters} />
+        <PosterList videos={posters} />
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
     <ComponentWrapper locale="en">
       <Theme type="light">
-        <PosterList posters={posters} />
+        <PosterList videos={posters} />
       </Theme>
     </ComponentWrapper>
   )

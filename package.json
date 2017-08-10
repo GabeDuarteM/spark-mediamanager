@@ -11,7 +11,8 @@
     "coverage": "jest --coverage",
     "lint": "yarn lint-ts && yarn lint-prettier",
     "lint-ts": "tslint 'src/**/*.ts' '*.ts' -e 'src/**/*.d.ts'",
-    "lint-prettier": "prettier --debug-check -l --no-semi --print-width 120 --parser typescript \"**/*.ts\"",
+    "lint-prettier": "prettier --debug-check -l --no-semi --print-width 120 --trailing-comma es5 --parser typescript \"**/*.ts\"",
+    "lint-prettier-fix": "prettier -l --no-semi --print-width 120 --trailing-comma es5 --parser typescript \"**/*.ts\"",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
     "build-ci": "yarn test-ci && yarn lint && yarn build-dev && yarn build",
@@ -24,11 +25,7 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -40,7 +37,7 @@
     "react-hot-loader": "next",
     "react-intl": "^2.3.0",
     "react-redux": "^5.0.5",
-    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
     "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
@@ -60,6 +57,7 @@
     "@types/react-hot-loader": "^3.0.3",
     "@types/react-intl": "^2.3.1",
     "@types/react-redux": "^4.4.47",
+    "@types/react-router-dom": "^4.0.7",
     "@types/react-tap-event-plugin": "^0.0.30",
     "@types/recompose": "^0.23.3",
     "@types/storybook__addon-actions": "^3.0.1",

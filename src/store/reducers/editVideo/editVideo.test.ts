@@ -86,7 +86,7 @@ describe("editVideo reducer", () => {
 
 const returnInitialState = (): IEditVideoState => ({
   video: undefined,
-  type: undefined
+  type: undefined,
 })
 
 const anime = returnMockAnime()

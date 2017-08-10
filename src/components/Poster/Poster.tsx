@@ -16,13 +16,13 @@ const styles = createStyleSheet("Poster", theme => ({
     alignItems: "flex-end",
     backgroundSize: "cover",
     margin: 10,
-    transition: "all .2s ease-in-out"
+    transition: "all .2s ease-in-out",
   },
   hoverEffect: {
     "&:hover": {
-      transform: "scale(1.1)"
-    }
-  }
+      transform: "scale(1.1)",
+    },
+  },
 }))
 
 interface IHocProps {
@@ -47,7 +47,7 @@ const Poster = ({
   poster,
   showSubtitle = true,
   hoverEffect = true,
-  ...rest
+  ...rest,
 }: IProps & IHocProps) =>
   <Paper
     style={{ backgroundImage: `url(${poster.api.poster})` }}

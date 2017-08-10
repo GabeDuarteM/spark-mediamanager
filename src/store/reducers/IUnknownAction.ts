@@ -1,7 +1,7 @@
 import IBaseAction from "./IBaseAction"
 
 const IUnknownAction: IBaseAction = {
-  type: "#####"
+  type: "#####",
 }
 
 export default IUnknownAction

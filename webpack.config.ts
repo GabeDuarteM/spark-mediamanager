@@ -26,43 +26,43 @@ function getBaseConfig(): webpack.Configuration {
           exclude: resolve(__dirname, "node_modules"),
           include: resolve(__dirname, "src"),
           loaders: ["react-hot-loader/webpack", "awesome-typescript-loader"],
-          test: /\.(t|j)sx?$/
+          test: /\.(t|j)sx?$/,
         },
         {
           enforce: "pre",
           loader: "source-map-loader",
-          test: /\.js$/
+          test: /\.js$/,
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
-          use: ["url-loader?limit=10000", "img-loader"]
+          use: ["url-loader?limit=10000", "img-loader"],
         },
         {
           loader: "url-loader",
           options: {
-            limit: 10000
+            limit: 10000,
           },
-          test: /\.(ttf|otf|eot|svg|woff2?)(\?.+)?$/
-        }
-      ]
+          test: /\.(ttf|otf|eot|svg|woff2?)(\?.+)?$/,
+        },
+      ],
     },
     output: {
       filename: "[hash].bundle.js",
       path: resolve("dist"),
-      publicPath: "/"
+      publicPath: "/",
     },
     plugins: [
       new HtmlWebpackPlugin({
         filename: "index.html",
         inject: "body",
-        template: join("src", "index.html")
+        template: join("src", "index.html"),
       }),
       new webpack.NoEmitOnErrorsPlugin(),
-      new CleanWebpackPlugin(["dist"])
+      new CleanWebpackPlugin(["dist"]),
     ],
     resolve: {
-      extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
-    }
+      extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"],
+    },
   }
 }
 
@@ -81,38 +81,38 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
-            use: "css-loader"
-          })
-        }
-      ]
+            use: "css-loader",
+          }),
+        },
+      ],
     },
     output: {
       ...baseConfig.output,
-      filename: "assets/js/[name].[chunkhash].bundle.js"
+      filename: "assets/js/[name].[chunkhash].bundle.js",
     },
     plugins: [
       ...(baseConfig.plugins as webpack.Plugin[]),
       new ExtractTextPlugin("assets/css/[chunkhash].bundle.css"),
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify("production")
-        }
+          NODE_ENV: JSON.stringify("production"),
+        },
       }),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
-        compress: true
+        compress: true,
       }),
       new webpack.optimize.CommonsChunkPlugin({
         minChunks: module => {
           return module.context && module.context.indexOf("node_modules") !== -1
         },
-        name: "vendor"
+        name: "vendor",
       }),
       new webpack.optimize.CommonsChunkPlugin({
         minChunks: Infinity,
-        name: "manifest"
-      })
-    ]
+        name: "manifest",
+      }),
+    ],
   }
 }
 
@@ -121,8 +121,9 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
     devServer: {
       contentBase: resolve("dist"),
       hot: true,
+      historyApiFallback: true,
       port: 3000,
-      publicPath: "/"
+      publicPath: "/",
     },
     devtool: "source-map",
     entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
@@ -132,24 +133,24 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
         ...(baseConfig.module as any).rules,
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"]
-        }
-      ]
+          use: ["style-loader", "css-loader"],
+        },
+      ],
     },
     output: {
       ...baseConfig.output,
-      filename: "[name].[hash].bundle.js"
+      filename: "[name].[hash].bundle.js",
     },
     plugins: [
       ...(baseConfig.plugins as webpack.Plugin[]),
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify("development")
-        }
+          NODE_ENV: JSON.stringify("development"),
+        },
       }),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin()
-    ]
+      new webpack.NamedModulesPlugin(),
+    ],
   }
 }
 

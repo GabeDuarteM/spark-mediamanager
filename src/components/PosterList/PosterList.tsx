@@ -1,45 +1,45 @@
 import * as React from "react"
 
 import { createStyleSheet, withStyles } from "material-ui/styles"
+import { Link } from "react-router-dom"
+
 import IVideo from "../../@types/IVideo"
 import Poster from "../Poster/Poster"
 
 const styles = createStyleSheet("PosterList", theme => ({
   posterList: {
     display: "flex",
-    flexWrap: "wrap"
-  }
+    flexWrap: "wrap",
+  },
+  link: {
+    textDecoration: "none",
+    height: 320,
+    cursor: "default",
+    outline: "none",
+  },
 }))
 
 interface IHocProps {
   classes: {
     posterList: string
+    link: string
   }
 }
 
 interface IProps {
   className?: string
-  posters: IVideo[]
+  videos: IVideo[]
 }
 
 type IFullProps = IProps & IHocProps
 
-const PosterList = ({ classes, className, posters }: IFullProps) =>
+const PosterList = ({ classes, className, videos }: IFullProps) =>
   <div className={`${className} ${classes.posterList}`}>
-    {sortPosters(posters).map((poster, i) => <Poster poster={poster} key={i} />)}
+    {videos.map((poster, i) =>
+      <Link to={`${location.pathname.replace("/videoDetails", "")}/videoDetails`} key={i} className={classes.link}>
+        <Poster poster={poster} />
+      </Link>
+    )}
   </div>
-
-const sortPosters: (posters: IVideo[]) => IVideo[] = posters => {
-  return posters.sort((posterA, posterB) => {
-    if (posterA.api.title < posterB.api.title) {
-      return -1
-    }
-    if (posterA.api.title > posterB.api.title) {
-      return 1
-    }
-
-    return 0
-  })
-}
 
 export default withStyles<IProps>(styles)(PosterList)

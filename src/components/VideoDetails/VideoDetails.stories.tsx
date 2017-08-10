@@ -10,7 +10,7 @@ import VideoDetails from "./VideoDetails"
 
 const baseProps: any = {
   open: true,
-  video: returnMockAnime()
+  video: returnMockAnime(),
 }
 
 storiesOf("VideoDetails", module)

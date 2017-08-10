@@ -7,9 +7,9 @@ export const EDIT_VIDEO__CLEAR = "EDIT_VIDEO/CLEAR"
 
 export const set = (video: IVideo, type: EVideoType): IBaseAction => ({
   type: EDIT_VIDEO__SET,
-  payload: { video, type }
+  payload: { video, type },
 })
 
 export const clear = (): IBaseAction => ({
-  type: EDIT_VIDEO__CLEAR
+  type: EDIT_VIDEO__CLEAR,
 })

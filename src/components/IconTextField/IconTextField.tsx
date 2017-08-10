@@ -7,21 +7,21 @@ const styles = createStyleSheet("IconTextField", theme => ({
   root: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   svg: {
     height: 18,
-    width: 18
+    width: 18,
   },
   iconButton: {
     height: 32,
     width: 32,
     margin: "auto",
-    marginLeft: -32
+    marginLeft: -32,
   },
   textField: {
-    width: "100%"
-  }
+    width: "100%",
+  },
 }))
 
 interface IProps {

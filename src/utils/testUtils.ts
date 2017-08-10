@@ -24,60 +24,60 @@ export const returnMockSerie = (): IVideo => ({
         episode_count: 13,
         id: 3627,
         poster: "http://image.tmdb.org/t/p/w300/kMTcwNRfFKCZ0O2OaBZS0nZ2AIe.jpg",
-        season_number: 0
+        season_number: 0,
       },
       {
         air_date: "2011-04-17",
         episode_count: 10,
         id: 3624,
         poster: "http://image.tmdb.org/t/p/w300/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
-        season_number: 1
+        season_number: 1,
       },
       {
         air_date: "2012-04-01",
         episode_count: 10,
         id: 3625,
         poster: "http://image.tmdb.org/t/p/w300/5tuhCkqPOT20XPwwi9NhFnC1g9R.jpg",
-        season_number: 2
+        season_number: 2,
       },
       {
         air_date: "2013-03-31",
         episode_count: 10,
         id: 3626,
         poster: "http://image.tmdb.org/t/p/w300/7d3vRgbmnrRQ39Qmzd66bQyY7Is.jpg",
-        season_number: 3
+        season_number: 3,
       },
       {
         air_date: "2014-04-06",
         episode_count: 10,
         id: 3628,
         poster: "http://image.tmdb.org/t/p/w300/dniQ7zw3mbLJkd1U0gdFEh4b24O.jpg",
-        season_number: 4
+        season_number: 4,
       },
       {
         air_date: "2015-04-12",
         episode_count: 10,
         id: 62090,
         poster: "http://image.tmdb.org/t/p/w300/yKOltUHsp9X7dXWIm0hNGcIQa4G.jpg",
-        season_number: 5
+        season_number: 5,
       },
       {
         air_date: "2016-04-24",
         episode_count: 10,
         id: 71881,
         poster: "http://image.tmdb.org/t/p/w300/zvYrzLMfPIenxoq2jFY4eExbRv8.jpg",
-        season_number: 6
+        season_number: 6,
       },
       {
         air_date: "2017-07-16",
         episode_count: 7,
         id: 81266,
         poster: "http://image.tmdb.org/t/p/w300/sIIydZjHdFukLQ6jzfaS2c6InqD.jpg",
-        season_number: 7
-      }
+        season_number: 7,
+      },
     ],
-    year: 2011
-  }
+    year: 2011,
+  },
 })
 
 export const returnMockMovie = (): IVideo => ({
@@ -90,7 +90,7 @@ export const returnMockMovie = (): IVideo => ({
       id: 2344,
       name: "The Matrix Collection",
       poster: "http://image.tmdb.org/t/p/w300/lh4aGpd3U9rm9B8Oqr6CUgQLtZL.jpg",
-      backdrop: "http://image.tmdb.org/t/p/w1280/RhUxjzNojIJsdZSYTn0CQvdKsn.jpg"
+      backdrop: "http://image.tmdb.org/t/p/w1280/RhUxjzNojIJsdZSYTn0CQvdKsn.jpg",
     },
     id: 603,
     overview:
@@ -100,8 +100,8 @@ export const returnMockMovie = (): IVideo => ({
     poster: "http://image.tmdb.org/t/p/w300/hEpWvX6Bp79eLxY1kX5ZZJcme5U.jpg",
     year: 1999,
     tagline: "Welcome to the Real World.",
-    title: "The Matrix"
-  }
+    title: "The Matrix",
+  },
 })
 
 export const returnMockAnime = (): IVideo => ({
@@ -132,22 +132,22 @@ export const returnMockAnime = (): IVideo => ({
         episode_count: 1,
         id: 63902,
         poster: "http://image.tmdb.org/t/p/w300/w1y3ppJsuOwIH87zkRO1bdZ4yJB.jpg",
-        season_number: 0
+        season_number: 0,
       },
       {
         air_date: "2014-10-12",
         episode_count: 13,
         id: 62874,
         poster: "http://image.tmdb.org/t/p/w300/9VLgxWwfRuwlxp8S3eZWEdzI8fG.jpg",
-        season_number: 1
+        season_number: 1,
       },
       {
         air_date: "2015-04-04",
         episode_count: 13,
         id: 63980,
         poster: "http://image.tmdb.org/t/p/w300/mrpfeSJMA3tgdvrlWasnjsnIiVF.jpg",
-        season_number: 2
-      }
-    ]
-  }
+        season_number: 2,
+      },
+    ],
+  },
 })

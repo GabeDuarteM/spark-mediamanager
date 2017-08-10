@@ -5,7 +5,7 @@ import video from "./video/video"
 
 const rootReducer = combineReducers({
   video,
-  editVideo
+  editVideo,
 })
 
 export default rootReducer

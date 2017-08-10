@@ -11,12 +11,12 @@ const editVideo: IBaseReducer<IEditVideoState> = (
     case EDIT_VIDEO__SET:
       return {
         video: action.payload.video,
-        type: action.payload.type
+        type: action.payload.type,
       }
     case EDIT_VIDEO__CLEAR:
       return {
         video: undefined,
-        type: undefined
+        type: undefined,
       }
 
     default:

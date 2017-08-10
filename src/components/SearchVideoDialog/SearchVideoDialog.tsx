@@ -11,15 +11,15 @@ const styles = createStyleSheet("SearchVideoDialog", theme => ({
   dialog: {
     display: "flex",
     flexWrap: "wrap",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   radioGroup: {
     flexDirection: "row",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   input: {
-    width: 550
-  }
+    width: 550,
+  },
 }))
 
 interface IProps {
@@ -40,7 +40,7 @@ type IFullProps = IProps & IHocProps
 
 class SearchVideoDialog extends React.Component<IFullProps, {}> {
   public state = {
-    selectedType: "serie"
+    selectedType: "serie",
   }
 
   public render() {
@@ -79,8 +79,8 @@ class SearchVideoDialog extends React.Component<IFullProps, {}> {
                 className={classes.input}
                 InputProps={{
                   placeholder: intl.formatMessage({
-                    id: `common.${this.state.selectedType}`
-                  })
+                    id: `common.${this.state.selectedType}`,
+                  }),
                 }}
                 fullWidth
                 marginForm

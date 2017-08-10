@@ -10,7 +10,7 @@ import Theme from "../Theme/Theme"
 import IconTextField from "./IconTextField"
 
 const baseProps: any = {
-  IconSvg: Search
+  IconSvg: Search,
 }
 
 storiesOf("IconTextFields", module)

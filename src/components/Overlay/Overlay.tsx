@@ -11,9 +11,9 @@ const stylesheet = createStyleSheet("Overlay", theme => ({
     color: "white",
     padding: 8,
     overflow: "hidden",
-    width: "100%"
+    width: "100%",
   },
-  truncate
+  truncate,
 }))
 
 interface IProps {

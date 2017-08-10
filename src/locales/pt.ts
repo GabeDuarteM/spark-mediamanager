@@ -10,12 +10,12 @@ const pt: ILocaleBase = {
     series: "Series",
     cancel: "Cancelar",
     search: "Pesquisar",
-    save: "Salvar"
+    save: "Salvar",
   },
   videoDetails: {
     path: "Diretório",
-    overview: "Sinopse"
-  }
+    overview: "Sinopse",
+  },
 }
 
 export default pt

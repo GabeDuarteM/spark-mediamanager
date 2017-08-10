@@ -77,7 +77,7 @@ declare module "material-ui" {
     ListItemIcon,
     ListItemSecondaryAction,
     ListItemText,
-    ListSubheader
+    ListSubheader,
   } from "material-ui/List"
 
   export { default as Menu, MenuItem, MenuList } from "material-ui/Menu"
