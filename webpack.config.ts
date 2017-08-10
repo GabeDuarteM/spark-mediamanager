@@ -100,7 +100,9 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
       }),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
-        compress: true,
+        compress: {
+          warnings: false,
+        },
       }),
       new webpack.optimize.CommonsChunkPlugin({
         minChunks: module => {
@@ -124,6 +126,9 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       historyApiFallback: true,
       port: 3000,
       publicPath: "/",
+      stats: {
+        warnings: false,
+      },
     },
     devtool: "source-map",
     entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
