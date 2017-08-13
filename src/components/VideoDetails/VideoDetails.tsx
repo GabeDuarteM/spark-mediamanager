@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, IconButton, TextField } from "material-ui"
+import { Button, Dialog, DialogActions, DialogContent, IconButton, TextField } from "material-ui"
 import { Search, Settings, Tv } from "material-ui-icons"
 import {} from "material-ui-icons"
 import { MenuItem, SelectField } from "material-ui-legacy"
@@ -11,6 +11,7 @@ import { withRouter } from "react-router"
 import { compose } from "recompose"
 
 import IVideo from "../../@types/IVideo"
+import DialogContentRoot from "../DialogContentRoot/DialogContentRoot"
 import Fanart from "../Fanart/Fanart"
 import IconTextField from "../IconTextField/IconTextField"
 
@@ -87,7 +88,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
     maxWidth="md"
   >
     <DialogContent className={`${classNames || ""}`}>
-      <DialogContentText>
+      <DialogContentRoot>
         <div className={classes.dialogRoot}>
           <div className={classes.fanart}>
             <Fanart poster={video} />
@@ -107,6 +108,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
             <IconTextField
               IconSvg={Search}
               className={classes.path}
+              defaultValue={video.path}
               placeholder={intl.formatMessage({ id: "videoDetails.path" })}
             />
           </div>
@@ -118,7 +120,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
             className={classes.overview}
           />
         </div>
-      </DialogContentText>
+      </DialogContentRoot>
     </DialogContent>
     <DialogActions>
       <Button onClick={() => history.push(location.pathname.replace("/videoDetails", ""))}>

@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import * as classNames from "classnames"
 import { IconButton, TextField } from "material-ui"
 import { createStyleSheet, withStyles } from "material-ui/styles"
 
@@ -22,11 +23,15 @@ const styles = createStyleSheet("IconTextField", theme => ({
   textField: {
     width: "100%",
   },
+  inputClassName: {
+    paddingRight: 36,
+  },
 }))
 
 interface IProps {
   IconSvg: new () => React.Component<any, any>
   label?: string
+  defaultValue?: string
   placeholder?: string
   className?: string
 }
@@ -37,12 +42,13 @@ interface IHocProps {
     iconButton: string
     root: string
     textField: string
+    inputClassName: string
   }
 }
 
-const IconTextField = ({ label, placeholder, className, IconSvg, classes }: IProps & IHocProps) =>
-  <div className={`${classes.root} ${className}`}>
-    <TextField className={classes.textField} label={label} placeholder={placeholder} />
+const IconTextField = ({ className, IconSvg, classes, ...rest }: IProps & IHocProps) =>
+  <div className={classNames(classes.root, className)}>
+    <TextField className={classes.textField} InputClassName={classes.inputClassName} {...rest} />
     <IconButton className={classes.iconButton}>
       <IconSvg className={classes.svg} />
     </IconButton>
