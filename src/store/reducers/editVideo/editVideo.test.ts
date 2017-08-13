@@ -1,5 +1,4 @@
 import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../../utils/testUtils"
-import IUnknownAction from "../IUnknownAction"
 import editVideo from "./editVideo"
 import { clear, EDIT_VIDEO__CLEAR, EDIT_VIDEO__SET, set } from "./editVideoActions"
 import IEditVideoState from "./IEditVideoState"
@@ -7,7 +6,7 @@ import IEditVideoState from "./IEditVideoState"
 describe("editVideo reducer", () => {
   it("should return the default state when no state is passed", () => {
     const state = undefined
-    const action = IUnknownAction
+    const action = undefined
     const expected: IEditVideoState = returnInitialState()
 
     const actual = editVideo(state, action)
@@ -16,7 +15,7 @@ describe("editVideo reducer", () => {
   })
   it("should return the same state when an unknown action is passed", () => {
     const state: IEditVideoState = { video: serie }
-    const action = IUnknownAction
+    const action = undefined
     const expected: IEditVideoState = { video: serie }
 
     const actual = editVideo(state, action)
@@ -87,8 +86,8 @@ const returnInitialState = (): IEditVideoState => ({
   video: undefined,
 })
 
-const anime = returnMockAnime()
+const anime = returnMockAnime()[0]
 
-const movie = returnMockMovie()
+const movie = returnMockMovie()[0]
 
-const serie = returnMockSerie()
+const serie = returnMockSerie()[0]

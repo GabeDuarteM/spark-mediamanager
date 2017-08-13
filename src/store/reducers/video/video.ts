@@ -37,7 +37,7 @@ const handleAdd = (state: IVideoState, payload: { videoType: EVideoType; video: 
       }
 
     default:
-      return state
+      throw new Error(`invalid videoType recieved from handleAdd: ${payload.videoType}`)
   }
 }
 
@@ -60,7 +60,7 @@ const handleRemove = (state: IVideoState, payload: { videoType: EVideoType; id: 
       }
 
     default:
-      return state
+      throw new Error(`invalid videoType recieved from handleRemove: ${payload.videoType}`)
   }
 }
 
@@ -83,7 +83,7 @@ const handleEdit = (state: IVideoState, payload: { videoType: EVideoType; video:
       }
 
     default:
-      return state
+      throw new Error(`invalid videoType recieved from handleEdit: ${payload.videoType}`)
   }
 }
 

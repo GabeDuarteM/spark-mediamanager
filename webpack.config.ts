@@ -57,7 +57,6 @@ function getBaseConfig(): webpack.Configuration {
         inject: "body",
         template: join("src", "index.html"),
       }),
-      new webpack.NoEmitOnErrorsPlugin(),
       new CleanWebpackPlugin(["dist"]),
     ],
     resolve: {
@@ -129,6 +128,7 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       stats: {
         warnings: false,
       },
+      overlay: true,
     },
     devtool: "source-map",
     entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],

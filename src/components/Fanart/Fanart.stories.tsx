@@ -7,7 +7,7 @@ import { returnMockSerie } from "../../utils/testUtils"
 import Theme from "../Theme/Theme"
 import Fanart from "./Fanart"
 
-const poster = returnMockSerie()
+const poster = returnMockSerie()[0]
 
 storiesOf("Fanart", module)
   .add("dark theme", () =>

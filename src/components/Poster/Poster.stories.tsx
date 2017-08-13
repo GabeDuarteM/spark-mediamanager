@@ -7,7 +7,7 @@ import ComponentWrapper from "../../../.storybook/ComponentWrapper"
 import { returnMockSerie } from "../../utils/testUtils"
 import Poster from "./Poster"
 
-const poster = returnMockSerie()
+const poster = returnMockSerie()[0]
 
 storiesOf("Poster", module)
   .add("dark theme", () =>

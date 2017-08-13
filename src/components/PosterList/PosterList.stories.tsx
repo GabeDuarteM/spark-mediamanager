@@ -8,7 +8,7 @@ import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../utils/t
 import Theme from "../Theme/Theme"
 import PosterList from "./PosterList"
 
-const posters = [returnMockSerie(), returnMockMovie(), returnMockAnime()]
+const posters = [...returnMockSerie(), ...returnMockMovie(), ...returnMockAnime()]
 
 storiesOf("PosterList", module)
   .add("dark theme", () =>

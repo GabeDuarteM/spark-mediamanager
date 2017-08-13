@@ -1,5 +1,5 @@
 import * as React from "react"
-import * as ReactDOM from "react-dom"
+import { render } from "react-dom"
 import { AppContainer } from "react-hot-loader"
 import * as injectTapEventPlugin from "react-tap-event-plugin"
 import "typeface-roboto"
@@ -13,9 +13,9 @@ import "./index.css"
 
 const initialState: IStoreState = {
   video: {
-    series: [returnMockSerie()],
-    movies: [returnMockMovie()],
-    animes: [returnMockAnime()],
+    series: [...returnMockSerie()],
+    movies: [...returnMockMovie()],
+    animes: [...returnMockAnime()],
   },
   editVideo: {},
 }
@@ -24,7 +24,7 @@ const store = configureStore(initialState)
 const rootEl = document.getElementById("root")
 injectTapEventPlugin()
 
-ReactDOM.render(
+render(
   <AppContainer>
     <App store={store} />
   </AppContainer>,
@@ -34,7 +34,7 @@ ReactDOM.render(
 if (module.hot) {
   module.hot.accept("./containers/App", () => {
     const NextApp = require<{ default: typeof App }>("./containers/App").default
-    ReactDOM.render(
+    render(
       <AppContainer>
         <NextApp store={store} />
       </AppContainer>,

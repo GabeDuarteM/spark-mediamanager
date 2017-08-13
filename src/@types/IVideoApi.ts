@@ -3,7 +3,7 @@ export default interface IVideoApi {
   title: string
   overview: string
   popularity: number
-  year: number
+  year?: number
   poster?: string
   backdrop?: string
 }

@@ -60,6 +60,9 @@ interface IHocProps {
     select: string
   }
   history: any[]
+  match: any
+  location: any
+  staticContext: any
   intl: ReactIntl.InjectedIntl
 }
 
@@ -72,6 +75,9 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
   open,
   intl,
   history,
+  match,
+  location,
+  staticContext,
   ...rest,
 }) =>
   <Dialog
