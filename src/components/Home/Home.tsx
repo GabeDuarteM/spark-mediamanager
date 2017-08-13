@@ -11,7 +11,8 @@ import { Route, withRouter } from "react-router"
 import { compose } from "recompose"
 
 import { EVideoType } from "../../@types/EVideoType"
-import PosterListContainer from "../../containers/PosterList/PosterListContainer"
+import PosterListContainer from "../../containers/PosterListContainer/PosterListContainer"
+import VideoDetailsContainer from "../../containers/VideoDetailsContainer/VideoDetailsContainer"
 
 const styles = createStyleSheet("Home", theme => ({
   root: {
@@ -49,9 +50,6 @@ interface IState {
   selectedTabIndex: number
 }
 
-import { returnMockAnime } from "../../utils/testUtils"
-import VideoDetails from "../VideoDetails/VideoDetails"
-
 class Home extends React.PureComponent<IProps & IHocProps, IState> {
   constructor(props: IProps & IHocProps) {
     super(props)
@@ -68,21 +66,21 @@ class Home extends React.PureComponent<IProps & IHocProps, IState> {
         <AppBar position="static">
           <Tabs index={this.state.selectedTabIndex} onChange={this.handleTabChange.bind(this)} centered>
             <Tab
-              onClick={() => handleTabRoute(EVideoType.Serie, history)}
+              onClick={() => handleTabRoute("serie", history)}
               label={intl.formatMessage({
                 id: "common.series",
                 defaultMessage: "common.series",
               })}
             />
             <Tab
-              onClick={() => handleTabRoute(EVideoType.Movie, history)}
+              onClick={() => handleTabRoute("movie", history)}
               label={intl.formatMessage({
                 id: "common.movies",
                 defaultMessage: "common.movies",
               })}
             />
             <Tab
-              onClick={() => handleTabRoute(EVideoType.Anime, history)}
+              onClick={() => handleTabRoute("anime", history)}
               label={intl.formatMessage({
                 id: "common.animes",
                 defaultMessage: "common.animes",
@@ -92,20 +90,17 @@ class Home extends React.PureComponent<IProps & IHocProps, IState> {
         </AppBar>
         <Route
           path="/animes"
-          render={() => <PosterListContainer videoType={EVideoType.Anime} className={classes.posterList} />}
+          render={() => <PosterListContainer videoType={"anime"} className={classes.posterList} />}
         />
         <Route
           path="/movies"
-          render={() => <PosterListContainer videoType={EVideoType.Movie} className={classes.posterList} />}
+          render={() => <PosterListContainer videoType={"movie"} className={classes.posterList} />}
         />
         <Route
           path="/series"
-          render={() => <PosterListContainer videoType={EVideoType.Serie} className={classes.posterList} />}
+          render={() => <PosterListContainer videoType={"serie"} className={classes.posterList} />}
         />
-        <Route
-          path="/(animes|movies|series)/videoDetails"
-          render={() => <VideoDetails open video={returnMockAnime()} />}
-        />
+        <Route path="/(animes|movies|series)/videoDetails" component={VideoDetailsContainer} />
         <Button fab color="primary" className={classes.fabButton}>
           <Add />
         </Button>

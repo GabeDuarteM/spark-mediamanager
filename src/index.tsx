@@ -4,7 +4,6 @@ import { AppContainer } from "react-hot-loader"
 import * as injectTapEventPlugin from "react-tap-event-plugin"
 import "typeface-roboto"
 
-import { EVideoType } from "./@types/EVideoType"
 import App from "./containers/App"
 import IStoreState from "./store/IStoreState"
 import configureStore from "./store/store"
@@ -17,7 +16,6 @@ const initialState: IStoreState = {
     series: [returnMockSerie()],
     movies: [returnMockMovie()],
     animes: [returnMockAnime()],
-    visibilityFilter: EVideoType.Serie,
   },
   editVideo: {},
 }

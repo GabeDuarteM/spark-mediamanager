@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { action } from "@storybook/addon-actions"
 import { storiesOf } from "@storybook/react"
 
 import ComponentWrapper from "../../../.storybook/ComponentWrapper"
@@ -13,14 +14,14 @@ storiesOf("PosterList", module)
   .add("dark theme", () =>
     <ComponentWrapper locale="pt">
       <Theme>
-        <PosterList videos={posters} />
+        <PosterList videos={posters} setEditVideo={video => action(`Set video edit: ${video.api.title}`)} />
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
     <ComponentWrapper locale="en">
       <Theme type="light">
-        <PosterList videos={posters} />
+        <PosterList videos={posters} setEditVideo={video => action(`Set video edit: ${video.api.title}`)} />
       </Theme>
     </ComponentWrapper>
   )

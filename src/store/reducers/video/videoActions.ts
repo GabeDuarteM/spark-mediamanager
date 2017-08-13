@@ -30,8 +30,3 @@ export const edit = (videoType: EVideoType, video: IVideo): IBaseAction => ({
     videoType,
   },
 })
-
-export const visibilityFilter = (videoType: EVideoType): IBaseAction => ({
-  type: VIDEO__VISIBILITY_FILTER,
-  payload: videoType,
-})

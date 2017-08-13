@@ -32,7 +32,7 @@ interface IHocProps {
 
 const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ poster, classes }) =>
   <div className={classes.fanart} style={{ backgroundImage: `url(${poster.api.backdrop})` }}>
-    <Poster className={classes.poster} showSubtitle={false} poster={poster} hoverEffect={false} />
+    <Poster className={classes.poster} showSubtitle={false} video={poster} hoverEffect={false} />
   </div>
 
 export default withStyles<IProps>(styles)(Fanart)

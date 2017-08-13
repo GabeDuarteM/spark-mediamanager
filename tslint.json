@@ -34,7 +34,8 @@
     "jsx-no-lambda": false,
     "jsx-no-bind": false,
     "jsx-no-multiline-js": false,
-    "jsx-alignment": false
+    "jsx-alignment": false,
+    "callable-types": false
   },
   "exclude": ["./src/@types/modules/*"]
 }

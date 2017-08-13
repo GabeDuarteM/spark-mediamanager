@@ -1,11 +1,12 @@
 import * as React from "react"
 
-import { connect } from "react-redux"
+import { connect, MapDispatchToProps, MapStateToProps } from "react-redux"
 
 import { EVideoType } from "../../@types/EVideoType"
 import IVideo from "../../@types/IVideo"
 import PosterList from "../../components/PosterList/PosterList"
 import IStoreState from "../../store/IStoreState"
+import { set } from "../../store/reducers/editVideo/editVideoActions"
 import IVideoState from "../../store/reducers/video/IVideoState"
 
 interface IProps {
@@ -15,6 +16,7 @@ interface IProps {
 
 interface IHocProps {
   videos: IVideoState
+  setVideoEdit: (video: IVideo) => void
 }
 
 interface IState {
@@ -31,16 +33,22 @@ class PosterListContainer extends React.Component<IProps & IHocProps, IState> {
   }
 
   public render() {
-    return <PosterList className={this.props.className} videos={this.sortPosters(this.state.visibleVideos)} />
+    return (
+      <PosterList
+        className={this.props.className}
+        videos={this.sortPosters(this.state.visibleVideos)}
+        setEditVideo={this.props.setVideoEdit}
+      />
+    )
   }
 
   private setVisibleVideos(): IVideo[] {
     switch (this.props.videoType) {
-      case EVideoType.Anime:
+      case "anime":
         return this.props.videos.animes
-      case EVideoType.Movie:
+      case "movie":
         return this.props.videos.movies
-      case EVideoType.Serie:
+      case "serie":
         return this.props.videos.series
 
       default:
@@ -62,8 +70,12 @@ class PosterListContainer extends React.Component<IProps & IHocProps, IState> {
   }
 }
 
-const mapStateToProps = (state: IStoreState, ownProps?: IProps) => ({
+const mapStateToProps: MapStateToProps<{ videos: IVideoState }, IProps> = (state: IStoreState, ownProps?: IProps) => ({
   videos: state.video,
 })
 
-export default connect<any, any, IProps>(mapStateToProps)(PosterListContainer)
+const mapDispatchToProps: MapDispatchToProps<any, IProps> = (dispatch, ownProps) => ({
+  setVideoEdit: (video: IVideo, videoType: EVideoType) => dispatch(set(video)),
+})
+
+export default connect<any, any, IProps>(mapStateToProps, mapDispatchToProps)(PosterListContainer)

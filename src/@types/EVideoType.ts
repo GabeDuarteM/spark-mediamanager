@@ -1,5 +1,1 @@
-export const enum EVideoType {
-  Anime,
-  Movie,
-  Serie,
-}
+export type EVideoType = "anime" | "movie" | "serie"

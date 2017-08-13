@@ -33,7 +33,7 @@ interface IHocProps {
 }
 
 interface IProps {
-  poster: IVideo
+  video: IVideo
   className?: string
   children?: React.ReactElement<{}>
   showSubtitle?: boolean
@@ -44,18 +44,18 @@ const Poster = ({
   classes,
   className,
   children,
-  poster,
+  video,
   showSubtitle = true,
   hoverEffect = true,
   ...rest,
 }: IProps & IHocProps) =>
   <Paper
-    style={{ backgroundImage: `url(${poster.api.poster})` }}
+    style={{ backgroundImage: `url(${video.api.poster})` }}
     className={classNames(classes.poster, { [classes.hoverEffect]: hoverEffect }, className)}
     elevation={15}
     {...rest}
   >
-    {showSubtitle ? <PosterOverlay title={poster.api.title} year={poster.api.year} /> : ""}
+    {showSubtitle ? <PosterOverlay title={video.api.title} year={video.api.year} /> : ""}
   </Paper>
 
 export default withStyles<IProps>(styles)(Poster)

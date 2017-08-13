@@ -13,21 +13,21 @@ storiesOf("Poster", module)
   .add("dark theme", () =>
     <ComponentWrapper locale="pt">
       <Theme>
-        <Poster poster={poster} />
+        <Poster video={poster} />
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
     <ComponentWrapper locale="en">
       <Theme type="light">
-        <Poster poster={poster} />
+        <Poster video={poster} />
       </Theme>
     </ComponentWrapper>
   )
   .add("no subtitle", () =>
     <ComponentWrapper locale="pt">
       <Theme>
-        <Poster showSubtitle={false} poster={poster} />
+        <Poster showSubtitle={false} video={poster} />
       </Theme>
     </ComponentWrapper>
   )
