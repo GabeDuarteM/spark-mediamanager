@@ -8,26 +8,27 @@ import ComponentWrapper from "../../../.storybook/ComponentWrapper"
 
 import SearchVideoDialog from "./SearchVideoDialog"
 
+const Component = (
+  <SearchVideoDialog
+    open
+    handleChange={event => action(`changed to ${event.currentTarget.value}`)}
+    selectedType="serie"
+    resetRoute={() => action(`tried to close the dialog`)}
+  />
+)
+
 storiesOf("SearchVideoDialog", module)
   .add("dark theme", () =>
     <ComponentWrapper locale="pt">
       <Theme>
-        <SearchVideoDialog
-          open
-          handleChange={event => action(`changed to ${event.currentTarget.value}`)}
-          selectedType="serie"
-        />
+        {Component}
       </Theme>
     </ComponentWrapper>
   )
   .add("light theme", () =>
     <ComponentWrapper locale="en">
       <Theme type="light">
-        <SearchVideoDialog
-          open
-          handleChange={event => action(`changed to ${event.currentTarget.value}`)}
-          selectedType="serie"
-        />
+        {Component}
       </Theme>
     </ComponentWrapper>
   )

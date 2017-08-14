@@ -7,7 +7,11 @@ import ContainerWrapper from "../../../.storybook/ContainerWrapper"
 import Home from "./Home"
 
 const Component = (
-  <Home handleTabChange={(evt: any, index: number) => action(`Changed the tab to ${index}`)} selectedTabIndex={0} />
+  <Home
+    handleTabChange={(evt: any, index: number) => action(`Changed the tab to ${index}`)}
+    selectedTabIndex={0}
+    changeRouteAdd={() => action(`Changed the route to add`)}
+  />
 )
 
 storiesOf("Home", module)

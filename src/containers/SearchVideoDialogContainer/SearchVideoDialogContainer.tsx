@@ -1,11 +1,22 @@
 import * as React from "react"
 
+import { withRouter } from "react-router"
+
 import SearchVideoDialog from "../../components/SearchVideoDialog/SearchVideoDialog"
 
-const SearchVideoDialogContainer = () => <SearchVideoDialog open handleChange={handleChange} selectedType="anime" />
+interface IHocProps {
+  history: any[]
+}
+
+const SearchVideoDialogContainer = ({ history }: IHocProps) =>
+  <SearchVideoDialog open handleChange={handleChange} selectedType="anime" resetRoute={() => resetRoute(history)} />
 
 const handleChange = (event: React.ChangeEvent<any>) => {
   // this.setState({ selectedType: event.currentTarget.value })
 }
 
-export default SearchVideoDialogContainer
+const resetRoute = (history: any[]) => {
+  history.push("/")
+}
+
+export default withRouter(SearchVideoDialogContainer)

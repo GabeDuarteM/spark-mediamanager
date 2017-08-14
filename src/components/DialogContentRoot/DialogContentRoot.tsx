@@ -13,16 +13,21 @@ export const styles = createStyleSheet("DialogContentRoot", theme => ({
 }))
 
 interface IProps {
+  children: React.ReactNode
+  className?: string
+}
+
+interface IHocProps {
   classes: {
     root: string
   }
-  children: React.ReactNode
-  className: string
 }
 
-const DialogContentRoot = ({ classes, children, className, ...other }: IProps) =>
+type TFullProps = IHocProps & IProps
+
+const DialogContentRoot = ({ classes, children, className, ...other }: TFullProps) =>
   <div className={classNames(classes.root, className)} {...other}>
     {children}
   </div>
 
-export default withStyles(styles)(DialogContentRoot)
+export default withStyles<IProps>(styles)(DialogContentRoot)

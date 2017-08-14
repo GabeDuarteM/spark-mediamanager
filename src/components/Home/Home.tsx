@@ -34,6 +34,7 @@ const styles = createStyleSheet("Home", theme => ({
 interface IProps {
   handleTabChange: (evt: any, index: number) => void
   selectedTabIndex: number
+  changeRouteAdd: () => void
 }
 
 interface IHocProps {
@@ -42,14 +43,12 @@ interface IHocProps {
     posterList: string
     fabButton: string
   }
-  history: any[]
-  location: any
   intl: ReactIntl.InjectedIntl
 }
 
 type IFullProps = IProps & IHocProps
 
-const Home = ({ classes, handleTabChange, intl, selectedTabIndex }: IFullProps) =>
+const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }: IFullProps) =>
   <div className={classes.root}>
     <AppBar position="static">
       <Tabs index={selectedTabIndex} onChange={handleTabChange} centered>
@@ -76,7 +75,7 @@ const Home = ({ classes, handleTabChange, intl, selectedTabIndex }: IFullProps) 
     <PosterListContainer className={classes.posterList} />
     <Route path="/videoDetails" component={VideoDetailsContainer} />
     <Route path="/add" component={SearchVideoDialogContainer} />
-    <Button fab color="primary" className={classes.fabButton}>
+    <Button fab color="primary" className={classes.fabButton} onClick={changeRouteAdd}>
       <Add />
     </Button>
   </div>

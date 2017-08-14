@@ -1,6 +1,8 @@
 import * as React from "react"
 
 import { connect } from "react-redux"
+import { withRouter } from "react-router"
+import { compose } from "recompose"
 import { Dispatch } from "redux"
 
 import { EVideoType } from "../../@types/EVideoType"
@@ -14,12 +16,14 @@ type TVisibilityFilterFunc = (filter: EVideoType) => void
 interface IHocProps {
   setVisibilityFilter: TVisibilityFilterFunc
   visibilityFilter: EVideoType
+  history: any[]
 }
 
-const HomeContainer = ({ setVisibilityFilter, visibilityFilter }: IHocProps) =>
+const HomeContainer = ({ setVisibilityFilter, visibilityFilter, history }: IHocProps) =>
   <Home
     handleTabChange={(evt, index) => handleTabChange(index, setVisibilityFilter)}
     selectedTabIndex={getTabIndex(visibilityFilter)}
+    changeRouteAdd={() => changeRouteToAdd(history)}
   />
 
 const handleTabChange = (index: number, setVisibilityFilter: TVisibilityFilterFunc) => {
@@ -51,6 +55,10 @@ const getTabIndex = (visibilityFilter: EVideoType): number => {
   }
 }
 
+const changeRouteToAdd = (history: any[]) => {
+  history.push("/add")
+}
+
 const mapStateToProps = (state: IStoreState) => ({
   visibilityFilter: state.video.visibilityFilter,
 })
@@ -59,4 +67,4 @@ const mapDispatchToProps = (dispatch: Dispatch<IBaseAction>) => ({
   setVisibilityFilter: (filter: EVideoType) => dispatch(visibilityFilterAction(filter)),
 })
 
-export default connect<{}, IHocProps, {}>(mapStateToProps, mapDispatchToProps)(HomeContainer)
+export default compose<IHocProps, {}>(connect(mapStateToProps, mapDispatchToProps), withRouter)(HomeContainer)

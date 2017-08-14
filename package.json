@@ -26,7 +26,11 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "mapCoverage": true
   },
   "dependencies": {
@@ -43,6 +47,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
     "typeface-roboto": "^0.0.35",
     "uuid": "^3.1.0"
   },
@@ -62,6 +67,7 @@
     "@types/react-router-dom": "^4.0.7",
     "@types/react-tap-event-plugin": "^0.0.30",
     "@types/recompose": "^0.23.3",
+    "@types/redux-form": "^7.0.2",
     "@types/storybook__addon-actions": "^3.0.1",
     "@types/storybook__addon-knobs": "^3.0.1",
     "@types/storybook__react": "^3.0.3",
