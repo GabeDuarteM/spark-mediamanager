@@ -4,23 +4,18 @@ import { storiesOf } from "@storybook/react"
 
 import ContainerWrapper from "../../../.storybook/ContainerWrapper"
 import { returnMockSerie } from "../../utils/testUtils"
-import Theme from "../Theme/Theme"
 import Fanart from "./Fanart"
 
 const poster = returnMockSerie()[0]
 
 storiesOf("Fanart", module)
   .add("dark theme", () =>
-    <ContainerWrapper locale="pt">
-      <Theme>
-        <Fanart poster={poster} />
-      </Theme>
+    <ContainerWrapper>
+      <Fanart poster={poster} />
     </ContainerWrapper>
   )
   .add("light theme", () =>
-    <ContainerWrapper locale="en">
-      <Theme type="light">
-        <Fanart poster={poster} />
-      </Theme>
+    <ContainerWrapper type="light">
+      <Fanart poster={poster} />
     </ContainerWrapper>
   )

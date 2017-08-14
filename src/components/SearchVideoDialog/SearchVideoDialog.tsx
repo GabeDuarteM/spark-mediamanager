@@ -48,7 +48,7 @@ class SearchVideoDialog extends React.Component<IFullProps, {}> {
 
     return (
       <div>
-        <Dialog className={classNames || ""} {...rest}>
+        <Dialog className={classNames || ""} {...rest} open>
           <DialogContent>
             <DialogContentText className={classes.dialog}>
               <FormControl>

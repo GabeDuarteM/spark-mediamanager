@@ -13,6 +13,7 @@ import { compose } from "recompose"
 import { EVideoType } from "../../@types/EVideoType"
 import PosterListContainer from "../../containers/PosterListContainer/PosterListContainer"
 import VideoDetailsContainer from "../../containers/VideoDetailsContainer/VideoDetailsContainer"
+import SearchVideoDialog from "../SearchVideoDialog/SearchVideoDialog"
 
 const styles = createStyleSheet("Home", theme => ({
   root: {
@@ -88,19 +89,7 @@ class Home extends React.PureComponent<IProps & IHocProps, IState> {
             />
           </Tabs>
         </AppBar>
-        <Route
-          path="/animes"
-          render={() => <PosterListContainer videoType={"anime"} className={classes.posterList} />}
-        />
-        <Route
-          path="/movies"
-          render={() => <PosterListContainer videoType={"movie"} className={classes.posterList} />}
-        />
-        <Route
-          path="/series"
-          render={() => <PosterListContainer videoType={"serie"} className={classes.posterList} />}
-        />
-        <Route path="/(animes|movies|series)/videoDetails" component={VideoDetailsContainer} />
+        <HomeSubRoutes {...this.props} />
         <Button fab color="primary" className={classes.fabButton}>
           <Add />
         </Button>
@@ -123,5 +112,14 @@ class Home extends React.PureComponent<IProps & IHocProps, IState> {
     throw new Error("Invalid pathname: " + pathname)
   }
 }
+
+const HomeSubRoutes = ({ classes }: IProps & IHocProps) =>
+  <div>
+    <Route path="/animes" render={() => <PosterListContainer videoType={"anime"} className={classes.posterList} />} />
+    <Route path="/movies" render={() => <PosterListContainer videoType={"movie"} className={classes.posterList} />} />
+    <Route path="/series" render={() => <PosterListContainer videoType={"serie"} className={classes.posterList} />} />
+    <Route path="/(animes|movies|series)/videoDetails" component={VideoDetailsContainer} />
+    <Route path="/(animes|movies|series)/add" component={SearchVideoDialog} />
+  </div>
 
 export default compose<IProps & IHocProps, IProps>(injectIntl, withStyles(styles), withRouter)(Home)
