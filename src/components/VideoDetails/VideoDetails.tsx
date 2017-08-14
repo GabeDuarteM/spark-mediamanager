@@ -81,12 +81,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
   staticContext,
   ...rest,
 }) =>
-  <Dialog
-    open={open}
-    onRequestClose={() => history.push(location.pathname.replace("/videoDetails", ""))}
-    {...rest}
-    maxWidth="md"
-  >
+  <Dialog open={open} onRequestClose={() => history.push("/")} {...rest} maxWidth="md">
     <DialogContent className={`${classNames || ""}`}>
       <DialogContentRoot>
         <div className={classes.dialogRoot}>

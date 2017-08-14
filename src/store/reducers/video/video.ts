@@ -3,9 +3,12 @@ import IVideo from "../../../@types/IVideo"
 import IBaseReducer from "../IBaseReducer"
 import IUnknownAction from "../IUnknownAction"
 import IVideoState from "./IVideoState"
-import { VIDEO__ADD, VIDEO__EDIT, VIDEO__REMOVE } from "./videoActions"
+import { VIDEO__ADD, VIDEO__EDIT, VIDEO__REMOVE, VIDEO__VISIBILITY_FILTER } from "./videoActions"
 
-const video: IBaseReducer<IVideoState> = (state = { animes: [], movies: [], series: [] }, action = IUnknownAction) => {
+const video: IBaseReducer<IVideoState> = (
+  state = { animes: [], movies: [], series: [], visibilityFilter: "serie" },
+  action = IUnknownAction
+) => {
   switch (action.type) {
     case VIDEO__ADD:
       return handleAdd(state, action.payload)
@@ -13,6 +16,8 @@ const video: IBaseReducer<IVideoState> = (state = { animes: [], movies: [], seri
       return handleRemove(state, action.payload)
     case VIDEO__EDIT:
       return handleEdit(state, action.payload)
+    case VIDEO__VISIBILITY_FILTER:
+      return handleVisibilityFilter(state, action.payload)
     default:
       return state
   }
@@ -84,6 +89,21 @@ const handleEdit = (state: IVideoState, payload: { videoType: EVideoType; video:
 
     default:
       throw new Error(`invalid videoType recieved from handleEdit: ${payload.videoType}`)
+  }
+}
+
+const handleVisibilityFilter = (state: IVideoState, payload: EVideoType): IVideoState => {
+  switch (payload) {
+    case "anime":
+    case "movie":
+    case "serie":
+      return {
+        ...state,
+        visibilityFilter: payload,
+      }
+
+    default:
+      throw new Error(`invalid videoType recieved from handleVisibilityFilter: ${payload}`)
   }
 }
 

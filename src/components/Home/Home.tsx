@@ -7,13 +7,12 @@ import { createStyleSheet, withStyles } from "material-ui/styles"
 import Tabs, { Tab } from "material-ui/Tabs"
 import { injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
-import { Route, withRouter } from "react-router"
+import { Route } from "react-router"
 import { compose } from "recompose"
 
-import { EVideoType } from "../../@types/EVideoType"
 import PosterListContainer from "../../containers/PosterListContainer/PosterListContainer"
+import SearchVideoDialogContainer from "../../containers/SearchVideoDialogContainer/SearchVideoDialogContainer"
 import VideoDetailsContainer from "../../containers/VideoDetailsContainer/VideoDetailsContainer"
-import SearchVideoDialog from "../SearchVideoDialog/SearchVideoDialog"
 
 const styles = createStyleSheet("Home", theme => ({
   root: {
@@ -33,7 +32,8 @@ const styles = createStyleSheet("Home", theme => ({
 }))
 
 interface IProps {
-  handleTabRoute: (videoType: EVideoType, history: any) => void
+  handleTabChange: (evt: any, index: number) => void
+  selectedTabIndex: number
 }
 
 interface IHocProps {
@@ -47,79 +47,38 @@ interface IHocProps {
   intl: ReactIntl.InjectedIntl
 }
 
-interface IState {
-  selectedTabIndex: number
-}
+type IFullProps = IProps & IHocProps
 
-class Home extends React.PureComponent<IProps & IHocProps, IState> {
-  constructor(props: IProps & IHocProps) {
-    super(props)
-    this.state = {
-      selectedTabIndex: this.returnTabIndex(this.props.location.pathname),
-    }
-  }
-
-  public render() {
-    const { classes, intl, handleTabRoute, history } = this.props
-
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Tabs index={this.state.selectedTabIndex} onChange={this.handleTabChange.bind(this)} centered>
-            <Tab
-              onClick={() => handleTabRoute("serie", history)}
-              label={intl.formatMessage({
-                id: "common.series",
-                defaultMessage: "common.series",
-              })}
-            />
-            <Tab
-              onClick={() => handleTabRoute("movie", history)}
-              label={intl.formatMessage({
-                id: "common.movies",
-                defaultMessage: "common.movies",
-              })}
-            />
-            <Tab
-              onClick={() => handleTabRoute("anime", history)}
-              label={intl.formatMessage({
-                id: "common.animes",
-                defaultMessage: "common.animes",
-              })}
-            />
-          </Tabs>
-        </AppBar>
-        <HomeSubRoutes {...this.props} />
-        <Button fab color="primary" className={classes.fabButton}>
-          <Add />
-        </Button>
-      </div>
-    )
-  }
-
-  private handleTabChange(evt: any, index: number) {
-    this.setState({ selectedTabIndex: index })
-  }
-
-  private returnTabIndex(pathname: string) {
-    if (pathname.startsWith("/series")) {
-      return 0
-    } else if (pathname.startsWith("/movies")) {
-      return 1
-    } else if (pathname.startsWith("/animes")) {
-      return 2
-    }
-    throw new Error("Invalid pathname: " + pathname)
-  }
-}
-
-const HomeSubRoutes = ({ classes }: IProps & IHocProps) =>
-  <div>
-    <Route path="/animes" render={() => <PosterListContainer videoType={"anime"} className={classes.posterList} />} />
-    <Route path="/movies" render={() => <PosterListContainer videoType={"movie"} className={classes.posterList} />} />
-    <Route path="/series" render={() => <PosterListContainer videoType={"serie"} className={classes.posterList} />} />
-    <Route path="/(animes|movies|series)/videoDetails" component={VideoDetailsContainer} />
-    <Route path="/(animes|movies|series)/add" component={SearchVideoDialog} />
+const Home = ({ classes, handleTabChange, intl, selectedTabIndex }: IFullProps) =>
+  <div className={classes.root}>
+    <AppBar position="static">
+      <Tabs index={selectedTabIndex} onChange={handleTabChange} centered>
+        <Tab
+          label={intl.formatMessage({
+            id: "common.series",
+            defaultMessage: "common.series",
+          })}
+        />
+        <Tab
+          label={intl.formatMessage({
+            id: "common.movies",
+            defaultMessage: "common.movies",
+          })}
+        />
+        <Tab
+          label={intl.formatMessage({
+            id: "common.animes",
+            defaultMessage: "common.animes",
+          })}
+        />
+      </Tabs>
+    </AppBar>
+    <PosterListContainer className={classes.posterList} />
+    <Route path="/videoDetails" component={VideoDetailsContainer} />
+    <Route path="/add" component={SearchVideoDialogContainer} />
+    <Button fab color="primary" className={classes.fabButton}>
+      <Add />
+    </Button>
   </div>
 
-export default compose<IProps & IHocProps, IProps>(injectIntl, withStyles(styles), withRouter)(Home)
+export default compose<IFullProps, IProps>(injectIntl, withStyles(styles))(Home)

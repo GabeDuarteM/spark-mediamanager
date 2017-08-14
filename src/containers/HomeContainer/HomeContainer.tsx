@@ -1,32 +1,62 @@
 import * as React from "react"
 
+import { connect } from "react-redux"
+import { Dispatch } from "redux"
+
 import { EVideoType } from "../../@types/EVideoType"
 import Home from "../../components/Home/Home"
+import IStoreState from "../../store/IStoreState"
+import IBaseAction from "../../store/reducers/IBaseAction"
+import { visibilityFilter as visibilityFilterAction } from "../../store/reducers/video/videoActions"
 
-interface IProps {
-  setVisibilityFilter: (filter: EVideoType) => void
-}
+type TVisibilityFilterFunc = (filter: EVideoType) => void
 
 interface IHocProps {
-  history: any
+  setVisibilityFilter: TVisibilityFilterFunc
+  visibilityFilter: EVideoType
 }
 
-const handleTabRoute = (videoType: EVideoType, history: any): void => {
-  switch (videoType) {
-    case "anime":
-      history.push("/animes")
+const HomeContainer = ({ setVisibilityFilter, visibilityFilter }: IHocProps) =>
+  <Home
+    handleTabChange={(evt, index) => handleTabChange(index, setVisibilityFilter)}
+    selectedTabIndex={getTabIndex(visibilityFilter)}
+  />
+
+const handleTabChange = (index: number, setVisibilityFilter: TVisibilityFilterFunc) => {
+  switch (index) {
+    case 0:
+      setVisibilityFilter("serie")
       break
-    case "serie":
-      history.push("/series")
+    case 1:
+      setVisibilityFilter("movie")
       break
-    case "movie":
-      history.push("/movies")
+    case 2:
+      setVisibilityFilter("anime")
       break
+
     default:
       break
   }
 }
 
-const HomeContainer = ({ setVisibilityFilter, history }: IProps & IHocProps) => <Home handleTabRoute={handleTabRoute} />
+const getTabIndex = (visibilityFilter: EVideoType): number => {
+  switch (visibilityFilter) {
+    default:
+    case "serie":
+      return 0
+    case "movie":
+      return 1
+    case "anime":
+      return 2
+  }
+}
 
-export default HomeContainer
+const mapStateToProps = (state: IStoreState) => ({
+  visibilityFilter: state.video.visibilityFilter,
+})
+
+const mapDispatchToProps = (dispatch: Dispatch<IBaseAction>) => ({
+  setVisibilityFilter: (filter: EVideoType) => dispatch(visibilityFilterAction(filter)),
+})
+
+export default connect<{}, IHocProps, {}>(mapStateToProps, mapDispatchToProps)(HomeContainer)

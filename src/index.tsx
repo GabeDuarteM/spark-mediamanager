@@ -16,6 +16,7 @@ const initialState: IStoreState = {
     series: [...returnMockSerie()],
     movies: [...returnMockMovie()],
     animes: [...returnMockAnime()],
+    visibilityFilter: "serie",
   },
   editVideo: {},
 }

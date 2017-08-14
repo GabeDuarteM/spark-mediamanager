@@ -10,7 +10,6 @@ import { set } from "../../store/reducers/editVideo/editVideoActions"
 import IVideoState from "../../store/reducers/video/IVideoState"
 
 interface IProps {
-  videoType: EVideoType
   className?: string
 }
 
@@ -19,55 +18,39 @@ interface IHocProps {
   setVideoEdit: (video: IVideo) => void
 }
 
-interface IState {
-  visibleVideos: IVideo[]
+type IFullProps = IProps & IHocProps
+
+const PosterListContainer = ({ className, setVideoEdit, videos }: IFullProps) => {
+  const visibleVideos = setVisibleVideos(videos)
+
+  return <PosterList className={className} videos={sortPosters(visibleVideos)} setEditVideo={setVideoEdit} />
 }
 
-class PosterListContainer extends React.Component<IProps & IHocProps, IState> {
-  constructor(props: IProps & IHocProps) {
-    super(props)
+const setVisibleVideos = (videos: IVideoState): IVideo[] => {
+  switch (videos.visibilityFilter) {
+    case "anime":
+      return videos.animes
+    case "movie":
+      return videos.movies
+    case "serie":
+      return videos.series
 
-    this.state = {
-      visibleVideos: this.setVisibleVideos(),
+    default:
+      throw new Error("An invalid visibilityFilter were supplied to setVisibleVideos")
+  }
+}
+
+const sortPosters: (posters: IVideo[]) => IVideo[] = posters => {
+  return posters.sort((posterA, posterB) => {
+    if (posterA.api.title < posterB.api.title) {
+      return -1
     }
-  }
-
-  public render() {
-    return (
-      <PosterList
-        className={this.props.className}
-        videos={this.sortPosters(this.state.visibleVideos)}
-        setEditVideo={this.props.setVideoEdit}
-      />
-    )
-  }
-
-  private setVisibleVideos(): IVideo[] {
-    switch (this.props.videoType) {
-      case "anime":
-        return this.props.videos.animes
-      case "movie":
-        return this.props.videos.movies
-      case "serie":
-        return this.props.videos.series
-
-      default:
-        throw new Error("An invalid visibilityFilter were supplied to setVisibleVideos")
+    if (posterA.api.title > posterB.api.title) {
+      return 1
     }
-  }
 
-  private sortPosters: (posters: IVideo[]) => IVideo[] = posters => {
-    return posters.sort((posterA, posterB) => {
-      if (posterA.api.title < posterB.api.title) {
-        return -1
-      }
-      if (posterA.api.title > posterB.api.title) {
-        return 1
-      }
-
-      return 0
-    })
-  }
+    return 0
+  })
 }
 
 const mapStateToProps: MapStateToProps<{ videos: IVideoState }, IProps> = (state: IStoreState, ownProps?: IProps) => ({

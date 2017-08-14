@@ -2,24 +2,22 @@ import * as React from "react"
 
 import { action } from "@storybook/addon-actions"
 import { storiesOf } from "@storybook/react"
-import { MemoryRouter } from "react-router"
 
 import ContainerWrapper from "../../../.storybook/ContainerWrapper"
 import Home from "./Home"
 
+const Component = (
+  <Home handleTabChange={(evt: any, index: number) => action(`Changed the tab to ${index}`)} selectedTabIndex={0} />
+)
+
 storiesOf("Home", module)
-  .addDecorator(story =>
-    <MemoryRouter initialEntries={["/series", "/movies", "/animes"]} initialIndex={1}>
-      {story()}
-    </MemoryRouter>
-  )
   .add("dark theme", () =>
     <ContainerWrapper>
-      <Home handleTabRoute={(videoType, history) => action(`Changed the filter to ${videoType}`)} />
+      {Component}
     </ContainerWrapper>
   )
   .add("light theme", () =>
     <ContainerWrapper type="light">
-      <Home handleTabRoute={(videoType, history) => action(`Changed the filter to ${videoType}`)} />
+      {Component}
     </ContainerWrapper>
   )

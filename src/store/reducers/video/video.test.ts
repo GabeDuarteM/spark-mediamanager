@@ -3,7 +3,16 @@ import IVideo from "../../../@types/IVideo"
 import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../../utils/testUtils"
 import IVideoState from "./IVideoState"
 import video from "./video"
-import { add, edit, remove, VIDEO__ADD, VIDEO__EDIT, VIDEO__REMOVE } from "./videoActions"
+import {
+  add,
+  edit,
+  remove,
+  VIDEO__ADD,
+  VIDEO__EDIT,
+  VIDEO__REMOVE,
+  VIDEO__VISIBILITY_FILTER,
+  visibilityFilter,
+} from "./videoActions"
 
 describe("video reducer", () => {
   it("should return the default state when no state is passed", () => {
@@ -133,18 +142,56 @@ describe("video reducer", () => {
       expect(() => video(state, action)).toThrowError(`invalid videoType recieved from handleEdit: invalid`)
     })
   })
+  describe(VIDEO__VISIBILITY_FILTER, () => {
+    it("should change the visibility filter to anime", () => {
+      const state = returnInitialState()
+      const action = visibilityFilter("anime")
+      const expected: IVideoState = { ...returnInitialState(), visibilityFilter: "anime" }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should change the visibility filter to movie", () => {
+      const state = returnMockedState()
+      const action = visibilityFilter("movie")
+      const expected: IVideoState = { ...returnMockedState(), visibilityFilter: "movie" }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+    it("should change the visibility filter to serie", () => {
+      const state = returnMockedState()
+      const action = visibilityFilter("serie")
+      const expected: IVideoState = { ...returnMockedState(), visibilityFilter: "serie" }
+
+      const actual = video(state, action)
+
+      expect(actual).toEqual(expected)
+    })
+
+    it("should throw if videoType is invalid", () => {
+      const state = returnInitialState()
+      const action = visibilityFilter("invalid" as EVideoType)
+
+      expect(() => video(state, action)).toThrowError(`invalid videoType recieved from handleVisibilityFilter: invalid`)
+    })
+  })
 })
 
 const returnMockedState = (): IVideoState => ({
   animes,
   movies,
   series,
+  visibilityFilter: "anime",
 })
 
 const returnInitialState = (): IVideoState => ({
   animes: [],
   movies: [],
   series: [],
+  visibilityFilter: "serie",
 })
 
 const animes = returnMockAnime()

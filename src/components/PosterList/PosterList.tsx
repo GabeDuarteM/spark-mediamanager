@@ -37,12 +37,7 @@ type IFullProps = IProps & IHocProps
 const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) =>
   <div className={`${className} ${classes.posterList}`}>
     {videos.map((video, i) =>
-      <Link
-        to={`${location.pathname.replace("/videoDetails", "")}/videoDetails`}
-        onClick={() => setEditVideo(video)}
-        key={i}
-        className={classes.link}
-      >
+      <Link to="/videoDetails" onClick={() => setEditVideo(video)} key={i} className={classes.link}>
         <Poster video={video} />
       </Link>
     )}
