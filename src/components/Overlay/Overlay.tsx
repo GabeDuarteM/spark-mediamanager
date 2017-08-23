@@ -1,10 +1,11 @@
 import * as React from "react"
 
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRulesCallback } from "material-ui/styles/withStyles"
 
 import { truncate } from "../../commonCss"
 
-const stylesheet = createStyleSheet("Overlay", theme => ({
+const styles: StyleRulesCallback = theme => ({
   overlay: {
     background: theme.palette.background.default,
     opacity: 0.7,
@@ -14,7 +15,7 @@ const stylesheet = createStyleSheet("Overlay", theme => ({
     width: "100%",
   },
   truncate,
-}))
+})
 
 interface IProps {
   children: React.ReactElement<{}> | Array<React.ReactElement<{}>>
@@ -35,4 +36,4 @@ const Overlay = ({ classes, children, className, ...rest }: IFullProps) =>
     {children}
   </div>
 
-export default withStyles<IProps>(stylesheet)(Overlay)
+export default withStyles<IProps>(styles, { name: "Overlay" })(Overlay)

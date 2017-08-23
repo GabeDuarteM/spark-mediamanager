@@ -38,3 +38,6 @@ jspm_packages/
 
 # coverage
 coverage/
+
+# awesome-typescript-loader cache
+.awcache/

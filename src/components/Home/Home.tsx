@@ -3,7 +3,8 @@ import * as React from "react"
 import { Add } from "material-ui-icons"
 import AppBar from "material-ui/AppBar"
 import Button from "material-ui/Button"
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRulesCallback } from "material-ui/styles/withStyles"
 import Tabs, { Tab } from "material-ui/Tabs"
 import { injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
@@ -14,7 +15,7 @@ import PosterListContainer from "../../containers/PosterListContainer/PosterList
 import SearchVideoDialogContainer from "../../containers/SearchVideoDialogContainer/SearchVideoDialogContainer"
 import VideoDetailsContainer from "../../containers/VideoDetailsContainer/VideoDetailsContainer"
 
-const styles = createStyleSheet("Home", theme => ({
+const styles: StyleRulesCallback = theme => ({
   root: {
     minHeight: "100vh",
     backgroundColor: theme.palette.background.paper,
@@ -29,7 +30,7 @@ const styles = createStyleSheet("Home", theme => ({
     bottom: 30,
     right: 40,
   },
-}))
+})
 
 interface IProps {
   handleTabChange: (evt: any, index: number) => void
@@ -51,7 +52,7 @@ type IFullProps = IProps & IHocProps
 const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }: IFullProps) =>
   <div className={classes.root}>
     <AppBar position="static">
-      <Tabs index={selectedTabIndex} onChange={handleTabChange} centered>
+      <Tabs value={selectedTabIndex} onChange={handleTabChange} centered>
         <Tab
           label={intl.formatMessage({
             id: "common.series",
@@ -80,4 +81,4 @@ const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd
     </Button>
   </div>
 
-export default compose<IFullProps, IProps>(injectIntl, withStyles(styles))(Home)
+export default compose<IFullProps, IProps>(injectIntl, withStyles(styles, { name: "Home" }))(Home)

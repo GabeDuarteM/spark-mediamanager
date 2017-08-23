@@ -4,7 +4,8 @@ import { Button, Dialog, DialogActions, DialogContent, IconButton, TextField } f
 import { Search, Settings, Tv } from "material-ui-icons"
 import {} from "material-ui-icons"
 import { MenuItem, SelectField } from "material-ui-legacy"
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 import { FormattedMessage, injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
 import { withRouter } from "react-router"
@@ -15,7 +16,7 @@ import DialogContentRoot from "../DialogContentRoot/DialogContentRoot"
 import Fanart from "../Fanart/Fanart"
 import IconTextField from "../IconTextField/IconTextField"
 
-const styleSheet = createStyleSheet("VideoDetails", theme => ({
+const styles: StyleRules = {
   dialogRoot: {
     display: "flex",
     flexDirection: "column",
@@ -42,7 +43,7 @@ const styleSheet = createStyleSheet("VideoDetails", theme => ({
   overview: {
     margin: [8, 24],
   },
-}))
+}
 
 interface IProps {
   classNames?: string
@@ -127,4 +128,6 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
     </DialogActions>
   </Dialog>
 
-export default compose<IFullProps, IProps>(withStyles(styleSheet), injectIntl, withRouter)(VideoDetails)
+export default compose<IFullProps, IProps>(withStyles(styles, { name: "VideoDetails" }), injectIntl, withRouter)(
+  VideoDetails
+)

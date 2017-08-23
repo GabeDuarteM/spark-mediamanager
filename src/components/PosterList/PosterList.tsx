@@ -1,12 +1,13 @@
 import * as React from "react"
 
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 import { Link } from "react-router-dom"
 
 import IVideo from "../../@types/IVideo"
 import Poster from "../Poster/Poster"
 
-const styles = createStyleSheet("PosterList", theme => ({
+const styles: StyleRules = {
   posterList: {
     display: "flex",
     flexWrap: "wrap",
@@ -17,7 +18,7 @@ const styles = createStyleSheet("PosterList", theme => ({
     cursor: "default",
     outline: "none",
   },
-}))
+}
 
 interface IHocProps {
   classes: {
@@ -43,4 +44,4 @@ const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) =>
     )}
   </div>
 
-export default withStyles<IProps>(styles)(PosterList)
+export default withStyles<IProps>(styles, { name: "PosterList" })(PosterList)

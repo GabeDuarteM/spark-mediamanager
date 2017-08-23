@@ -2,12 +2,13 @@ import * as React from "react"
 
 import * as classNames from "classnames"
 import Paper from "material-ui/Paper"
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 
 import IVideo from "../../@types/IVideo"
 import PosterOverlay from "../PosterOverlay/PosterOverlay"
 
-const styles = createStyleSheet("Poster", theme => ({
+const styles: StyleRules = {
   poster: {
     width: 200,
     height: 300,
@@ -23,7 +24,7 @@ const styles = createStyleSheet("Poster", theme => ({
       transform: "scale(1.1)",
     },
   },
-}))
+}
 
 interface IHocProps {
   classes: {
@@ -58,4 +59,4 @@ const Poster = ({
     {showSubtitle ? <PosterOverlay title={video.api.title} year={video.api.year} /> : ""}
   </Paper>
 
-export default withStyles<IProps>(styles)(Poster)
+export default withStyles<IProps>(styles, { name: "Poster" })(Poster)

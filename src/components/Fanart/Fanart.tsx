@@ -1,11 +1,12 @@
 import * as React from "react"
 
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 
 import IVideo from "../../@types/IVideo"
 import Poster from "../Poster/Poster"
 
-const styles = createStyleSheet("Fanart", {
+const styles: StyleRules = {
   fanart: {
     backgroundSize: "cover",
     backgroundPosition: "50% 10%",
@@ -17,7 +18,7 @@ const styles = createStyleSheet("Fanart", {
     height: "186px !important",
     width: "124px !important",
   },
-})
+}
 
 interface IProps {
   poster: IVideo
@@ -35,4 +36,4 @@ const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ poster, classes 
     <Poster className={classes.poster} showSubtitle={false} video={poster} hoverEffect={false} />
   </div>
 
-export default withStyles<IProps>(styles)(Fanart)
+export default withStyles<IProps>(styles, { name: "Fanart" })(Fanart)

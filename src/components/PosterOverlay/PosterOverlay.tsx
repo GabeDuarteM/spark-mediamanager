@@ -1,23 +1,22 @@
 import * as React from "react"
 
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRulesCallback } from "material-ui/styles/withStyles"
 import Typography from "material-ui/Typography"
 
 import { truncate } from "../../commonCss"
 import Overlay from "../Overlay/Overlay"
 
-const styles = createStyleSheet("PosterOverlay", theme => {
-  return {
-    title: {
-      ...truncate,
-      height: 23,
-    },
-    overlay: {
-      padding: "16px !important",
-      borderTop: "2px solid",
-      borderColor: theme.palette.input.bottomLine,
-    },
-  }
+const styles: StyleRulesCallback = theme => ({
+  title: {
+    ...truncate,
+    height: 23,
+  },
+  overlay: {
+    padding: "16px !important",
+    borderTop: "2px solid",
+    borderColor: theme.palette.input.bottomLine,
+  },
 })
 
 interface IProps {
@@ -44,4 +43,4 @@ const PosterOverlay = ({ title, year, classes }: IFullProps) =>
     </Typography>
   </Overlay>
 
-export default withStyles<IProps>(styles)(PosterOverlay)
+export default withStyles<IProps>(styles, { name: "PosterOverlay" })(PosterOverlay)

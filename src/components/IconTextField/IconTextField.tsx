@@ -2,9 +2,10 @@ import * as React from "react"
 
 import * as classNames from "classnames"
 import { IconButton, TextField } from "material-ui"
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 
-const styles = createStyleSheet("IconTextField", theme => ({
+const styles: StyleRules = {
   root: {
     display: "flex",
     alignItems: "center",
@@ -26,7 +27,7 @@ const styles = createStyleSheet("IconTextField", theme => ({
   inputClassName: {
     paddingRight: 36,
   },
-}))
+}
 
 interface IProps {
   IconSvg: new () => React.Component<any, any>
@@ -54,4 +55,4 @@ const IconTextField = ({ className, IconSvg, classes, ...rest }: IProps & IHocPr
     </IconButton>
   </div>
 
-export default withStyles<IProps>(styles)(IconTextField)
+export default withStyles<IProps>(styles, { name: "IconTextField" })(IconTextField)

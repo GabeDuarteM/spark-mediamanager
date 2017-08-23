@@ -23,12 +23,6 @@ function getBaseConfig(): webpack.Configuration {
     module: {
       rules: [
         {
-          exclude: resolve(__dirname, "node_modules"),
-          include: resolve(__dirname, "src"),
-          loaders: ["react-hot-loader/webpack", "awesome-typescript-loader"],
-          test: /\.(t|j)sx?$/,
-        },
-        {
           enforce: "pre",
           loader: "source-map-loader",
           test: /\.js$/,
@@ -76,6 +70,12 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
       ...baseConfig.module,
       rules: [
         ...(baseConfig.module as any).rules,
+        {
+          exclude: /node_modules/,
+          include: resolve(__dirname, "src"),
+          loader: "awesome-typescript-loader",
+          test: /\.(t|j)sx?$/,
+        },
         {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
@@ -136,6 +136,20 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       ...baseConfig.module,
       rules: [
         ...(baseConfig.module as any).rules,
+        {
+          exclude: /node_modules/,
+          include: resolve(__dirname, "src"),
+          use: [
+            "react-hot-loader/webpack",
+            {
+              loader: "awesome-typescript-loader",
+              options: {
+                configFileName: "tsconfig.dev.json",
+              },
+            },
+          ],
+          test: /\.(t|j)sx?$/,
+        },
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"],

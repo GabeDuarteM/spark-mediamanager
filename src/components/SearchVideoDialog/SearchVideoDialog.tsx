@@ -3,14 +3,15 @@ import * as React from "react"
 import { Button, Dialog, DialogActions, DialogContent, TextField } from "material-ui"
 import { FormControl, FormControlLabel } from "material-ui/Form"
 import Radio, { RadioGroup } from "material-ui/Radio"
-import { createStyleSheet, withStyles } from "material-ui/styles"
+import { withStyles } from "material-ui/styles"
+import { StyleRules } from "material-ui/styles/withStyles"
 import { injectIntl } from "react-intl"
 import { compose } from "recompose"
 
 import { EVideoType } from "../../@types/EVideoType"
 import DialogContentRoot from "../DialogContentRoot/DialogContentRoot"
 
-const styles = createStyleSheet("SearchVideoDialog", theme => ({
+const styles: StyleRules = {
   dialog: {
     display: "flex",
     flexWrap: "wrap",
@@ -23,7 +24,7 @@ const styles = createStyleSheet("SearchVideoDialog", theme => ({
   input: {
     width: 550,
   },
-}))
+}
 
 interface IProps {
   classNames?: string
@@ -57,7 +58,7 @@ const SearchVideoDialog = ({
     <DialogContent>
       <DialogContentRoot className={classes.dialog}>
         <FormControl>
-          <RadioGroup className={classes.radioGroup} selectedValue={selectedType} onChange={handleChange}>
+          <RadioGroup className={classes.radioGroup} value={selectedType} onChange={handleChange}>
             <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.serie" })} value="serie" />
             <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.movie" })} value="movie" />
             <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.anime" })} value="anime" />
@@ -85,4 +86,4 @@ const SearchVideoDialog = ({
     </DialogActions>
   </Dialog>
 
-export default compose<IProps, IProps>(injectIntl, withStyles(styles))(SearchVideoDialog)
+export default compose<IProps, IProps>(injectIntl, withStyles(styles, { name: "SearchVideoDialog" }))(SearchVideoDialog)
