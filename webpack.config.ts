@@ -23,11 +23,6 @@ function getBaseConfig(): webpack.Configuration {
     module: {
       rules: [
         {
-          enforce: "pre",
-          loader: "source-map-loader",
-          test: /\.js$/,
-        },
-        {
           test: /\.(jpe?g|png|gif|svg)$/i,
           use: ["url-loader?limit=10000", "img-loader"],
         },
@@ -130,7 +125,7 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       },
       overlay: true,
     },
-    devtool: "source-map",
+    devtool: "inline-source-map",
     entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
     module: {
       ...baseConfig.module,

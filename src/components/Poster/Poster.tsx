@@ -36,20 +36,11 @@ interface IHocProps {
 interface IProps {
   video: IVideo
   className?: string
-  children?: React.ReactElement<{}>
   showSubtitle?: boolean
   hoverEffect?: boolean
 }
 
-const Poster = ({
-  classes,
-  className,
-  children,
-  video,
-  showSubtitle = true,
-  hoverEffect = true,
-  ...rest,
-}: IProps & IHocProps) =>
+const Poster = ({ classes, className, video, showSubtitle = true, hoverEffect = true, ...rest }: IProps & IHocProps) =>
   <Paper
     style={{ backgroundImage: `url(${video.api.poster})` }}
     className={classNames(classes.poster, { [classes.hoverEffect]: hoverEffect }, className)}
