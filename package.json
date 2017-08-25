@@ -7,7 +7,9 @@
   "scripts": {
     "start": "webpack-dev-server --open --env.env=dev",
     "test-ci": "jest --coverage",
-    "test": "jest --watch --coverage",
+    "test-wcov": "jest --watch --coverage",
+    "test-cov": "jest --coverage",
+    "test": "jest --watch",
     "lint": "yarn lint-ts && yarn lint-prettier",
     "lint-fix": "yarn lint-ts-fix && yarn lint-prettier-fix",
     "lint-ts": "tslint 'src/**/*.ts' '*.ts' -e 'src/**/*.d.ts'",

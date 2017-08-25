@@ -2,19 +2,13 @@ import * as React from "react"
 
 import { createMount, createShallow } from "material-ui/test-utils"
 
+import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../utils/testUtils"
 import PosterOverlay from "../PosterOverlay/PosterOverlay"
 import Poster from "./Poster"
 
 describe("<Poster />", () => {
-  beforeEach(() => {
-    console.warn = jest.fn(warn => {
-      throw new Error(warn)
-    })
-    console.error = jest.fn(error => {
-      throw new Error(error)
-    })
-  })
+  beforeEach(() => transformConsoleMessagesToExceptions())
 
   const mount = createMount()
   const shallow = createShallow()
