@@ -2,23 +2,26 @@ import * as React from "react"
 
 import { ReactWrapper, ShallowWrapper } from "enzyme"
 import { createMount, createShallow } from "material-ui/test-utils"
+import { BrowserRouter } from "react-router-dom"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
-import Overlay from "./Overlay"
+import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../utils/testUtils"
+import PosterList from "./PosterList"
 
-describe("COMPONENT: <Overlay />", () => {
+describe("COMPONENT: <PosterList />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
   const mount = createMount()
   const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
+  const videos = [...returnMockSerie(), ...returnMockMovie(), ...returnMockAnime()]
 
   it("should render without crashing", () => {
     const component = (
-      <Overlay className="test">
-        <div>test</div>
-      </Overlay>
+      <BrowserRouter>
+        <PosterList videos={videos} setEditVideo={jest.fn()} />
+      </BrowserRouter>
     )
     wrapperMount = mount(component)
     wrapperShallow = shallow(component)
@@ -26,9 +29,5 @@ describe("COMPONENT: <Overlay />", () => {
 
   it("should match the snapshot", () => {
     expect(wrapperShallow).toMatchSnapshot()
-  })
-
-  it("should apply custom classnames to the component", () => {
-    expect(wrapperShallow.hasClass("test")).toBeTruthy()
   })
 })

@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import * as classNames from "classnames"
 import { withStyles } from "material-ui/styles"
 import { StyleRules } from "material-ui/styles/withStyles"
 import { Link } from "react-router-dom"
@@ -36,7 +37,7 @@ interface IProps {
 type IFullProps = IProps & IHocProps
 
 const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) =>
-  <div className={`${className} ${classes.posterList}`}>
+  <div className={classNames(className, classes.posterList)}>
     {videos.map((video, i) =>
       <Link to="/videoDetails" onClick={() => setEditVideo(video)} key={i} className={classes.link}>
         <Poster video={video} />
