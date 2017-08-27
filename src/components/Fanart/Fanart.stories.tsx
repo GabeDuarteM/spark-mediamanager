@@ -11,11 +11,11 @@ const poster = returnMockSerie()[0]
 storiesOf("Fanart", module)
   .add("dark theme", () =>
     <ContainerWrapper>
-      <Fanart poster={poster} />
+      <Fanart video={poster} />
     </ContainerWrapper>
   )
   .add("light theme", () =>
     <ContainerWrapper type="light">
-      <Fanart poster={poster} />
+      <Fanart video={poster} />
     </ContainerWrapper>
   )

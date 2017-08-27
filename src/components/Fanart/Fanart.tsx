@@ -21,7 +21,7 @@ const styles: StyleRules = {
 }
 
 interface IProps {
-  poster: IVideo
+  video: IVideo
 }
 
 interface IHocProps {
@@ -31,9 +31,9 @@ interface IHocProps {
   }
 }
 
-const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ poster, classes }) =>
-  <div className={classes.fanart} style={{ backgroundImage: `url(${poster.api.backdrop})` }}>
-    <Poster className={classes.poster} showSubtitle={false} video={poster} hoverEffect={false} />
+const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ video, classes }) =>
+  <div className={classes.fanart} style={{ backgroundImage: `url(${video.api.backdrop})` }}>
+    <Poster className={classes.poster} showSubtitle={false} video={video} hoverEffect={false} />
   </div>
 
 export default withStyles<IProps>(styles, { name: "Fanart" })(Fanart)

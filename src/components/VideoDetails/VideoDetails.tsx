@@ -87,7 +87,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
       <DialogContentRoot>
         <div className={classes.dialogRoot}>
           <div className={classes.fanart}>
-            <Fanart poster={video} />
+            <Fanart video={video} />
           </div>
           <div className={classes.actions}>
             <SelectField className={classes.select} value={1}>

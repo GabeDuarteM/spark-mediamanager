@@ -17,8 +17,9 @@ describe("COMPONENT: <IconTextField />", () => {
   let wrapperShallow: ShallowWrapper<any, any>
 
   it("should render without crashing", () => {
-    wrapperMount = mount(<IconTextField IconSvg={Search} />)
-    wrapperShallow = shallow(<IconTextField IconSvg={Search} />)
+    const component = <IconTextField IconSvg={Search} />
+    wrapperMount = mount(component)
+    wrapperShallow = shallow(component)
   })
 
   it("should render a textbox", () => {

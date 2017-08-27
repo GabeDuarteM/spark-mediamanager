@@ -4,7 +4,7 @@ import IVideo from "../@types/IVideo"
 
 export const returnMockSerie = (): IVideo[] => [
   {
-    id: v4(),
+    id: "4a139350-91df-4849-aebe-ddc3b9c82ae6",
     path: "",
     api: {
       backdrop: "http://image.tmdb.org/t/p/w1280/bzoZjhbpriBT2N5kwgK0weUfVOX.jpg",
@@ -69,7 +69,7 @@ export const returnMockSerie = (): IVideo[] => [
     },
   },
   {
-    id: v4(),
+    id: "ee217269-eb7b-4d03-8244-88358a88ccbc",
     path: "D:\\Videos\\Series\\Game of Thrones",
     api: {
       backdrop: "http://image.tmdb.org/t/p/w1280/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg",
@@ -149,7 +149,7 @@ export const returnMockSerie = (): IVideo[] => [
 
 export const returnMockMovie = (): IVideo[] => [
   {
-    id: v4(),
+    id: "4b63009a-dd74-46b7-822d-0d4e88d3ac87",
     path: "D:\\Videos\\Movies\\Doctor Strange",
     api: {
       adult: false,
@@ -166,7 +166,7 @@ export const returnMockMovie = (): IVideo[] => [
     },
   },
   {
-    id: v4(),
+    id: "2b67c314-9878-42e1-9c91-42544a6b7c95",
     path: "D:\\Videos\\Movies\\The Matrix",
     api: {
       backdrop: "http://image.tmdb.org/t/p/w1280/7u3pxc0K1wx32IleAkLv78MKgrw.jpg",
@@ -192,7 +192,7 @@ export const returnMockMovie = (): IVideo[] => [
 
 export const returnMockAnime = (): IVideo[] => [
   {
-    id: v4(),
+    id: "9cbce5f5-c560-4cfa-bd4a-9fe71aa2ae23",
     path: "D:\\Videos\\Animes\\Attack on Titan",
     api: {
       backdrop: "http://image.tmdb.org/t/p/w1280/3ya8N5VE6Q5dJ0GsqKhCKcv2qyi.jpg",
@@ -239,7 +239,7 @@ export const returnMockAnime = (): IVideo[] => [
     },
   },
   {
-    id: v4(),
+    id: "6f686626-f03b-4c88-b122-6553f02cb636",
     path: "D:\\Videos\\Animes\\Fate Stay Night Unlimited Bladeworks",
     api: {
       backdrop: "http://image.tmdb.org/t/p/w1280/pNNrGydIr8VtTaw9AdHFT8kuuOr.jpg",
