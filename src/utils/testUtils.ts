@@ -1,5 +1,3 @@
-import { v4 } from "uuid"
-
 import IVideo from "../@types/IVideo"
 
 export const returnMockSerie = (): IVideo[] => [

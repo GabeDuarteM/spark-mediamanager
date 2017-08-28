@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import { ReactWrapper, ShallowWrapper } from "enzyme"
-import { withStyles } from "material-ui/styles"
 import { createMount, createShallow } from "material-ui/test-utils"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
