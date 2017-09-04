@@ -80,7 +80,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "img-loader": "^2.0.0",
-    "jest": "^20.0.4",
+    "jest": "^21.0.0",
     "prettier": "^1.5.3",
     "react-test-renderer": "^15.6.1",
     "source-map-loader": "^0.2.1",
