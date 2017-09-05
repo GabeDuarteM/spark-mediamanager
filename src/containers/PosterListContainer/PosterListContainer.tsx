@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { connect, MapDispatchToProps, MapStateToProps } from "react-redux"
+import { connect, MapStateToProps } from "react-redux"
 
 import { EVideoType } from "../../@types/EVideoType"
 import IVideo from "../../@types/IVideo"
@@ -57,7 +57,7 @@ const mapStateToProps: MapStateToProps<{ videos: IVideoState }, IProps> = (state
   videos: state.video,
 })
 
-const mapDispatchToProps: MapDispatchToProps<any, IProps> = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch: any, ownProps: IProps) => ({
   setVideoEdit: (video: IVideo, videoType: EVideoType) => dispatch(set(video)),
 })
 

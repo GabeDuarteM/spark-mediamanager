@@ -1,14 +1,12 @@
 import * as React from "react"
 
-import { connect } from "react-redux"
-import { Dispatch } from "redux"
+import { connect, MapStateToProps } from "react-redux"
 
 import IVideo from "../../@types/IVideo"
 import VideoDetails from "../../components/VideoDetails/VideoDetails"
 import IMapStateToProps from "../../store/IMapStateToProps"
 import IStoreState from "../../store/IStoreState"
 import { clear } from "../../store/reducers/editVideo/editVideoActions"
-import IBaseAction from "../../store/reducers/IBaseAction"
 
 interface IHocProps {
   video: IVideo
@@ -31,7 +29,7 @@ const mapStateToProps: IMapStateToProps<IStoreState, { video: IVideo }, {}> = st
   video: state.editVideo.video as IVideo,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<IBaseAction>) => ({
+const mapDispatchToProps: MapStateToProps<any, {}> = dispatch => ({
   clearEditVideo: () => dispatch(clear()),
 })
 
