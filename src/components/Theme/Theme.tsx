@@ -2,7 +2,6 @@ import * as React from "react"
 
 import MuiThemeProviderLegacy from "material-ui-legacy/styles/MuiThemeProvider"
 import { createMuiTheme, MuiThemeProvider } from "material-ui/styles"
-import createPalette from "material-ui/styles/palette"
 
 interface IProps {
   children: React.ReactNode
@@ -20,9 +19,9 @@ const Theme: React.StatelessComponent<IProps> = ({ children, type }) =>
 
 const getTheme = (type: IType = "dark") => {
   return createMuiTheme({
-    palette: createPalette({
+    palette: {
       type,
-    }),
+    },
   })
 }
 
