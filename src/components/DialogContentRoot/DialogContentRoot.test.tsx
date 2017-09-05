@@ -41,13 +41,4 @@ describe("COMPONENT: <DialogContentRoot />", () => {
     )
     expect(wrapper.find("button#buttonText").exists()).toBeTruthy()
   })
-
-  it("should match snapshot", () => {
-    const wrapper = shallow(
-      <DialogContentRoot>
-        <button id="buttonText">text</button>
-      </DialogContentRoot>
-    )
-    expect(wrapper).toMatchSnapshot()
-  })
 })

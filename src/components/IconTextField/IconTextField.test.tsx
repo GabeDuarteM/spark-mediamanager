@@ -22,10 +22,6 @@ describe("COMPONENT: <IconTextField />", () => {
     wrapperShallow = shallow(component)
   })
 
-  it("should match the snapshot", () => {
-    expect(wrapperShallow).toMatchSnapshot()
-  })
-
   it("should render a textbox", () => {
     expect(wrapperMount.childAt(0).is(TextField)).toBeTruthy()
   })

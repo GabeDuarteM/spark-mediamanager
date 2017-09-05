@@ -24,13 +24,6 @@ describe("<Poster />", () => {
     mount(<Poster video={returnMockAnime()[0]} showSubtitle={false} hoverEffect className="test" />)
   })
 
-  it("should match snapshots", () => {
-    expect(shallow(<Poster video={returnMockAnime()[0]} showSubtitle hoverEffect className="test" />)).toMatchSnapshot()
-    expect(
-      shallow(<Poster video={returnMockAnime()[0]} showSubtitle={false} hoverEffect className="test" />)
-    ).toMatchSnapshot()
-  })
-
   it("should place a class inside the component", () => {
     const wrapper = shallow(<Poster video={returnMockAnime()[0]} className="test" />)
     expect(wrapper.first().hasClass("test")).toBeTruthy()

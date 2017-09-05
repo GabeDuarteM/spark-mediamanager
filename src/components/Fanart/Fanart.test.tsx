@@ -22,10 +22,6 @@ describe("COMPONENT: <Fanart />", () => {
     wrapperShallow = shallow(component)
   })
 
-  it("should match snapshot", () => {
-    expect(wrapperShallow).toMatchSnapshot()
-  })
-
   it("should have the style prop 'backgroundImage' being equal to the backdrop url from the video", () => {
     expect(wrapperShallow.get(0).props.style.backgroundImage).toBe(
       "url(http://image.tmdb.org/t/p/w1280/bzoZjhbpriBT2N5kwgK0weUfVOX.jpg)"

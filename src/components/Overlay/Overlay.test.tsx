@@ -24,10 +24,6 @@ describe("COMPONENT: <Overlay />", () => {
     wrapperShallow = shallow(component)
   })
 
-  it("should match the snapshot", () => {
-    expect(wrapperShallow).toMatchSnapshot()
-  })
-
   it("should apply custom classnames to the component", () => {
     expect(wrapperShallow.hasClass("test")).toBeTruthy()
   })
