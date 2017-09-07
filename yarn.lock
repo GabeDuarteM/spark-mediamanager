@@ -257,6 +257,12 @@
     "@types/react" "*"
     redux "^3.6.0"
 
+"@types/redux-mock-store@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@types/redux-mock-store/-/redux-mock-store-0.0.11.tgz#0febdaa60de13248fde6313729537e1d5157cdd8"
+  dependencies:
+    redux "^3.6.0"
+
 "@types/relateurl@*":
   version "0.2.28"
   resolved "https://registry.yarnpkg.com/@types/relateurl/-/relateurl-0.2.28.tgz#6bda7db8653fa62643f5ee69e9f69c11a392e3a6"
@@ -7291,6 +7297,10 @@ redux-form@^7.0.3:
     lodash "^4.17.3"
     lodash-es "^4.17.3"
     prop-types "^15.5.9"
+
+redux-mock-store@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.3.tgz#1b3ad299da91cb41ba30d68e3b6f024475fb9e1b"
 
 redux@^3.6.0:
   version "3.7.1"

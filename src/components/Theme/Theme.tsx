@@ -10,12 +10,11 @@ interface IProps {
 
 type IType = "dark" | "light"
 
-const Theme: React.StatelessComponent<IProps> = ({ children, type }) =>
+const Theme: React.StatelessComponent<IProps> = ({ children, type }) => (
   <MuiThemeProvider theme={getTheme(type)}>
-    <MuiThemeProviderLegacy>
-      {children}
-    </MuiThemeProviderLegacy>
+    <MuiThemeProviderLegacy>{children}</MuiThemeProviderLegacy>
   </MuiThemeProvider>
+)
 
 const getTheme = (type: IType = "dark") => {
   return createMuiTheme({
