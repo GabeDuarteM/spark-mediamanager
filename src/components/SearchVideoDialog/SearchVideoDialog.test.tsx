@@ -15,13 +15,7 @@ describe("COMPONENT: <SearchVideoDialog />", () => {
   it("should render without crashing", () => {
     const component = (
       <AppWrapper locale="en">
-        <SearchVideoDialog
-          open
-          classNames="test"
-          selectedType="anime"
-          handleChange={event => jest.fn()}
-          resetRoute={jest.fn}
-        />
+        <SearchVideoDialog open classNames="test" selectedType="anime" resetRoute={jest.fn} />
       </AppWrapper>
     )
     mount(component)
@@ -31,7 +25,7 @@ describe("COMPONENT: <SearchVideoDialog />", () => {
   it("should render without crashing without optional parameters", () => {
     const component = (
       <AppWrapper locale="en">
-        <SearchVideoDialog open selectedType="anime" handleChange={event => jest.fn()} resetRoute={jest.fn} />
+        <SearchVideoDialog open selectedType="anime" resetRoute={jest.fn} />
       </AppWrapper>
     )
     mount(component)

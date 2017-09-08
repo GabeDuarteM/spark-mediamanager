@@ -31,7 +31,7 @@ interface IProps {
   classNames?: string
   open: boolean
   selectedType: EVideoType
-  handleChange: (event: React.ChangeEvent<any>) => void
+  // handleChange: (event: React.ChangeEvent<any>) => void
   resetRoute: () => void
 }
 
@@ -46,15 +46,7 @@ interface IHocProps {
 
 type IFullProps = IProps & IHocProps
 
-const SearchVideoDialog = ({
-  intl,
-  classes,
-  classNames,
-  selectedType,
-  handleChange,
-  resetRoute,
-  ...rest,
-}: IFullProps) => (
+const SearchVideoDialog = ({ intl, classes, classNames, selectedType, resetRoute, ...rest }: IFullProps) => (
   <Dialog className={classNames || ""} {...rest} open onRequestClose={resetRoute}>
     <DialogContent>
       <DialogContentRoot className={classes.dialog}>

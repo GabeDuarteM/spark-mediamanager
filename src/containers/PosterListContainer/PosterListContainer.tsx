@@ -40,18 +40,8 @@ const setVisibleVideos = (videos: IVideoState): IVideo[] => {
   }
 }
 
-const sortPosters: (posters: IVideo[]) => IVideo[] = posters => {
-  return posters.sort((posterA, posterB) => {
-    if (posterA.api.title < posterB.api.title) {
-      return -1
-    }
-    if (posterA.api.title > posterB.api.title) {
-      return 1
-    }
-
-    return 0
-  })
-}
+const sortPosters: (posters: IVideo[]) => IVideo[] = posters =>
+  posters.sort((posterA, posterB) => posterA.api.title.localeCompare(posterB.api.title))
 
 const mapStateToProps: MapStateToProps<{ videos: IVideoState }, IProps> = (state: IStoreState, ownProps?: IProps) => ({
   videos: state.video,

@@ -12,11 +12,14 @@ import { clear } from "../../store/reducers/editVideo/editVideoActions"
 
 interface IHocProps {
   video: IVideo
-  clearEditVideo: () => void
-  history: any[]
 }
 
-class VideoDetailsContainer extends React.PureComponent<IHocProps, {}> {
+interface IProps {
+  history: any[]
+  clearEditVideo: () => void
+}
+
+class VideoDetailsContainer extends React.PureComponent<IHocProps & IProps, {}> {
   public componentWillUnmount() {
     this.props.clearEditVideo()
   }
@@ -40,6 +43,6 @@ const mapDispatchToProps: MapStateToProps<any, {}> = dispatch => ({
   clearEditVideo: () => dispatch(clear()),
 })
 
-const enhance = compose<{}, IHocProps>(connect(mapStateToProps, mapDispatchToProps), withRouter)
+const enhance = compose<IProps, IHocProps>(connect(mapStateToProps, mapDispatchToProps), withRouter)
 
 export default enhance(VideoDetailsContainer)

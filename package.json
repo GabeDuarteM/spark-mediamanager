@@ -14,7 +14,8 @@
     "lint-fix": "yarn lint-ts-fix && yarn lint-prettier-fix",
     "lint-ts": "tslint 'src/**/*.ts' '*.ts' -e 'src/**/*.d.ts'",
     "lint-ts-fix": "tslint 'src/**/*.ts' '*.ts' --fix -e 'src/**/*.d.ts'",
-    "lint-prettier": "prettier --debug-check -l --no-semi --print-width 120 --trailing-comma es5 --parser typescript \"**/*.ts\"",
+    "lint-prettier":
+      "prettier --debug-check -l --no-semi --print-width 120 --trailing-comma es5 --parser typescript \"**/*.ts\"",
     "lint-prettier-fix": "prettier -l --no-semi --print-width 120 --trailing-comma es5 --parser typescript \"**/*.ts\"",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
@@ -28,12 +29,9 @@
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "mapCoverage": true
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "mapCoverage": true,
+    "testURL": "http://localhost"
   },
   "dependencies": {
     "classnames": "^2.2.5",

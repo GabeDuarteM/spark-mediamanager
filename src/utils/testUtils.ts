@@ -190,53 +190,6 @@ export const returnMockMovie = (): IVideo[] => [
 
 export const returnMockAnime = (): IVideo[] => [
   {
-    id: "9cbce5f5-c560-4cfa-bd4a-9fe71aa2ae23",
-    path: "D:\\Videos\\Animes\\Attack on Titan",
-    api: {
-      backdrop: "http://image.tmdb.org/t/p/w1280/3ya8N5VE6Q5dJ0GsqKhCKcv2qyi.jpg",
-      id: 1429,
-      title: "Attack on Titan",
-      number_of_episodes: 37,
-      number_of_seasons: 2,
-      overview:
-        "Several hundred years ago, humans were nearly exterminated by Titans." +
-        "Titans are typically several stories tall, seem to have no intelligence," +
-        " devour human beings and, worst of all, seem to do it for the pleasure rather" +
-        " than as a food source. A small percentage of humanity survived by walling themselves" +
-        " in a city protected by extremely high walls, even taller than the biggest Titans. Flash" +
-        " forward to the present and the city has not seen a Titan in over 100 years. Teenage boy Eren " +
-        "and his foster sister Mikasa witness something horrific as the city walls are destroyed by a Colossal " +
-        "Titan that appears out of thin air. As the smaller Titans flood the city, the two kids watch in horror " +
-        "as their mother is eaten alive. Eren vows that he will murder every single Titan and take revenge for " +
-        "all of mankind.",
-      popularity: 36.892516,
-      poster: "http://image.tmdb.org/t/p/w300/fBX1QMl4iZOKxuRuBOMnoHlmS4l.jpg",
-      seasons: [
-        {
-          air_date: "2013-12-09",
-          episode_count: 17,
-          id: 3789,
-          poster: "http://image.tmdb.org/t/p/w300/7KSqjUQLc2wfuVdgQkGBIu0xSoS.jpg",
-          season_number: 0,
-        },
-        {
-          air_date: "2013-04-07",
-          episode_count: 25,
-          id: 3788,
-          poster: "http://image.tmdb.org/t/p/w300/7ag122jw8GclsXBu5IWtQFzeTST.jpg",
-          season_number: 1,
-        },
-        {
-          air_date: "2017-04-01",
-          episode_count: 12,
-          id: 84756,
-          poster: "http://image.tmdb.org/t/p/w300/gfTPNJ3Rbb9rQ1ajw5bno9rxL0Y.jpg",
-          season_number: 2,
-        },
-      ],
-    },
-  },
-  {
     id: "6f686626-f03b-4c88-b122-6553f02cb636",
     path: "D:\\Videos\\Animes\\Fate Stay Night Unlimited Bladeworks",
     api: {
@@ -278,6 +231,53 @@ export const returnMockAnime = (): IVideo[] => [
           episode_count: 13,
           id: 63980,
           poster: "http://image.tmdb.org/t/p/w300/mrpfeSJMA3tgdvrlWasnjsnIiVF.jpg",
+          season_number: 2,
+        },
+      ],
+    },
+  },
+  {
+    id: "9cbce5f5-c560-4cfa-bd4a-9fe71aa2ae23",
+    path: "D:\\Videos\\Animes\\Attack on Titan",
+    api: {
+      backdrop: "http://image.tmdb.org/t/p/w1280/3ya8N5VE6Q5dJ0GsqKhCKcv2qyi.jpg",
+      id: 1429,
+      title: "Attack on Titan",
+      number_of_episodes: 37,
+      number_of_seasons: 2,
+      overview:
+        "Several hundred years ago, humans were nearly exterminated by Titans." +
+        "Titans are typically several stories tall, seem to have no intelligence," +
+        " devour human beings and, worst of all, seem to do it for the pleasure rather" +
+        " than as a food source. A small percentage of humanity survived by walling themselves" +
+        " in a city protected by extremely high walls, even taller than the biggest Titans. Flash" +
+        " forward to the present and the city has not seen a Titan in over 100 years. Teenage boy Eren " +
+        "and his foster sister Mikasa witness something horrific as the city walls are destroyed by a Colossal " +
+        "Titan that appears out of thin air. As the smaller Titans flood the city, the two kids watch in horror " +
+        "as their mother is eaten alive. Eren vows that he will murder every single Titan and take revenge for " +
+        "all of mankind.",
+      popularity: 36.892516,
+      poster: "http://image.tmdb.org/t/p/w300/fBX1QMl4iZOKxuRuBOMnoHlmS4l.jpg",
+      seasons: [
+        {
+          air_date: "2013-12-09",
+          episode_count: 17,
+          id: 3789,
+          poster: "http://image.tmdb.org/t/p/w300/7KSqjUQLc2wfuVdgQkGBIu0xSoS.jpg",
+          season_number: 0,
+        },
+        {
+          air_date: "2013-04-07",
+          episode_count: 25,
+          id: 3788,
+          poster: "http://image.tmdb.org/t/p/w300/7ag122jw8GclsXBu5IWtQFzeTST.jpg",
+          season_number: 1,
+        },
+        {
+          air_date: "2017-04-01",
+          episode_count: 12,
+          id: 84756,
+          poster: "http://image.tmdb.org/t/p/w300/gfTPNJ3Rbb9rQ1ajw5bno9rxL0Y.jpg",
           season_number: 2,
         },
       ],
