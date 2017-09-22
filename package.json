@@ -57,7 +57,7 @@
     "@types/enzyme": "^2.8.6",
     "@types/extract-text-webpack-plugin": "^2.1.0",
     "@types/html-webpack-plugin": "^2.28.0",
-    "@types/jest": "^20.0.8",
+    "@types/jest": "^21.1.0",
     "@types/node": "^8.0.26",
     "@types/react": "15.6.1",
     "@types/react-dom": "^15.5.4",
