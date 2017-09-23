@@ -1,4 +1,4 @@
-# [WIP] Spark MediaManager
+# [WIP] Spark Mediamanager
 
 [![travis](https://img.shields.io/travis/GabrielDuarteM/spark-mediamanager/master.svg)](https://travis-ci.org/GabrielDuarteM/spark-mediamanager)
 [![appveyor](https://img.shields.io/appveyor/ci/gabrielduartem/spark-mediamanager/master.svg)](https://ci.appveyor.com/project/GabrielDuarteM/spark-mediamanager)
@@ -16,6 +16,8 @@ This is a Media manager, that will give you the possibility to rename those ugly
 The final filename would be configured according to the user preferences, with the default being something like `{{Title}} - {{S00E00}} - {{EpisodeTitle}}`.
 
 Besides that, the user can configure it to move or soft/hard link the file to some specific directory too.
+
+Spark Mediamanager is supposed to work with `Series`, `Animes` and `Movies` too.
 
 ## Screenshots
 
