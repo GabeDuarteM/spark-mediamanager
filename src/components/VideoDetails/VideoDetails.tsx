@@ -1,9 +1,9 @@
 import * as React from "react"
 
-import { Button, Dialog, DialogActions, DialogContent, IconButton, TextField } from "material-ui"
+import { Button, Dialog, DialogActions, DialogContent, IconButton, MenuItem, TextField } from "material-ui"
 import { Search, Settings, Tv } from "material-ui-icons"
 import {} from "material-ui-icons"
-import { MenuItem, SelectField } from "material-ui-legacy"
+// import { MenuItem, SelectField } from "material-ui-legacy"
 import { withStyles } from "material-ui/styles"
 import { StyleRules } from "material-ui/styles/withStyles"
 import { FormattedMessage, injectIntl } from "react-intl"
@@ -33,7 +33,8 @@ const styles: StyleRules = {
     marginLeft: 8,
   },
   select: {
-    marginTop: 4,
+    marginTop: 12,
+    width: 256,
   },
   path: {
     marginLeft: 8,
@@ -89,11 +90,11 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
               <Fanart video={video} />
             </div>
             <div className={classes.actions}>
-              <SelectField className={classes.select} value={1}>
-                <MenuItem value={1} primaryText="Gotham" />
-                <MenuItem value={2} primaryText="Gotham 2" />
-                <MenuItem value={3} primaryText="Something similar to Gotham" />
-              </SelectField>
+              <TextField margin="normal" className={classes.select} select value={1}>
+                <MenuItem value={1}>Gotham</MenuItem>
+                <MenuItem value={2}>Gotham 2</MenuItem>
+                <MenuItem value={3}>Something similar to Gotham</MenuItem>
+              </TextField>
               <IconButton className={classes.iconButton}>
                 <Settings />
               </IconButton>

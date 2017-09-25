@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import MuiThemeProviderLegacy from "material-ui-legacy/styles/MuiThemeProvider"
+// import MuiThemeProviderLegacy from "material-ui-legacy/styles/MuiThemeProvider"
 import { createMuiTheme, MuiThemeProvider } from "material-ui/styles"
 
 interface IProps {
@@ -11,9 +11,7 @@ interface IProps {
 type IType = "dark" | "light"
 
 const Theme: React.StatelessComponent<IProps> = ({ children, type }) => (
-  <MuiThemeProvider theme={getTheme(type)}>
-    <MuiThemeProviderLegacy>{children}</MuiThemeProviderLegacy>
-  </MuiThemeProvider>
+  <MuiThemeProvider theme={getTheme(type)}>{children}</MuiThemeProvider>
 )
 
 const getTheme = (type: IType = "dark") => {
