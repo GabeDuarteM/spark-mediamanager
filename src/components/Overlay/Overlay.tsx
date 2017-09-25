@@ -31,9 +31,10 @@ interface IHocProps {
 
 type IFullProps = IProps & IHocProps
 
-const Overlay = ({ classes, children, className, ...rest }: IFullProps) =>
+const Overlay = ({ classes, children, className, ...rest }: IFullProps) => (
   <div className={`${className} ${classes.overlay}`} {...rest}>
     {children}
   </div>
+)
 
-export default withStyles<IProps>(styles, { name: "Overlay" })(Overlay)
+export default withStyles(styles, { name: "Overlay" })<IProps>(Overlay)

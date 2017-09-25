@@ -40,7 +40,14 @@ interface IProps {
   hoverEffect?: boolean
 }
 
-const Poster = ({ classes, className, video, showSubtitle = true, hoverEffect = true, ...rest }: IProps & IHocProps) =>
+const Poster = ({
+  classes,
+  className,
+  video,
+  showSubtitle = true,
+  hoverEffect = true,
+  ...rest,
+}: IProps & IHocProps) => (
   <Paper
     style={{ backgroundImage: `url(${video.api.poster})` }}
     className={classNames(classes.poster, { [classes.hoverEffect]: hoverEffect }, className)}
@@ -49,5 +56,6 @@ const Poster = ({ classes, className, video, showSubtitle = true, hoverEffect = 
   >
     {showSubtitle ? <PosterOverlay title={video.api.title} year={video.api.year} /> : ""}
   </Paper>
+)
 
-export default withStyles<IProps>(styles, { name: "Poster" })(Poster)
+export default withStyles(styles, { name: "Poster" })<IProps>(Poster)

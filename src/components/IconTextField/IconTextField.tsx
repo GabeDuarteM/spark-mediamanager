@@ -47,12 +47,13 @@ interface IHocProps {
   }
 }
 
-const IconTextField = ({ className, IconSvg, classes, ...rest }: IProps & IHocProps) =>
+const IconTextField = ({ className, IconSvg, classes, ...rest }: IProps & IHocProps) => (
   <div className={classNames(classes.root, className)}>
     <TextField className={classes.textField} InputClassName={classes.inputClassName} {...rest} />
     <IconButton className={classes.iconButton}>
       <IconSvg className={classes.svg} />
     </IconButton>
   </div>
+)
 
-export default withStyles<IProps>(styles, { name: "IconTextField" })(IconTextField)
+export default withStyles(styles, { name: "IconTextField" })<IProps>(IconTextField)

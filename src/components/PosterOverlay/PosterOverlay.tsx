@@ -33,14 +33,13 @@ interface IInjectedProps {
 
 type IFullProps = IProps & IInjectedProps
 
-const PosterOverlay = ({ title, year, classes }: IFullProps) =>
+const PosterOverlay = ({ title, year, classes }: IFullProps) => (
   <Overlay className={classes.overlay}>
     <Typography className={classes.title} type="title">
       {title}
     </Typography>
-    <Typography type="body2">
-      {year}
-    </Typography>
+    <Typography type="body2">{year}</Typography>
   </Overlay>
+)
 
-export default withStyles<IProps>(styles, { name: "PosterOverlay" })(PosterOverlay)
+export default withStyles(styles, { name: "PosterOverlay" })<IProps>(PosterOverlay)

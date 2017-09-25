@@ -49,7 +49,7 @@ interface IHocProps {
 
 type IFullProps = IProps & IHocProps
 
-const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }: IFullProps) =>
+const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }: IFullProps) => (
   <div className={classes.root}>
     <AppBar position="static">
       <Tabs value={selectedTabIndex} onChange={handleTabChange} centered>
@@ -80,5 +80,6 @@ const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd
       <Add />
     </Button>
   </div>
+)
 
 export default compose<IFullProps, IProps>(injectIntl, withStyles(styles, { name: "Home" }))(Home)

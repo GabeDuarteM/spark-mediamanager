@@ -36,13 +36,14 @@ interface IProps {
 
 type IFullProps = IProps & IHocProps
 
-const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) =>
+const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) => (
   <div className={classNames(className, classes.posterList)}>
-    {videos.map((video, i) =>
+    {videos.map((video, i) => (
       <Link to="/videoDetails" onClick={() => setEditVideo(video)} key={i} className={classes.link}>
         <Poster video={video} />
       </Link>
-    )}
+    ))}
   </div>
+)
 
-export default withStyles<IProps>(styles, { name: "PosterList" })(PosterList)
+export default withStyles(styles, { name: "PosterList" })<IProps>(PosterList)

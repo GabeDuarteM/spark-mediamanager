@@ -31,9 +31,10 @@ interface IHocProps {
   }
 }
 
-const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ video, classes }) =>
+const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ video, classes }) => (
   <div className={classes.fanart} style={{ backgroundImage: `url(${video.api.backdrop})` }}>
     <Poster className={classes.poster} showSubtitle={false} video={video} hoverEffect={false} />
   </div>
+)
 
-export default withStyles<IProps>(styles, { name: "Fanart" })(Fanart)
+export default withStyles(styles, { name: "Fanart" })<IProps>(Fanart)

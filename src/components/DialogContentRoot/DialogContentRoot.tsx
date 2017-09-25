@@ -6,7 +6,7 @@ import { StyleRulesCallback } from "material-ui/styles/withStyles"
 
 export const styles: StyleRulesCallback = theme => ({
   root: {
-    ...theme.typography.subheading as any,
+    ...(theme.typography.subheading as any),
     color: theme.palette.text.secondary,
     margin: 0,
   },
@@ -25,9 +25,10 @@ interface IHocProps {
 
 type TFullProps = IHocProps & IProps
 
-const DialogContentRoot = ({ classes, children, className, ...other }: TFullProps) =>
+const DialogContentRoot = ({ classes, children, className, ...other }: TFullProps) => (
   <div className={classNames(classes.root, className)} {...other}>
     {children}
   </div>
+)
 
-export default withStyles<IProps>(styles, { name: "DialogContentRoot" })(DialogContentRoot)
+export default withStyles(styles, { name: "DialogContentRoot" })<IProps>(DialogContentRoot)
