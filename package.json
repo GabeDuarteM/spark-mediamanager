@@ -86,7 +86,7 @@
     "css-loader": "^0.28.7",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
-    "enzyme": "^2.9.1",
+    "enzyme": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "img-loader": "^2.0.0",
