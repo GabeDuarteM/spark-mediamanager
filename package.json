@@ -42,7 +42,7 @@
     "material-ui-icons": "^1.0.0-beta.10",
     "material-ui-legacy": "npm:material-ui",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-hot-loader": "next",
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.6",
