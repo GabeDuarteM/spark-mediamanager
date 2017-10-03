@@ -63,7 +63,7 @@
     "@types/jest": "^21.1.0",
     "@types/node": "^8.0.28",
     "@types/react": "15.6.1",
-    "@types/react-dom": "^15.5.4",
+    "@types/react-dom": "^16.0.0",
     "@types/react-hot-loader": "^3.0.4",
     "@types/react-intl": "^2.3.2",
     "@types/react-redux": "^5.0.9",
