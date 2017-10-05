@@ -15,13 +15,5 @@ const Component = (
 )
 
 storiesOf("Home", module)
-  .add("dark theme", () =>
-    <ContainerWrapper>
-      {Component}
-    </ContainerWrapper>
-  )
-  .add("light theme", () =>
-    <ContainerWrapper type="light">
-      {Component}
-    </ContainerWrapper>
-  )
+  .add("dark theme", () => <ContainerWrapper>{Component}</ContainerWrapper>)
+  .add("light theme", () => <ContainerWrapper type="light">{Component}</ContainerWrapper>)

@@ -30,17 +30,31 @@ describe("COMPONENT: <PosterList />", () => {
   })
 
   it("should render a Poster component for each video passed", () => {
-    expect(wrapperShallow.dive().dive().find(Poster).length).toBe(videos.length)
+    expect(
+      wrapperShallow
+        .dive()
+        .dive()
+        .find(Poster).length
+    ).toBe(videos.length)
   })
 
   it("should be able to call a function when clicking the link", () => {
-    wrapperShallow.dive().dive().find(Link).forEach(elem => elem.simulate("click"))
+    wrapperShallow
+      .dive()
+      .dive()
+      .find(Link)
+      .forEach(elem => elem.simulate("click"))
     expect(setEditVideo.mock.calls.length).toEqual(videos.length)
     setEditVideo.mockReset()
   })
 
   it("should pass the video to the function when clicking the link", () => {
-    wrapperShallow.dive().dive().find(Link).first().simulate("click")
+    wrapperShallow
+      .dive()
+      .dive()
+      .find(Link)
+      .first()
+      .simulate("click")
     expect(setEditVideo).toHaveBeenCalledWith(videos[0])
     setEditVideo.mockReset()
   })

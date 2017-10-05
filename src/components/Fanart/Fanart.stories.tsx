@@ -9,13 +9,13 @@ import Fanart from "./Fanart"
 const poster = returnMockSerie()[0]
 
 storiesOf("Fanart", module)
-  .add("dark theme", () =>
+  .add("dark theme", () => (
     <ContainerWrapper>
       <Fanart video={poster} />
     </ContainerWrapper>
-  )
-  .add("light theme", () =>
+  ))
+  .add("light theme", () => (
     <ContainerWrapper type="light">
       <Fanart video={poster} />
     </ContainerWrapper>
-  )
+  ))

@@ -31,6 +31,12 @@ describe("COMPONENT: <IconTextField />", () => {
   })
 
   it("should render a svg inside the iconButton", () => {
-    expect(wrapperShallow.find(IconButton).children().first().is(Search)).toBeTruthy()
+    expect(
+      wrapperShallow
+        .find(IconButton)
+        .children()
+        .first()
+        .is(Search)
+    ).toBeTruthy()
   })
 })

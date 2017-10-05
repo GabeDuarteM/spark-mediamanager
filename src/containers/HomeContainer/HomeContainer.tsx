@@ -19,12 +19,13 @@ interface IHocProps {
   history: any[]
 }
 
-const HomeContainer = ({ setVisibilityFilter, visibilityFilter, history }: IHocProps) =>
+const HomeContainer = ({ setVisibilityFilter, visibilityFilter, history }: IHocProps) => (
   <Home
     handleTabChange={(evt, index) => handleTabChange(index, setVisibilityFilter)}
     selectedTabIndex={getTabIndex(visibilityFilter)}
     changeRouteAdd={() => changeRouteToAdd(history)}
   />
+)
 
 const handleTabChange = (index: number, setVisibilityFilter: TVisibilityFilterFunc) => {
   switch (index) {

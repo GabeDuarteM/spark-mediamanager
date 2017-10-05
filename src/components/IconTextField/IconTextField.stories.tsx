@@ -14,7 +14,7 @@ const baseProps: any = {
 }
 
 storiesOf("IconTextFields", module)
-  .add("dark theme", () =>
+  .add("dark theme", () => (
     <ComponentWrapper locale="pt">
       <Theme>
         <Paper style={{ padding: 32 }}>
@@ -22,8 +22,8 @@ storiesOf("IconTextFields", module)
         </Paper>
       </Theme>
     </ComponentWrapper>
-  )
-  .add("light theme", () =>
+  ))
+  .add("light theme", () => (
     <ComponentWrapper locale="en">
       <Theme type="light">
         <Paper style={{ padding: 32 }}>
@@ -31,4 +31,4 @@ storiesOf("IconTextFields", module)
         </Paper>
       </Theme>
     </ComponentWrapper>
-  )
+  ))

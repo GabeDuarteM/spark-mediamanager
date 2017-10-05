@@ -10,24 +10,24 @@ import Poster from "./Poster"
 const poster = returnMockSerie()[0]
 
 storiesOf("Poster", module)
-  .add("dark theme", () =>
+  .add("dark theme", () => (
     <ComponentWrapper locale="pt">
       <Theme>
         <Poster video={poster} />
       </Theme>
     </ComponentWrapper>
-  )
-  .add("light theme", () =>
+  ))
+  .add("light theme", () => (
     <ComponentWrapper locale="en">
       <Theme type="light">
         <Poster video={poster} />
       </Theme>
     </ComponentWrapper>
-  )
-  .add("no subtitle", () =>
+  ))
+  .add("no subtitle", () => (
     <ComponentWrapper locale="pt">
       <Theme>
         <Poster showSubtitle={false} video={poster} />
       </Theme>
     </ComponentWrapper>
-  )
+  ))

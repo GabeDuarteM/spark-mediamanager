@@ -11,17 +11,17 @@ import PosterList from "./PosterList"
 const posters = [...returnMockSerie(), ...returnMockMovie(), ...returnMockAnime()]
 
 storiesOf("PosterList", module)
-  .add("dark theme", () =>
+  .add("dark theme", () => (
     <ComponentWrapper locale="pt">
       <Theme>
         <PosterList videos={posters} setEditVideo={video => action(`Set video edit: ${video.api.title}`)} />
       </Theme>
     </ComponentWrapper>
-  )
-  .add("light theme", () =>
+  ))
+  .add("light theme", () => (
     <ComponentWrapper locale="en">
       <Theme type="light">
         <PosterList videos={posters} setEditVideo={video => action(`Set video edit: ${video.api.title}`)} />
       </Theme>
     </ComponentWrapper>
-  )
+  ))

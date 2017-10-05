@@ -1,7 +1,6 @@
 import * as React from "react"
 import { render } from "react-dom"
 import { AppContainer } from "react-hot-loader"
-import * as injectTapEventPlugin from "react-tap-event-plugin"
 import "typeface-roboto"
 
 import App from "./containers/App"
@@ -23,7 +22,6 @@ const initialState: IStoreState = {
 
 const store = configureStore(initialState)
 const rootEl = document.getElementById("root")
-injectTapEventPlugin()
 
 render(
   <AppContainer>

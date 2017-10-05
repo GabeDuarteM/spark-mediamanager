@@ -14,17 +14,17 @@ const baseProps: any = {
 }
 
 storiesOf("VideoDetails", module)
-  .add("dark theme", () =>
+  .add("dark theme", () => (
     <ComponentWrapper locale="pt">
       <Theme>
         <VideoDetails {...baseProps} />
       </Theme>
     </ComponentWrapper>
-  )
-  .add("light theme", () =>
+  ))
+  .add("light theme", () => (
     <ComponentWrapper locale="en">
       <Theme type="light">
         <VideoDetails {...baseProps} />
       </Theme>
     </ComponentWrapper>
-  )
+  ))
