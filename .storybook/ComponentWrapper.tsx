@@ -14,14 +14,14 @@ interface IProps {
   locale: TSupportedLangs
 }
 
-const ComponentWrapper = ({ children, locale }: IProps) =>
+const ComponentWrapper = ({ children, locale }: IProps) => (
   <IntlProvider locale={locale} messages={getMessages(locale)}>
     <div
       className="ComponentWrapper"
       style={{
         display: "flex",
         height: "100vh",
-        userSelect: "none"
+        userSelect: "none",
       }}
     >
       <div className="ComponentWrapper" style={{ margin: "auto" }}>
@@ -29,5 +29,6 @@ const ComponentWrapper = ({ children, locale }: IProps) =>
       </div>
     </div>
   </IntlProvider>
+)
 
 export default ComponentWrapper

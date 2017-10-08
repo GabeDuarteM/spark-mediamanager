@@ -2,8 +2,7 @@
   "name": "spark-mediamanager",
   "version": "0.1.0",
   "main": "src/main.js",
-  "author":
-    "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
+  "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
   "license": "MIT",
   "scripts": {
     "start":
@@ -15,12 +14,12 @@
     "test-cov": "jest --coverage",
     "test": "jest --watch",
     "lint": "yarn lint-ts && yarn lint-prettier",
-    "lint-ts": "tslint 'src/**/*.ts' '*.ts' -e 'src/**/*.d.ts'",
-    "lint-prettier": "prettier -l \"**/*.ts\"",
+    "lint-ts": "tslint 'src/**/*.{ts|tsx}' '*.{ts|tsx}' -e 'src/**/*.d.ts'",
+    "lint-prettier-fix": "yarn lint-prettier --write",
+    "lint-prettier": "prettier -l \"**/*.{tsx,ts,js,json}\"",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
-    "build-ci":
-      "yarn test && yarn lint && yarn build-dev && yarn build && codecov",
+    "build-ci": "yarn test && yarn lint && yarn build-dev && yarn build && codecov",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
     "build-storybook": "build-storybook"
