@@ -1,7 +1,6 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
-import { createMount, createShallow } from "material-ui/test-utils"
+import { mount, shallow } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import DialogContentRoot from "./DialogContentRoot"
@@ -9,8 +8,6 @@ import DialogContentRoot from "./DialogContentRoot"
 describe("COMPONENT: <DialogContentRoot />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
 

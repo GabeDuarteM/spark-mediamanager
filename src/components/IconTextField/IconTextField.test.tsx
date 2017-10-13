@@ -1,9 +1,8 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
+import { shallow, ShallowWrapper } from "enzyme"
 import { IconButton, TextField } from "material-ui"
 import { Search } from "material-ui-icons"
-import { createMount, createShallow } from "material-ui/test-utils"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import IconTextField from "./IconTextField"
@@ -11,28 +10,25 @@ import IconTextField from "./IconTextField"
 describe("COMPONENT: <IconTextField />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
-  let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
 
   it("should render without crashing", () => {
     const component = <IconTextField IconSvg={Search} />
-    wrapperMount = mount(component)
     wrapperShallow = shallow(component)
   })
 
   it("should render a textbox", () => {
-    expect(wrapperMount.childAt(0).is(TextField)).toBeTruthy()
+    expect(wrapperShallow.dive().find(TextField).length).toBe(1)
   })
 
   it("should render an iconButton", () => {
-    expect(wrapperMount.childAt(1).is(IconButton)).toBeTruthy()
+    expect(wrapperShallow.dive().find(IconButton).length).toBe(1)
   })
 
   it("should render a svg inside the iconButton", () => {
     expect(
       wrapperShallow
+        .dive()
         .find(IconButton)
         .children()
         .first()

@@ -1,7 +1,6 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
-import { createMount, createShallow } from "material-ui/test-utils"
+import { mount, shallow } from "enzyme"
 
 import { returnMockSerie, transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import Poster from "../Poster/Poster"
@@ -10,8 +9,6 @@ import Fanart from "./Fanart"
 describe("COMPONENT: <Fanart />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
   const video = returnMockSerie()[0]

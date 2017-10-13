@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { createMount, createShallow } from "material-ui/test-utils"
+import { shallow } from "enzyme"
 import configureStore from "redux-mock-store"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
@@ -14,16 +14,12 @@ describe("COMPONENT: <AppWrapper />", () => {
     transformConsoleMessagesToExceptions()
   })
 
-  const mount = createMount()
-  const shallow = createShallow()
-
   it("should render without crashing with no store", () => {
     const component = (
       <AppWrapper locale="en">
         <div />
       </AppWrapper>
     )
-    mount(component)
     shallow(component)
   })
 
@@ -33,7 +29,6 @@ describe("COMPONENT: <AppWrapper />", () => {
         <div />
       </AppWrapper>
     )
-    mount(component)
     shallow(component)
   })
 })

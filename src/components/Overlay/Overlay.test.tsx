@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
+import { mount, shallow } from "enzyme"
 import { createMount, createShallow } from "material-ui/test-utils"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
@@ -9,8 +9,6 @@ import Overlay from "./Overlay"
 describe("COMPONENT: <Overlay />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
 

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { createMount, createShallow } from "material-ui/test-utils"
+import { mount, shallow } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../utils/testUtils"
@@ -9,9 +9,6 @@ import Poster from "./Poster"
 
 describe("<Poster />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
-
-  const mount = createMount()
-  const shallow = createShallow()
 
   it("should render without crashing", () => {
     mount(<Poster video={returnMockSerie()[0]} />)

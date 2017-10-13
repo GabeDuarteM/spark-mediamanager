@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
+import { mount, shallow } from "enzyme"
 import { createMount, createShallow } from "material-ui/test-utils"
 import { BrowserRouter, Link } from "react-router-dom"
 
@@ -12,8 +12,6 @@ import PosterList from "./PosterList"
 describe("COMPONENT: <PosterList />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
   const videos = [...returnMockSerie(), ...returnMockMovie(), ...returnMockAnime()]
