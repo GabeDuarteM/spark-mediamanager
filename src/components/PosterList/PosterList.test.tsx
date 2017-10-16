@@ -1,7 +1,6 @@
 import * as React from "react"
 
-import { mount, shallow } from "enzyme"
-import { createMount, createShallow } from "material-ui/test-utils"
+import { shallow, ShallowWrapper } from "enzyme"
 import { BrowserRouter, Link } from "react-router-dom"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
@@ -12,7 +11,6 @@ import PosterList from "./PosterList"
 describe("COMPONENT: <PosterList />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
   const videos = [...returnMockSerie(), ...returnMockMovie(), ...returnMockAnime()]
   const setEditVideo = jest.fn()
@@ -23,13 +21,13 @@ describe("COMPONENT: <PosterList />", () => {
         <PosterList videos={videos} setEditVideo={setEditVideo} />
       </BrowserRouter>
     )
-    wrapperMount = mount(component)
     wrapperShallow = shallow(component)
   })
 
   it("should render a Poster component for each video passed", () => {
     expect(
       wrapperShallow
+        .dive()
         .dive()
         .dive()
         .find(Poster).length
@@ -40,6 +38,7 @@ describe("COMPONENT: <PosterList />", () => {
     wrapperShallow
       .dive()
       .dive()
+      .dive()
       .find(Link)
       .forEach(elem => elem.simulate("click"))
     expect(setEditVideo.mock.calls.length).toEqual(videos.length)
@@ -48,6 +47,7 @@ describe("COMPONENT: <PosterList />", () => {
 
   it("should pass the video to the function when clicking the link", () => {
     wrapperShallow
+      .dive()
       .dive()
       .dive()
       .find(Link)

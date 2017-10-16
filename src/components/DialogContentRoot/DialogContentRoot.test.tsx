@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { mount, shallow } from "enzyme"
+import { shallow, ShallowWrapper } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import DialogContentRoot from "./DialogContentRoot"
@@ -8,7 +8,6 @@ import DialogContentRoot from "./DialogContentRoot"
 describe("COMPONENT: <DialogContentRoot />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  let wrapperMount: ReactWrapper<any, any>
   let wrapperShallow: ShallowWrapper<any, any>
 
   it("should render without crashing", () => {
@@ -17,7 +16,6 @@ describe("COMPONENT: <DialogContentRoot />", () => {
         <div>text</div>
       </DialogContentRoot>
     )
-    wrapperMount = mount(component)
     wrapperShallow = shallow(component)
   })
 
