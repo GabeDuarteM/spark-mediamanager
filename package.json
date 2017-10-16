@@ -5,7 +5,8 @@
   "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start-dev-server\" \"yarn start-electron\"",
+    "start":
+      "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start-dev-server\" \"yarn start-electron\"",
     "start-electron": "cross-env NODE_ENV=development electron .",
     "start-dev-server": "webpack-dev-server --env.env=dev",
     "test-ci": "jest --coverage",
@@ -13,28 +14,23 @@
     "test-cov": "jest --coverage",
     "test": "jest --watch",
     "lint": "yarn lint-ts && yarn lint-prettier",
-    "lint-ts": "tslint 'src/**/*.ts' '*.ts' -e 'src/**/*.d.ts'",
-    "lint-prettier": "prettier -l \"**/*.ts\"",
+    "lint-ts": "tslint 'src/**/*.{ts|tsx}' '*.{ts|tsx}' -e 'src/**/*.d.ts'",
+    "lint-prettier-fix": "yarn lint-prettier --write",
+    "lint-prettier": "prettier -l \"**/*.{tsx,ts,js,json}\"",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
-    "build-ci": "yarn test-ci && yarn lint && yarn build-dev && yarn build && codecov",
+    "build-ci": "yarn test && yarn lint && yarn build-dev && yarn build && codecov",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
     "build-storybook": "build-storybook"
   },
   "jest": {
-    "setupFiles": [
-      "./src/utils/jest.setup.ts"
-    ],
+    "setupFiles": ["./src/utils/jest.setup.ts"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "mapCoverage": true,
     "testURL": "http://localhost"
   },
@@ -57,6 +53,7 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "@types/react-dom": "^16.0.0",
     "@storybook/react": "^3.2.12",
     "@types/classnames": "^2.2.3",
     "@types/enzyme": "^3.1.0",

@@ -5,11 +5,11 @@ module.exports = function(config, env) {
 
   config.module.rules.push({
     test: /\.tsx$/,
-    loader: "awesome-typescript-loader"
+    loader: "awesome-typescript-loader",
   })
   config.module.rules.push({
     test: /\.ts$/,
-    loader: "awesome-typescript-loader"
+    loader: "awesome-typescript-loader",
   })
   config.resolve.extensions.push(".tsx")
   config.resolve.extensions.push(".ts")
