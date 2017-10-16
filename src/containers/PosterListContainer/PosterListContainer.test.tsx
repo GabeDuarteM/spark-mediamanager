@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { createMount, createShallow } from "material-ui/test-utils"
+import { mount, shallow } from "enzyme"
 import { Link } from "react-router-dom"
 
 import { EVideoType } from "../../@types/EVideoType"
@@ -18,9 +18,6 @@ import PosterListContainer from "./PosterListContainer"
 
 describe("COMPONENT: <PosterListContainer />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
-
-  const mount = createMount()
-  const shallow = createShallow()
 
   it("should render without crashing with visibilityFilter set to serie", () => {
     const initialState: IStoreState = {

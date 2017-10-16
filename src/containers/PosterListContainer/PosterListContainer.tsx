@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { connect, MapStateToProps } from "react-redux"
+import { connect } from "react-redux"
 
 import { EVideoType } from "../../@types/EVideoType"
 import IVideo from "../../@types/IVideo"
@@ -43,7 +43,7 @@ const setVisibleVideos = (videos: IVideoState): IVideo[] => {
 const sortPosters: (posters: IVideo[]) => IVideo[] = posters =>
   posters.sort((posterA, posterB) => posterA.api.title.localeCompare(posterB.api.title))
 
-const mapStateToProps: MapStateToProps<{ videos: IVideoState }, IProps> = (state: IStoreState, ownProps?: IProps) => ({
+const mapStateToProps = (state: IStoreState, ownProps?: IProps) => ({
   videos: state.video,
 })
 
@@ -51,4 +51,4 @@ const mapDispatchToProps = (dispatch: any, ownProps: IProps) => ({
   setVideoEdit: (video: IVideo, videoType: EVideoType) => dispatch(set(video)),
 })
 
-export default connect<any, any, IProps>(mapStateToProps, mapDispatchToProps)(PosterListContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(PosterListContainer)

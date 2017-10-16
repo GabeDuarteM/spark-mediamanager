@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { shallow, ShallowWrapper } from "enzyme"
+import { shallow } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import DialogContentRoot from "./DialogContentRoot"
@@ -8,15 +8,13 @@ import DialogContentRoot from "./DialogContentRoot"
 describe("COMPONENT: <DialogContentRoot />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  let wrapperShallow: ShallowWrapper<any, any>
-
   it("should render without crashing", () => {
     const component = (
       <DialogContentRoot>
         <div>text</div>
       </DialogContentRoot>
     )
-    wrapperShallow = shallow(component)
+    shallow(component)
   })
 
   it("should apply custom classnames to the component", () => {

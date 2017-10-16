@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { mount, shallow } from "material-ui/test-utils"
+import { shallow } from "enzyme"
 
 import configureStore from "../../store/store"
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
@@ -18,7 +18,6 @@ describe("COMPONENT: <Home />", () => {
         <Home selectedTabIndex={0} handleTabChange={jest.fn} changeRouteAdd={jest.fn} />
       </AppWrapper>
     )
-    mount(component)
     shallow(component)
   })
 })

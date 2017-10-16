@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { TextField } from "material-ui"
-import { createMount, createShallow } from "material-ui/test-utils"
+import { mount, shallow } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import AppWrapper from "../AppWrapper/AppWrapper"
@@ -9,9 +9,6 @@ import Theme from "./Theme"
 
 describe("COMPONENT: <Theme />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
-
-  const mount = createMount()
-  const shallow = createShallow()
 
   it("should render without crashing", () => {
     const component = (

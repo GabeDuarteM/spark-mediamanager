@@ -1,6 +1,7 @@
+//  TODO: When https://github.com/airbnb/enzyme/issues/1150 gets closed, uncomment the mount parts. <16-10-17, Gabriel Duarte>
 import * as React from "react"
 
-import { createMount, createShallow } from "material-ui/test-utils"
+import { shallow } from "enzyme"
 import * as injectTapEventPlugin from "react-tap-event-plugin"
 
 import { returnMockAnime, transformConsoleMessagesToExceptions } from "../../utils/testUtils"
@@ -12,16 +13,13 @@ injectTapEventPlugin()
 describe("COMPONENT: <VideoDetails />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  const mount = createMount()
-  const shallow = createShallow()
-
   it("should render without crashing", () => {
     const component = (
       <AppWrapper locale="en">
         <VideoDetails handleClose={jest.fn} open video={returnMockAnime()[0]} />
       </AppWrapper>
     )
-    mount(component)
+    // mount(component)
     shallow(component)
   })
 
@@ -31,7 +29,7 @@ describe("COMPONENT: <VideoDetails />", () => {
         <VideoDetails open handleClose={jest.fn} video={returnMockAnime()[0]} classNames="test" />
       </AppWrapper>
     )
-    mount(component)
+    // mount(component)
     shallow(component)
   })
 })

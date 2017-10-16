@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { mount, shallow } from "enzyme"
+import { shallow } from "enzyme"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import { returnMockAnime, returnMockMovie, returnMockSerie } from "../../utils/testUtils"
@@ -11,14 +11,14 @@ describe("<Poster />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
   it("should render without crashing", () => {
-    mount(<Poster video={returnMockSerie()[0]} />)
-    mount(<Poster video={returnMockMovie()[0]} />)
-    mount(<Poster video={returnMockAnime()[0]} />)
+    shallow(<Poster video={returnMockSerie()[0]} />)
+    shallow(<Poster video={returnMockMovie()[0]} />)
+    shallow(<Poster video={returnMockAnime()[0]} />)
   })
 
   it("should render passing all the props without crashing", () => {
-    mount(<Poster video={returnMockAnime()[0]} showSubtitle hoverEffect className="test" />)
-    mount(<Poster video={returnMockAnime()[0]} showSubtitle={false} hoverEffect className="test" />)
+    shallow(<Poster video={returnMockAnime()[0]} showSubtitle hoverEffect className="test" />)
+    shallow(<Poster video={returnMockAnime()[0]} showSubtitle={false} hoverEffect className="test" />)
   })
 
   it("should place a class inside the component", () => {
@@ -28,11 +28,21 @@ describe("<Poster />", () => {
 
   it("should render a PosterOverlay when showSubtitle is true", () => {
     const wrapper = shallow(<Poster video={returnMockAnime()[0]} showSubtitle className="test" />)
-    expect(wrapper.find(PosterOverlay).exists()).toBeTruthy()
+    expect(
+      wrapper
+        .dive()
+        .find(PosterOverlay)
+        .exists()
+    ).toBeTruthy()
   })
 
   it("should not render a PosterOverlay when showSubtitle is false", () => {
     const wrapper = shallow(<Poster video={returnMockAnime()[0]} showSubtitle={false} className="test" />)
-    expect(wrapper.find(PosterOverlay).exists()).toBeFalsy()
+    expect(
+      wrapper
+        .dive()
+        .find(PosterOverlay)
+        .exists()
+    ).toBeFalsy()
   })
 })
