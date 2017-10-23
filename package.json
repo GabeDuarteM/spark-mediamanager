@@ -79,7 +79,7 @@
     "@types/webpack-env": "^1.13.2",
     "awesome-typescript-loader": "^3.2.3",
     "clean-webpack-plugin": "^0.1.17",
-    "codecov": "^2.3.1",
+    "codecov": "^3.0.0",
     "concurrently": "^3.5.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
