@@ -70,7 +70,7 @@
     "@types/react-tap-event-plugin": "^0.0.30",
     "@types/recompose": "^0.24.2",
     "@types/redux-form": "^7.0.6",
-    "@types/redux-mock-store": "^0.0.11",
+    "@types/redux-mock-store": "^0.0.12",
     "@types/storybook__addon-actions": "^3.0.1",
     "@types/storybook__addon-knobs": "^3.2.0",
     "@types/storybook__react": "^3.0.5",
