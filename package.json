@@ -49,7 +49,7 @@
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-form": "^7.1.1",
-    "typeface-roboto": "^0.0.41",
+    "typeface-roboto": "^0.0.43",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
