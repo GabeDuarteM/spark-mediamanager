@@ -290,6 +290,10 @@ export const transformConsoleMessagesToExceptions = () => {
     throw new Error(warn)
   })
   console.error = jest.fn(error => {
+    // don't throw if the error is the complementary error from react 16
+    if (error.message && error.message.startsWith("The above error occurred in the")) {
+      return
+    }
     throw new Error(error)
   })
 }
