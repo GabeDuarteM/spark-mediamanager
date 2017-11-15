@@ -18,7 +18,7 @@
     "lint-prettier": "prettier -l \"**/*.{tsx,ts,js,json}\"",
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
-    "build-ci": "yarn test && yarn lint && yarn build-dev && yarn build && codecov",
+    "build-ci": "yarn test-ci && yarn lint && yarn build-dev && yarn build && codecov",
     "storybook": "start-storybook -p 6006",
     "sb": "yarn storybook",
     "build-storybook": "build-storybook"
