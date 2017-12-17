@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { TextField } from "material-ui"
 import { mount, shallow } from "enzyme"
+import { TextField } from "material-ui"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import AppWrapper from "../AppWrapper/AppWrapper"

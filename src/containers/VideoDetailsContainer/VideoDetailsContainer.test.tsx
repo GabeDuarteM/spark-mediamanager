@@ -1,9 +1,7 @@
-//  TODO: When https://github.com/airbnb/enzyme/issues/1150 gets closed, uncomment the lifecycle related tests. <16-10-17, Gabriel Duarte>
-// import Modal from "material-ui/internal/Modal"
-// import * as React from "react"
 import * as React from "react"
 
-import { shallow } from "enzyme"
+import { mount, shallow } from "enzyme"
+import { Dialog } from "material-ui"
 import * as injectTapEventPlugin from "react-tap-event-plugin"
 
 import { EVideoType } from "../../@types/EVideoType"
@@ -39,74 +37,74 @@ describe("COMPONENT: <VideoDetailsContainer />", () => {
         <VideoDetailsContainer video={returnMockSerie()[0]} />
       </AppWrapper>
     )
-    // mount(component)
+    mount(component)
     shallow(component)
   })
 
-  // it("should clear the editVideo state on unmount", () => {
-  // const initialState: IStoreState = {
-  // video: {
-  // series: [...returnMockSerie()],
-  // movies: [...returnMockMovie()],
-  // animes: [...returnMockAnime()],
-  // visibilityFilter: "anime" as EVideoType,
-  // },
-  // editVideo: { video: returnMockSerie()[0] },
-  // }
-  // const store = configureStore(initialState)
-  // const component = (
-  // <AppWrapper store={store} locale="en">
-  // <VideoDetailsContainer video={returnMockSerie()[0]} />
-  // </AppWrapper>
-  // )
-  // // mount(component).unmount()
-  // expect(store.getState().editVideo.video).toBeUndefined()
-  // })
+  it("should clear the editVideo state on unmount", () => {
+    const initialState: IStoreState = {
+      video: {
+        series: [...returnMockSerie()],
+        movies: [...returnMockMovie()],
+        animes: [...returnMockAnime()],
+        visibilityFilter: "anime" as EVideoType,
+      },
+      editVideo: { video: returnMockSerie()[0] },
+    }
+    const store = configureStore(initialState)
+    const component = (
+      <AppWrapper store={store} locale="en">
+        <VideoDetailsContainer video={returnMockSerie()[0]} />
+      </AppWrapper>
+    )
+    mount(component).unmount()
+    expect(store.getState().editVideo.video).toBeUndefined()
+  })
 
-  // it("should clear the editVideo state on unmount", () => {
-  // const initialState: IStoreState = {
-  // video: {
-  // series: [...returnMockSerie()],
-  // movies: [...returnMockMovie()],
-  // animes: [...returnMockAnime()],
-  // visibilityFilter: "anime" as EVideoType,
-  // },
-  // editVideo: { video: returnMockSerie()[0] },
-  // }
-  // const store = configureStore(initialState)
-  // const component = (
-  // <AppWrapper store={store} locale="en">
-  // <VideoDetailsContainer video={returnMockSerie()[0]} />
-  // </AppWrapper>
-  // )
-  // // mount(component).unmount()
-  // expect(store.getState().editVideo.video).toBeUndefined()
-  // })
+  it("should clear the editVideo state on unmount", () => {
+    const initialState: IStoreState = {
+      video: {
+        series: [...returnMockSerie()],
+        movies: [...returnMockMovie()],
+        animes: [...returnMockAnime()],
+        visibilityFilter: "anime" as EVideoType,
+      },
+      editVideo: { video: returnMockSerie()[0] },
+    }
+    const store = configureStore(initialState)
+    const component = (
+      <AppWrapper store={store} locale="en">
+        <VideoDetailsContainer video={returnMockSerie()[0]} />
+      </AppWrapper>
+    )
+    mount(component).unmount()
+    expect(store.getState().editVideo.video).toBeUndefined()
+  })
 
-  // it("should call onRequestClose's function without crashing", () => {
-  // const initialState: IStoreState = {
-  // video: {
-  // series: [...returnMockSerie()],
-  // movies: [...returnMockMovie()],
-  // animes: [...returnMockAnime()],
-  // visibilityFilter: "anime" as EVideoType,
-  // },
-  // editVideo: { video: returnMockSerie()[0] },
-  // }
-  // const store = configureStore(initialState)
-  // const component = (
-  // <AppWrapper store={store} locale="en">
-  // <VideoDetailsContainer video={returnMockSerie()[0]} />
-  // </AppWrapper>
-  // )
+  it("should call onRequestClose's function without crashing", () => {
+    const initialState: IStoreState = {
+      video: {
+        series: [...returnMockSerie()],
+        movies: [...returnMockMovie()],
+        animes: [...returnMockAnime()],
+        visibilityFilter: "anime" as EVideoType,
+      },
+      editVideo: { video: returnMockSerie()[0] },
+    }
+    const store = configureStore(initialState)
+    const component = (
+      <AppWrapper store={store} locale="en">
+        <VideoDetailsContainer video={returnMockSerie()[0]} />
+      </AppWrapper>
+    )
 
-  // const onRequestClose = mount(component)
-  // .find(Modal)
-  // .prop("onRequestClose")
-  // if (onRequestClose) {
-  // onRequestClose({} as React.SyntheticEvent<{}>)
-  // }
+    const onRequestClose = mount(component)
+      .find(Dialog)
+      .prop("onRequestClose")
+    if (onRequestClose) {
+      onRequestClose({} as React.SyntheticEvent<{}>)
+    }
 
-  // expect(onRequestClose).toBeDefined()
-  // })
+    expect(onRequestClose).toBeDefined()
+  })
 })
