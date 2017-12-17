@@ -6,7 +6,7 @@ init:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - yarn install
+  - npm install
 
 test_script:
   - node --version && npm --version && yarn --version
