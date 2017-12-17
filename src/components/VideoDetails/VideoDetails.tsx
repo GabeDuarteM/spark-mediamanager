@@ -78,7 +78,7 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
   intl,
   handleClose,
   staticContext,
-  ...rest,
+  ...rest
 }) => {
   return (
     <Dialog open={open} onRequestClose={handleClose} {...rest} maxWidth="md">

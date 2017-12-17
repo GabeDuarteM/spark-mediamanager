@@ -46,7 +46,7 @@ const Poster = ({
   video,
   showSubtitle = true,
   hoverEffect = true,
-  ...rest,
+  ...rest
 }: IProps & IHocProps) => (
   <Paper
     style={{ backgroundImage: `url(${video.api.poster})` }}
