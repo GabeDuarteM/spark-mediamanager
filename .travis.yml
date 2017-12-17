@@ -3,7 +3,7 @@ node_js:
   - node
 script:
   - node --version && npm --version
-  - yarn build-ci
+  - npm run build-ci
 os:
   - linux
   - osx
