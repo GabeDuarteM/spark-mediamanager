@@ -7,7 +7,7 @@
 ![got](https://img.shields.io/badge/valar-morghulis-brightgreen.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/RkdEqExiEGhtxGZTKJW3uDnk/GabrielDuarteM/spark-mediamanager'><img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/RkdEqExiEGhtxGZTKJW3uDnk/GabrielDuarteM/spark-mediamanager.svg' /></a>
+
 
 ## Description
 
