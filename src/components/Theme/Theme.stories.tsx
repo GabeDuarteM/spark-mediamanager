@@ -6,13 +6,13 @@
 
 // import Theme from "./Theme"
 
-// const StoryWrapper: React.StatelessComponent<{}> = ({ children }) =>
+// const StoryWrapper: React.StatelessComponent<{}> = ({ children }) => (
 //   <div
 //     className="storyWrapper"
 //     style={{
 //       display: "flex",
 //       height: "calc(100vh - 16px)",
-//       width: "100%"
+//       width: "100%",
 //     }}
 //   >
 //     <div
@@ -21,51 +21,53 @@
 //         margin: "auto",
 //         display: "flex",
 //         height: "calc(100vh - 16px)",
-//         width: "100%"
+//         width: "100%",
 //       }}
 //     >
 //       {children}
 //     </div>
 //   </div>
+// )
 
-// const ThemeDemo: React.StatelessComponent<{}> = () =>
+// const ThemeDemo: React.StatelessComponent<{}> = () => (
 //   <Paper
 //     style={{
 //       margin: "auto",
 //       display: "flex",
 //       height: "calc(100vh - 16px)",
-//       width: "100%"
+//       width: "100%",
 //     }}
 //   >
 //     <div
 //       style={{
 //         margin: "auto",
 //         display: "flex",
-//         flexWrap: "wrap"
+//         flexWrap: "wrap",
 //       }}
 //     >
 //       <Button
 //         style={{
-//           height: 36
+//           height: 36,
 //         }}
 //       >
 //         demo
 //       </Button>
 //     </div>
 //   </Paper>
+// )
 
 // storiesOf("Theme", module)
-//   .add("dark", () =>
+//   .add("dark", () => (
 //     <StoryWrapper>
 //       <Theme type="dark">
 //         <ThemeDemo />
 //       </Theme>
 //     </StoryWrapper>
-//   )
-//   .add("light", () =>
+//   ))
+//   .add("light", () => (
 //     <StoryWrapper>
 //       <Theme type="light">
 //         <ThemeDemo />
 //       </Theme>
 //     </StoryWrapper>
-//   )
+//   ))

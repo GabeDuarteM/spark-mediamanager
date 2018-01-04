@@ -11,12 +11,5 @@ const enhancer = compose(devtools)
 export default function configureStore(initialState?: any) {
   const store = createStore(rootReducer, initialState, enhancer)
 
-  if (module.hot) {
-    module.hot.accept("./reducers", () => {
-      const reducers = require("./reducers").default
-      store.replaceReducer(reducers)
-    })
-  }
-
   return store
 }

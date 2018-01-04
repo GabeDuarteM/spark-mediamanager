@@ -81,7 +81,7 @@ describe("COMPONENT: <VideoDetailsContainer />", () => {
     expect(store.getState().editVideo.video).toBeUndefined()
   })
 
-  it("should call onRequestClose's function without crashing", () => {
+  it("should call onClose's function without crashing", () => {
     const initialState: IStoreState = {
       video: {
         series: [...returnMockSerie()],
@@ -98,13 +98,13 @@ describe("COMPONENT: <VideoDetailsContainer />", () => {
       </AppWrapper>
     )
 
-    const onRequestClose = mount(component)
+    const onClose = mount(component)
       .find(Dialog)
-      .prop("onRequestClose")
-    if (onRequestClose) {
-      onRequestClose({} as React.SyntheticEvent<{}>)
+      .prop("onClose")
+    if (onClose) {
+      onClose({} as React.SyntheticEvent<{}>)
     }
 
-    expect(onRequestClose).toBeDefined()
+    expect(onClose).toBeDefined()
   })
 })

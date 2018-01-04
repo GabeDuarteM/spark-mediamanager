@@ -5,9 +5,7 @@ import { Search, Settings, Tv } from "material-ui-icons"
 import {} from "material-ui-icons"
 import { withStyles } from "material-ui/styles"
 import { StyleRules } from "material-ui/styles/withStyles"
-import { FormattedMessage, injectIntl } from "react-intl"
-import * as ReactIntl from "react-intl"
-import { compose } from "recompose"
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl"
 
 import IVideo from "../../@types/IVideo"
 import DialogContentRoot from "../DialogContentRoot/DialogContentRoot"
@@ -18,14 +16,15 @@ const styles: StyleRules = {
   dialogRoot: {
     display: "flex",
     flexDirection: "column",
-    margin: [-24, -24, 0, -24],
+    margin: -24,
+    marginBottom: 0,
   },
   fanart: {
     width: 768,
   },
   actions: {
     display: "flex",
-    margin: [0, 24],
+    margin: "0 24px",
   },
   iconButton: {
     marginTop: 8,
@@ -40,9 +39,11 @@ const styles: StyleRules = {
     width: 344,
   },
   overview: {
-    margin: [8, 24],
+    margin: "8px 24px",
   },
 }
+
+const stylesDecorator = withStyles(styles, { name: "VideoDetails" })
 
 interface IProps {
   classNames?: string
@@ -51,37 +52,11 @@ interface IProps {
   handleClose: () => void
 }
 
-interface IHocProps {
-  classes: {
-    fanart: string
-    dialogRoot: string
-    actions: string
-    iconButton: string
-    path: string
-    overview: string
-    select: string
-  }
-  history: any[]
-  match: any
-  location: any
-  staticContext: any
-  intl: ReactIntl.InjectedIntl
-}
+type IFullProps = IProps & InjectedIntlProps
 
-type IFullProps = IProps & IHocProps
-
-const VideoDetails: React.StatelessComponent<IFullProps> = ({
-  classNames,
-  classes,
-  video,
-  open,
-  intl,
-  handleClose,
-  staticContext,
-  ...rest
-}) => {
+const VideoDetails = stylesDecorator<IFullProps>(({ classNames, classes, video, open, intl, handleClose, ...rest }) => {
   return (
-    <Dialog open={open} onRequestClose={handleClose} {...rest} maxWidth="md">
+    <Dialog open={open} onClose={handleClose} {...rest} maxWidth="md">
       <DialogContent className={`${classNames || ""}`}>
         <DialogContentRoot>
           <div className={classes.dialogRoot}>
@@ -127,6 +102,6 @@ const VideoDetails: React.StatelessComponent<IFullProps> = ({
       </DialogActions>
     </Dialog>
   )
-}
+})
 
-export default compose<IFullProps, IProps>(withStyles(styles, { name: "VideoDetails" }), injectIntl)(VideoDetails)
+export default injectIntl(VideoDetails)

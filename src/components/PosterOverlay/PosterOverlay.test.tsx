@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ReactWrapper, ShallowWrapper } from "enzyme"
+import { ReactWrapper } from "enzyme"
 import { Typography } from "material-ui"
 import { createMount, createShallow } from "material-ui/test-utils"
 import { BrowserRouter } from "react-router-dom"
@@ -15,7 +15,6 @@ describe("COMPONENT: <PosterOverlay />", () => {
   const mount = createMount()
   const shallow = createShallow()
   let wrapperMount: ReactWrapper<any, any>
-  let wrapperShallow: ShallowWrapper<any, any>
 
   it("should render without crashing", () => {
     const component = (
@@ -24,7 +23,7 @@ describe("COMPONENT: <PosterOverlay />", () => {
       </BrowserRouter>
     )
     wrapperMount = mount(component)
-    wrapperShallow = shallow(component)
+    shallow(component)
   })
 
   it("should have an overlay component", () => {
@@ -40,7 +39,7 @@ describe("COMPONENT: <PosterOverlay />", () => {
       wrapperMount
         .find(Typography)
         .at(0)
-        .prop("type")
+        .prop("type"),
     ).toBe("title")
   })
 
@@ -49,7 +48,7 @@ describe("COMPONENT: <PosterOverlay />", () => {
       wrapperMount
         .find(Typography)
         .at(0)
-        .text()
+        .text(),
     ).toBe("Game of Thrones")
   })
 
@@ -58,7 +57,7 @@ describe("COMPONENT: <PosterOverlay />", () => {
       wrapperMount
         .find(Typography)
         .at(1)
-        .prop("type")
+        .prop("type"),
     ).toBe("body2")
   })
 
@@ -67,7 +66,7 @@ describe("COMPONENT: <PosterOverlay />", () => {
       wrapperMount
         .find(Typography)
         .at(1)
-        .text()
+        .text(),
     ).toBe("2011")
   })
 })

@@ -7,7 +7,7 @@ import { VIDEO__ADD, VIDEO__EDIT, VIDEO__REMOVE, VIDEO__VISIBILITY_FILTER } from
 
 const video: IBaseReducer<IVideoState> = (
   state = { animes: [], movies: [], series: [], visibilityFilter: "serie" },
-  action = IUnknownAction
+  action = IUnknownAction,
 ) => {
   switch (action.type) {
     case VIDEO__ADD:

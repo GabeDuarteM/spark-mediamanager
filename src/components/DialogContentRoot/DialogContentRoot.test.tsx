@@ -21,7 +21,7 @@ describe("COMPONENT: <DialogContentRoot />", () => {
     const wrapper = shallow(
       <DialogContentRoot className="test">
         <div>text</div>
-      </DialogContentRoot>
+      </DialogContentRoot>,
     )
     expect(wrapper.hasClass("test")).toBeTruthy()
   })
@@ -30,7 +30,7 @@ describe("COMPONENT: <DialogContentRoot />", () => {
     const wrapper = shallow(
       <DialogContentRoot>
         <button id="buttonText">text</button>
-      </DialogContentRoot>
+      </DialogContentRoot>,
     )
     expect(wrapper.find("button#buttonText").exists()).toBeTruthy()
   })

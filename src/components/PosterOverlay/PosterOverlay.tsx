@@ -19,27 +19,20 @@ const styles: StyleRulesCallback = theme => ({
   },
 })
 
+const stylesDecorator = withStyles(styles, { name: "PosterOverlay" })
+
 interface IProps {
   title: string
   year?: number
 }
 
-interface IInjectedProps {
-  classes: {
-    title: string
-    overlay: string
-  }
-}
-
-type IFullProps = IProps & IInjectedProps
-
-const PosterOverlay = ({ title, year, classes }: IFullProps) => (
+const PosterOverlay = stylesDecorator<IProps>(({ title, year, classes }) => (
   <Overlay className={classes.overlay}>
     <Typography className={classes.title} type="title">
       {title}
     </Typography>
     <Typography type="body2">{year}</Typography>
   </Overlay>
-)
+))
 
-export default withStyles(styles, { name: "PosterOverlay" })<IProps>(PosterOverlay)
+export default PosterOverlay

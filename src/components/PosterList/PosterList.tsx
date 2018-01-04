@@ -21,12 +21,7 @@ const styles: StyleRules = {
   },
 }
 
-interface IHocProps {
-  classes: {
-    posterList: string
-    link: string
-  }
-}
+const stylesDecorator = withStyles(styles, { name: "PosterList" })
 
 interface IProps {
   className?: string
@@ -34,9 +29,7 @@ interface IProps {
   setEditVideo: (video: IVideo) => void
 }
 
-type IFullProps = IProps & IHocProps
-
-const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) => (
+const PosterList = stylesDecorator<IProps>(({ classes, className, videos, setEditVideo }) => (
   <div className={classNames(className, classes.posterList)}>
     {videos.map((video, i) => (
       <Link to="/videoDetails" onClick={() => setEditVideo(video)} key={i} className={classes.link}>
@@ -44,6 +37,6 @@ const PosterList = ({ classes, className, videos, setEditVideo }: IFullProps) =>
       </Link>
     ))}
   </div>
-)
+))
 
-export default withStyles(styles, { name: "PosterList" })<IProps>(PosterList)
+export default PosterList

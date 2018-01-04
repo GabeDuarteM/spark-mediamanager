@@ -30,7 +30,7 @@ describe("COMPONENT: <PosterList />", () => {
         .dive()
         .dive()
         .dive()
-        .find(Poster).length
+        .find(Poster).length,
     ).toBe(videos.length)
   })
 

@@ -11,8 +11,8 @@ const styles: StyleRules = {
     backgroundSize: "cover",
     backgroundPosition: "50% 10%",
     height: 250,
-    paddingTop: 30,
-    paddingLeft: 25,
+    paddingTop: 32,
+    paddingLeft: 24,
   },
   poster: {
     height: "186px !important",
@@ -20,21 +20,16 @@ const styles: StyleRules = {
   },
 }
 
+const stylesDecorator = withStyles(styles, { name: "Fanart" })
+
 interface IProps {
   video: IVideo
 }
 
-interface IHocProps {
-  classes: {
-    poster: string
-    fanart: string
-  }
-}
-
-const Fanart: React.StatelessComponent<IProps & IHocProps> = ({ video, classes }) => (
+const Fanart = stylesDecorator<IProps>(({ classes, video }) => (
   <div className={classes.fanart} style={{ backgroundImage: `url(${video.api.backdrop})` }}>
     <Poster className={classes.poster} showSubtitle={false} video={video} hoverEffect={false} />
   </div>
-)
+))
 
-export default withStyles(styles, { name: "Fanart" })<IProps>(Fanart)
+export default Fanart

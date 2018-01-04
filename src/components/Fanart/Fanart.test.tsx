@@ -19,7 +19,7 @@ describe("COMPONENT: <Fanart />", () => {
 
   it("should have the style prop 'backgroundImage' being equal to the backdrop url from the video", () => {
     expect(wrapperShallow.dive().get(0).props.style.backgroundImage).toBe(
-      "url(http://image.tmdb.org/t/p/w1280/bzoZjhbpriBT2N5kwgK0weUfVOX.jpg)"
+      "url(http://image.tmdb.org/t/p/w1280/bzoZjhbpriBT2N5kwgK0weUfVOX.jpg)",
     )
   })
 
@@ -29,7 +29,7 @@ describe("COMPONENT: <Fanart />", () => {
         wrapperShallow
           .dive()
           .find(Poster)
-          .prop("showSubtitle")
+          .prop("showSubtitle"),
       ).toBeFalsy()
     })
 
@@ -38,7 +38,7 @@ describe("COMPONENT: <Fanart />", () => {
         wrapperShallow
           .dive()
           .find(Poster)
-          .prop("hoverEffect")
+          .prop("hoverEffect"),
       ).toBeFalsy()
     })
 
@@ -47,7 +47,7 @@ describe("COMPONENT: <Fanart />", () => {
         wrapperShallow
           .dive()
           .find(Poster)
-          .prop("video")
+          .prop("video"),
       ).toBe(video)
     })
   })

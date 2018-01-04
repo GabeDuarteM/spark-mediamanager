@@ -1,6 +1,6 @@
 {
   "semi": false,
   "printWidth": 120,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "parser": "typescript"
 }

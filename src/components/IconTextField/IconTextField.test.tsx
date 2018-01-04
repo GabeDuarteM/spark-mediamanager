@@ -32,7 +32,7 @@ describe("COMPONENT: <IconTextField />", () => {
         .find(IconButton)
         .children()
         .first()
-        .is(Search)
+        .is(Search),
     ).toBeTruthy()
   })
 })

@@ -4,7 +4,7 @@ import * as classNames from "classnames"
 import { withStyles } from "material-ui/styles"
 import { StyleRulesCallback } from "material-ui/styles/withStyles"
 
-export const styles: StyleRulesCallback = theme => ({
+const styles: StyleRulesCallback = theme => ({
   root: {
     ...(theme.typography.subheading as any),
     color: theme.palette.text.secondary,
@@ -12,23 +12,17 @@ export const styles: StyleRulesCallback = theme => ({
   },
 })
 
+const stylesDecorator = withStyles(styles, { name: "DialogContentRoot" })
+
 interface IProps {
   children: React.ReactNode
   className?: string
 }
 
-interface IHocProps {
-  classes: {
-    root: string
-  }
-}
-
-type TFullProps = IHocProps & IProps
-
-const DialogContentRoot = ({ classes, children, className, ...other }: TFullProps) => (
+const DialogContentRoot = stylesDecorator<IProps>(({ classes, children, className, ...other }) => (
   <div className={classNames(classes.root, className)} {...other}>
     {children}
   </div>
-)
+))
 
-export default withStyles(styles, { name: "DialogContentRoot" })<IProps>(DialogContentRoot)
+export default DialogContentRoot

@@ -9,7 +9,6 @@ import Tabs, { Tab } from "material-ui/Tabs"
 import { injectIntl } from "react-intl"
 import * as ReactIntl from "react-intl"
 import { Route } from "react-router"
-import { compose } from "recompose"
 
 import PosterListContainer from "../../containers/PosterListContainer/PosterListContainer"
 import SearchVideoDialogContainer from "../../containers/SearchVideoDialogContainer/SearchVideoDialogContainer"
@@ -32,6 +31,8 @@ const styles: StyleRulesCallback = theme => ({
   },
 })
 
+const stylesDecorator = withStyles(styles, { name: "Home" })
+
 interface IProps {
   handleTabChange: (evt: any, index: number) => void
   selectedTabIndex: number
@@ -39,17 +40,12 @@ interface IProps {
 }
 
 interface IHocProps {
-  classes: {
-    root: string
-    posterList: string
-    fabButton: string
-  }
   intl: ReactIntl.InjectedIntl
 }
 
 type IFullProps = IProps & IHocProps
 
-const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }: IFullProps) => (
+const Home = stylesDecorator<IFullProps>(({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd }) => (
   <div className={classes.root}>
     <AppBar position="static">
       <Tabs value={selectedTabIndex} onChange={handleTabChange} centered>
@@ -80,6 +76,6 @@ const Home = ({ classes, handleTabChange, intl, selectedTabIndex, changeRouteAdd
       <Add />
     </Button>
   </div>
-)
+))
 
-export default compose<IFullProps, IProps>(injectIntl, withStyles(styles, { name: "Home" }))(Home)
+export default injectIntl(Home)

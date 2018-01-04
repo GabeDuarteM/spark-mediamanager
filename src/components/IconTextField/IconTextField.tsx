@@ -29,6 +29,8 @@ const styles: StyleRules = {
   },
 }
 
+const stylesDecorator = withStyles(styles, { name: "IconTextField" })
+
 interface IProps {
   IconSvg: new () => React.Component<any, any>
   label?: string
@@ -37,23 +39,17 @@ interface IProps {
   className?: string
 }
 
-interface IHocProps {
-  classes: {
-    svg: string
-    iconButton: string
-    root: string
-    textField: string
-    inputClassName: string
-  }
-}
-
-const IconTextField = ({ className, IconSvg, classes, ...rest }: IProps & IHocProps) => (
+const IconTextField = stylesDecorator<IProps>(({ className, IconSvg, classes, ...rest }) => (
   <div className={classNames(classes.root, className)}>
-    <TextField className={classes.textField} InputClassName={classes.inputClassName} {...rest} />
+    <TextField
+      className={classes.textField}
+      InputProps={{ inputProps: { className: classes.inputClassName } }}
+      {...rest}
+    />
     <IconButton className={classes.iconButton}>
       <IconSvg className={classes.svg} />
     </IconButton>
   </div>
-)
+))
 
-export default withStyles(styles, { name: "IconTextField" })<IProps>(IconTextField)
+export default IconTextField

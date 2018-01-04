@@ -126,7 +126,7 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       overlay: true,
     },
     devtool: "inline-source-map",
-    entry: ["react-hot-loader/patch", ...(baseConfig.entry as string[])],
+    entry: [...(baseConfig.entry as string[])],
     module: {
       ...baseConfig.module,
       rules: [
@@ -135,7 +135,6 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
           exclude: /node_modules/,
           include: resolve(__dirname, "src"),
           use: [
-            "react-hot-loader/webpack",
             {
               loader: "awesome-typescript-loader",
               options: {

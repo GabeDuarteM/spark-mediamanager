@@ -32,7 +32,7 @@ describe("<Poster />", () => {
       wrapper
         .dive()
         .find(PosterOverlay)
-        .exists()
+        .exists(),
     ).toBeTruthy()
   })
 
@@ -42,7 +42,7 @@ describe("<Poster />", () => {
       wrapper
         .dive()
         .find(PosterOverlay)
-        .exists()
+        .exists(),
     ).toBeFalsy()
   })
 })
