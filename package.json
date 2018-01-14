@@ -16,6 +16,8 @@
     "lint:ts": "tslint 'src/**/*.ts' 'src/**/*.tsx' '*.ts' '*.tsx' -e 'src/**/*.d.ts'",
     "lint:prettier:fix": "yarn lint:prettier --write",
     "lint:prettier": "prettier -l \"src/**/*.{tsx,ts,js}\" \".storybook/**/*.{tsx,ts,js}\" \"*.{tsx,ts,js}\"",
+    "clean": "rimraf dist",
+    "prebuild": "yarn clean",
     "build": "webpack",
     "build:dev": "yarn build --env.env=dev",
     "build:prod": "yarn build --env.env=prod",
@@ -55,6 +57,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
     "typeface-roboto": "^0.0.45",
+    "rimraf": "^2.6.2",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

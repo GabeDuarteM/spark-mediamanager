@@ -1,4 +1,3 @@
-import * as CleanWebpackPlugin from "clean-webpack-plugin"
 import * as ExtractTextPlugin from "extract-text-webpack-plugin"
 import * as HtmlWebpackPlugin from "html-webpack-plugin"
 import { join, resolve } from "path"
@@ -46,7 +45,6 @@ function getBaseConfig(): webpack.Configuration {
         inject: "body",
         template: join("src", "index.html"),
       }),
-      new CleanWebpackPlugin(["dist"]),
     ],
     resolve: {
       extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"],
