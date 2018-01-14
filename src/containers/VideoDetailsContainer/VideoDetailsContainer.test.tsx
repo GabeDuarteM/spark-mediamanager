@@ -2,7 +2,6 @@ import * as React from "react"
 
 import { mount, shallow } from "enzyme"
 import { Dialog } from "material-ui"
-import * as injectTapEventPlugin from "react-tap-event-plugin"
 
 import { EVideoType } from "../../@types/EVideoType"
 import AppWrapper from "../../components/AppWrapper/AppWrapper"
@@ -15,8 +14,6 @@ import {
   transformConsoleMessagesToExceptions,
 } from "../../utils/testUtils"
 import VideoDetailsContainer from "./VideoDetailsContainer"
-
-injectTapEventPlugin()
 
 describe("COMPONENT: <VideoDetailsContainer />", () => {
   beforeEach(() => transformConsoleMessagesToExceptions())

@@ -2,11 +2,9 @@ import * as React from "react"
 import { addLocaleData, IntlProvider } from "react-intl"
 import * as en from "react-intl/locale-data/en"
 import * as pt from "react-intl/locale-data/pt"
-import * as injectTapEventPlugin from "react-tap-event-plugin"
 
 import { getMessages } from "../src/utils/localeUtils"
 
-injectTapEventPlugin()
 addLocaleData([...en, ...pt])
 
 interface IProps {
