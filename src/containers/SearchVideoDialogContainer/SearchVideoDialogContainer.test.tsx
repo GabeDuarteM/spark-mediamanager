@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import { mount, shallow } from "enzyme"
-import { SyntheticEvent } from "react"
 import Modal from "material-ui/Modal/Modal"
+import { SyntheticEvent } from "react"
 
 import AppWrapper from "../../components/AppWrapper/AppWrapper"
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
