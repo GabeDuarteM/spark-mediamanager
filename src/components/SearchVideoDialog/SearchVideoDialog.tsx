@@ -2,8 +2,9 @@ import * as React from "react"
 
 import { Button, Dialog, DialogActions, DialogContent, TextField } from "material-ui"
 import { FormControl } from "material-ui/Form"
-// import { FormControl, FormControlLabel } from "material-ui/Form"
-// import Radio, { RadioGroup } from "material-ui/Radio"
+import FormControlLabel from "material-ui/Form/FormControlLabel"
+import Radio from "material-ui/Radio/Radio"
+import RadioGroup from "material-ui/Radio/RadioGroup"
 import { withStyles } from "material-ui/styles"
 import { StyleRules } from "material-ui/styles/withStyles"
 import { injectIntl } from "react-intl"
@@ -32,7 +33,7 @@ interface IProps {
   classNames?: string
   open: boolean
   selectedType: EVideoType
-  // handleChange: (event: React.ChangeEvent<any>) => void
+  handleChange: (event: React.ChangeEvent<any>) => void
   resetRoute: () => void
 }
 
@@ -43,16 +44,22 @@ interface IHocProps {
 type IFullProps = IProps & IHocProps
 
 const SearchVideoDialog = stylesDecorator<IFullProps>(
-  ({ intl, classes, classNames, selectedType, resetRoute, ...rest }) => (
+  ({ intl, classes, classNames, selectedType, resetRoute, handleChange, ...rest }) => (
     <Dialog className={classNames || ""} {...rest} open onClose={resetRoute}>
       <DialogContent>
         <DialogContentRoot className={classes.dialog}>
           <FormControl>
-            {/* <RadioGroup className={classes.radioGroup} value={selectedType} onChange={handleChange}>
-            <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.serie" })} value="serie" />
-            <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.movie" })} value="movie" />
-            <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.anime" })} value="anime" />
-          </RadioGroup> */}
+            <RadioGroup
+              aria-label="Male"
+              name="Male"
+              className={classes.radioGroup}
+              value={selectedType}
+              onChange={handleChange}
+            >
+              <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.serie" })} value="serie" />
+              <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.movie" })} value="movie" />
+              <FormControlLabel control={<Radio />} label={intl.formatMessage({ id: "common.anime" })} value="anime" />
+            </RadioGroup>
           </FormControl>
           <TextField
             type="text"
