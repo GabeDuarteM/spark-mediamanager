@@ -1,12 +1,12 @@
 import * as React from "react"
 
 import { shallow } from "enzyme"
+import { MemoryRouter } from "react-router"
+import { BrowserRouter } from "react-router-dom"
 import configureStore from "redux-mock-store"
 
 import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
 import AppWrapper from "./AppWrapper"
-import { BrowserRouter } from "react-router-dom"
-import { MemoryRouter } from "react-router"
 
 let store: any
 
