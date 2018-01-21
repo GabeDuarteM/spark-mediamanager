@@ -1,6 +1,8 @@
 import * as ExtractTextPlugin from "extract-text-webpack-plugin"
+import * as HardSourceWebpackPlugin from "hard-source-webpack-plugin"
 import * as HtmlWebpackPlugin from "html-webpack-plugin"
 import { join, resolve } from "path"
+import TsCheckerWebpackPlugin from "ts-checker-webpack-plugin"
 import * as webpack from "webpack"
 
 type IWebpackEnv = "dev" | "prod"
@@ -40,10 +42,21 @@ function getBaseConfig(): webpack.Configuration {
       publicPath: "/",
     },
     plugins: [
+      new HardSourceWebpackPlugin(),
       new HtmlWebpackPlugin({
         filename: "index.html",
         inject: "body",
         template: join("src", "index.html"),
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "manifest",
+        minChunks: Infinity,
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        minChunks: module => {
+          return module.context && module.context.indexOf("node_modules") !== -1
+        },
+        name: "vendor",
       }),
     ],
     resolve: {
@@ -64,9 +77,25 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
       rules: [
         ...(baseConfig.module as any).rules,
         {
-          exclude: /node_modules/,
           include: resolve(__dirname, "src"),
-          loader: "awesome-typescript-loader",
+          use: [
+            {
+              loader: "cache-loader",
+              options: {
+                cacheDirectory: resolve(__dirname, "node_modules", ".cache-loader"),
+              },
+            },
+            {
+              loader: "thread-loader",
+            },
+            {
+              loader: "ts-loader",
+              options: {
+                transpileOnly: true,
+                happyPackMode: true,
+              },
+            },
+          ],
           test: /\.(t|j)sx?$/,
         },
         {
@@ -96,16 +125,6 @@ function getProdConfig(baseConfig: webpack.Configuration): webpack.Configuration
           warnings: false,
         },
       }),
-      new webpack.optimize.CommonsChunkPlugin({
-        minChunks: module => {
-          return module.context && module.context.indexOf("node_modules") !== -1
-        },
-        name: "vendor",
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        minChunks: Infinity,
-        name: "manifest",
-      }),
     ],
   }
 }
@@ -130,13 +149,22 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
       rules: [
         ...(baseConfig.module as any).rules,
         {
-          exclude: /node_modules/,
           include: resolve(__dirname, "src"),
           use: [
             {
-              loader: "awesome-typescript-loader",
+              loader: "cache-loader",
               options: {
-                configFileName: "tsconfig.dev.json",
+                cacheDirectory: resolve(__dirname, "node_modules", ".cache-loader"),
+              },
+            },
+            {
+              loader: "thread-loader",
+            },
+            {
+              loader: "ts-loader",
+              options: {
+                transpileOnly: true,
+                happyPackMode: true,
               },
             },
           ],
@@ -150,10 +178,14 @@ function getDevConfig(baseConfig: webpack.Configuration): webpack.Configuration 
     },
     output: {
       ...baseConfig.output,
-      filename: "[name].[hash].bundle.js",
+      filename: "[name].bundle.js",
     },
     plugins: [
       ...(baseConfig.plugins as webpack.Plugin[]),
+      new TsCheckerWebpackPlugin({
+        tsconfig: resolve("tsconfig.json"),
+        diagnosticFormatter: "ts-loader",
+      }),
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify("development"),
