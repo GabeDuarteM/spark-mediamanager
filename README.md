@@ -7,11 +7,9 @@
 ![got](https://img.shields.io/badge/valar-morghulis-brightgreen.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-
-
 ## Description
 
-This is a Media manager, that will give you the possibility to rename those ugly filenames (like `Game.of.Thrones.S07E07.The.Dragon.and.the.Wolf.AMZN.WEBRip.DDP2.`) into something more friendly (like `Game of Thrones - S07E07 - The Dragon and the Wolf`). 
+This is a Media manager, that will give you the possibility to rename those ugly filenames (like `Game.of.Thrones.S07E07.The.Dragon.and.the.Wolf.AMZN.WEBRip.DDP2.`) into something more friendly (like `Game of Thrones - S07E07 - The Dragon and the Wolf`).
 
 The final filename would be configured according to the user preferences, with the default being something like `{{Title}} - {{S00E00}} - {{EpisodeTitle}}`.
 
@@ -22,7 +20,7 @@ Spark Mediamanager is supposed to work with `Series`, `Animes` and `Movies` too.
 ## How to run
 
 * Run `git clone https://github.com/GabrielDuarteM/spark-mediamanager.git`
-* If you don't have yarn installed, download it [here](https://yarnpkg.com/pt-BR/docs/install) (this repo uses some yarn-specific features). 
+* If you don't have yarn installed, download it [here](https://yarnpkg.com/pt-BR/docs/install) (this repo uses some yarn-specific features).
 * Run `yarn install`
 * Run `yarn start`
 

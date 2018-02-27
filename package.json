@@ -5,7 +5,8 @@
   "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start:dev-server\" \"yarn start:electron\"",
+    "start":
+      "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start:dev-server\" \"yarn start:electron\"",
     "start:electron": "cross-env NODE_ENV=development electron .",
     "start:dev-server": "webpack-dev-server --mode development --env.env=dev",
     "test:ci": "jest --coverage",
@@ -13,9 +14,10 @@
     "test:cov": "jest --coverage",
     "test": "jest --watch",
     "lint": "yarn lint:ts && yarn lint:prettier",
-    "lint:ts": "tslint 'src/**/*.ts' 'src/**/*.tsx' '*.ts' '*.tsx' -e 'src/**/*.d.ts'",
+    "lint:ts": "tslint 'src/**/*.ts' 'src/**/*.tsx' '*.ts' '*.tsx' -e 'src/**/*.d.ts' -p tsconfig.json",
     "lint:prettier:fix": "yarn lint:prettier --write",
-    "lint:prettier": "prettier -l \"src/**/*.{tsx,ts,js}\" \".storybook/**/*.{tsx,ts,js}\" \"*.{tsx,ts,js}\"",
+    "lint:prettier":
+      "prettier -l \"src/**/*.{tsx,ts,js,json}\" \".storybook/**/*.{tsx,ts,js,json}\" \"*.{tsx,ts,js,json}\"",
     "clean": "rimraf dist",
     "prebuild": "yarn clean",
     "build": "webpack",
@@ -27,18 +29,12 @@
     "sb": "yarn storybook"
   },
   "jest": {
-    "setupFiles": [
-      "./src/utils/jest.setup.ts"
-    ],
+    "setupFiles": ["./src/utils/jest.setup.ts"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "testURL": "http://localhost"
   },
   "dependencies": {
@@ -72,7 +68,6 @@
     "@types/react-router-dom": "^4.2.4",
     "@types/recompose": "^0.24.5",
     "@types/redux-form": "^7.0.14",
-    "@types/redux-mock-store": "^0.0.13",
     "@types/storybook__addon-actions": "^3.0.2",
     "@types/storybook__addon-knobs": "^3.2.3",
     "@types/storybook__react": "^3.0.7",
