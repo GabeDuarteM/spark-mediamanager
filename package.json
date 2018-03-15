@@ -72,7 +72,7 @@
     "@types/storybook__addon-knobs": "^3.2.3",
     "@types/storybook__react": "^3.0.7",
     "@types/uuid": "^3.4.3",
-    "@types/webpack": "^3.8.8",
+    "@types/webpack": "^4.1.1",
     "@types/webpack-env": "^1.13.5",
     "cache-loader": "^1.2.1",
     "codecov": "^3.0.0",
