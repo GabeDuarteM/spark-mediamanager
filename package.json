@@ -5,8 +5,7 @@
   "author": "Gabriel Duarte <gabrielqduarte@gmail.com> (https://github.com/GabrielDuarteM/)",
   "license": "MIT",
   "scripts": {
-    "start":
-      "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start:dev-server\" \"yarn start:electron\"",
+    "start": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start:dev-server\" \"yarn start:electron\"",
     "start:electron": "cross-env NODE_ENV=development electron .",
     "start:dev-server": "webpack-dev-server --mode development --env.env=dev",
     "test:ci": "jest --coverage",
@@ -16,8 +15,7 @@
     "lint": "yarn lint:ts && yarn lint:prettier",
     "lint:ts": "tslint 'src/**/*.ts' 'src/**/*.tsx' '*.ts' '*.tsx' -e 'src/**/*.d.ts' -p tsconfig.json",
     "lint:prettier:fix": "yarn lint:prettier --write",
-    "lint:prettier":
-      "prettier -l \"src/**/*.{tsx,ts,js,json}\" \".storybook/**/*.{tsx,ts,js,json}\" \"*.{tsx,ts,js,json}\"",
+    "lint:prettier": "prettier -l \"src/**/*.{tsx,ts,js,json}\" \".storybook/**/*.{tsx,ts,js,json}\" \"*.{tsx,ts,js,json}\"",
     "clean": "rimraf dist",
     "prebuild": "yarn clean",
     "build": "webpack",
@@ -29,12 +27,18 @@
     "sb": "yarn storybook"
   },
   "jest": {
-    "setupFiles": ["./src/utils/jest.setup.ts"],
+    "setupFiles": [
+      "./src/utils/jest.setup.ts"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "testURL": "http://localhost"
   },
   "dependencies": {
@@ -83,6 +87,7 @@
     "electron-devtools-installer": "^2.2.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "file-loader": "^1.1.11",
     "hard-source-webpack-plugin": "^0.5.18",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "img-loader": "^2.0.1",
