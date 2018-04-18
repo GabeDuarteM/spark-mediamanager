@@ -96,7 +96,7 @@
     "redux-mock-store": "^1.5.1",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",
-    "style-loader": "^0.20.2",
+    "style-loader": "^0.21.0",
     "thread-loader": "^1.1.5",
     "ts-checker-webpack-plugin": "^0.3.0",
     "ts-jest": "^22.4.0",
