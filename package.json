@@ -70,7 +70,7 @@
     "@types/react-intl": "^2.3.5",
     "@types/react-redux": "^5.0.15",
     "@types/react-router-dom": "^4.2.4",
-    "@types/recompose": "^0.24.5",
+    "@types/recompose": "^0.26.0",
     "@types/redux-form": "^7.0.14",
     "@types/storybook__addon-actions": "^3.0.2",
     "@types/storybook__addon-knobs": "^3.2.3",
