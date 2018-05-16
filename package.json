@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "electron": "^1.8.2",
+    "electron": "^2.0.1",
     "material-ui": "v1.0.0-beta.26",
     "material-ui-icons": "^1.0.0-beta.35",
     "react": "^16.2.0",
