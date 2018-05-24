@@ -101,7 +101,7 @@
     "ts-checker-webpack-plugin": "^0.3.0",
     "ts-jest": "^22.4.0",
     "ts-loader": "^4.0.0",
-    "ts-node": "^5.0.0",
+    "ts-node": "^6.0.5",
     "tslint": "^5.9.1",
     "tslint-react": "^3.5.1",
     "typescript": "^2.7.2",
