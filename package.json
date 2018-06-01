@@ -88,7 +88,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.11",
-    "hard-source-webpack-plugin": "^0.5.18",
+    "hard-source-webpack-plugin": "^0.7.4",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "img-loader": "^2.0.1",
     "jest": "^22.4.2",
