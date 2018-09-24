@@ -1,10 +1,11 @@
-import { compose, createStore } from "redux"
-import rootReducer from "./reducers"
+import { compose, createStore } from 'redux'
+import rootReducer from './reducers'
 
 const devtools =
-  process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === 'development'
     ? // tslint:disable-next-line:no-string-literal
-      window["__REDUX_DEVTOOLS_EXTENSION__"] && window["__REDUX_DEVTOOLS_EXTENSION__"]()
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
     : undefined
 const enhancer = compose(devtools)
 

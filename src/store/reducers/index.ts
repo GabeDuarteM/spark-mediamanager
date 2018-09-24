@@ -1,7 +1,7 @@
-import { combineReducers } from "redux"
+import { combineReducers } from 'redux'
 
-import editVideo from "./editVideo/editVideo"
-import video from "./video/video"
+import editVideo from './editVideo/editVideo'
+import video from './video/video'
 
 const rootReducer = combineReducers({
   video,

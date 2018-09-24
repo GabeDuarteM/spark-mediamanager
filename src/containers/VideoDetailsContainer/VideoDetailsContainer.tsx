@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 
-import { connect, MapDispatchToProps, MapStateToProps } from "react-redux"
-import { withRouter } from "react-router"
-import { compose } from "recompose"
+import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux'
+import { withRouter } from 'react-router'
+import { compose } from 'recompose'
 
-import IVideo from "../../@types/IVideo"
-import VideoDetails from "../../components/VideoDetails/VideoDetails"
-import IStoreState from "../../store/IStoreState"
-import { clear } from "../../store/reducers/editVideo/editVideoActions"
+import IVideo from '../../@types/IVideo'
+import VideoDetails from '../../components/VideoDetails/VideoDetails'
+import IStoreState from '../../store/IStoreState'
+import { clear } from '../../store/reducers/editVideo/editVideoActions'
 
 interface IHocProps {
   video: IVideo
@@ -27,7 +27,7 @@ class VideoDetailsContainer extends React.PureComponent<IHocProps, {}> {
   }
 
   private handleClose = () => {
-    this.props.history.push("/")
+    this.props.history.push('/')
   }
 }
 

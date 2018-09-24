@@ -1,1 +1,1 @@
-type TSupportedLangs = "pt" | "en"
+type TSupportedLangs = 'pt' | 'en'

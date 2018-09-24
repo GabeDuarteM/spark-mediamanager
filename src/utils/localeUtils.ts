@@ -1,11 +1,12 @@
-import ILocaleBase from "../@types/ILocaleBase"
+import ILocaleBase from '../@types/ILocaleBase'
 
-const flattenMessages = (nestedMessages: ILocaleBase, prefix = "") =>
+const flattenMessages = (nestedMessages: ILocaleBase, prefix = '') =>
   Object.keys(nestedMessages).reduce((messages, key) => {
     const value = nestedMessages[key]
-    const prefixedKey = prefix && prefix !== "default" ? `${prefix}.${key}` : key
+    const prefixedKey =
+      prefix && prefix !== 'default' ? `${prefix}.${key}` : key
 
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       messages[prefixedKey] = value
     } else {
       Object.assign(messages, flattenMessages(value, prefixedKey))
@@ -14,4 +15,5 @@ const flattenMessages = (nestedMessages: ILocaleBase, prefix = "") =>
     return messages
   }, {})
 
-export const getMessages = (locale: TSupportedLangs) => flattenMessages(require(`../locales/${locale}`))
+export const getMessages = (locale: TSupportedLangs) =>
+  flattenMessages(require(`../locales/${locale}`))

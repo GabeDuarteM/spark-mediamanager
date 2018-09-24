@@ -1,7 +1,7 @@
-import IBaseReducer from "../IBaseReducer"
-import IUnknownAction from "../IUnknownAction"
-import { EDIT_VIDEO__CLEAR, EDIT_VIDEO__SET } from "./editVideoActions"
-import IEditVideoState from "./IEditVideoState"
+import IBaseReducer from '../IBaseReducer'
+import IUnknownAction from '../IUnknownAction'
+import { EDIT_VIDEO__CLEAR, EDIT_VIDEO__SET } from './editVideoActions'
+import IEditVideoState from './IEditVideoState'
 
 const editVideo: IBaseReducer<IEditVideoState> = (
   state = { video: undefined, type: undefined },

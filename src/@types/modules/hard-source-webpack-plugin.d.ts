@@ -1,1 +1,1 @@
-declare module "hard-source-webpack-plugin"
+declare module 'hard-source-webpack-plugin'

@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
-import { withRouter } from "react-router"
-import { compose } from "recompose"
+import { withRouter } from 'react-router'
+import { compose } from 'recompose'
 
-import { EVideoType } from "../../@types/EVideoType"
-import SearchVideoDialog from "../../components/SearchVideoDialog/SearchVideoDialog"
+import { EVideoType } from '../../@types/EVideoType'
+import SearchVideoDialog from '../../components/SearchVideoDialog/SearchVideoDialog'
 
 interface IHocProps {
   history: any[]
@@ -16,7 +16,7 @@ interface IState {
 
 class SearchVideoDialogContainer extends React.Component<IHocProps, IState> {
   public state: IState = {
-    selectedType: "serie",
+    selectedType: 'serie',
   }
 
   public render() {
@@ -31,7 +31,7 @@ class SearchVideoDialogContainer extends React.Component<IHocProps, IState> {
   }
 
   public resetRoute = () => {
-    this.props.history.push("/")
+    this.props.history.push('/')
   }
 
   public handleChange = (event: React.ChangeEvent<any>) => {

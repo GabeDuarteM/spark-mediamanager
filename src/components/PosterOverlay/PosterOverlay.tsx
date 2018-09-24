@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react'
 
-import { withStyles } from "material-ui/styles"
-import { StyleRulesCallback } from "material-ui/styles/withStyles"
-import Typography from "material-ui/Typography"
+import { withStyles } from 'material-ui/styles'
+import { StyleRulesCallback } from 'material-ui/styles/withStyles'
+import Typography from 'material-ui/Typography'
 
-import { truncate } from "../../commonCss"
-import Overlay from "../Overlay/Overlay"
+import { truncate } from '../../commonCss'
+import Overlay from '../Overlay/Overlay'
 
 const styles: StyleRulesCallback = theme => ({
   title: {
@@ -13,13 +13,13 @@ const styles: StyleRulesCallback = theme => ({
     height: 23,
   },
   overlay: {
-    padding: "16px !important",
-    borderTop: "2px solid",
+    padding: '16px !important',
+    borderTop: '2px solid',
     borderColor: theme.palette.input.bottomLine,
   },
 })
 
-const stylesDecorator = withStyles(styles, { name: "PosterOverlay" })
+const stylesDecorator = withStyles(styles, { name: 'PosterOverlay' })
 
 interface IProps {
   title: string

@@ -1,22 +1,22 @@
-import React from "react"
+import React from 'react'
 
-import { shallow } from "enzyme"
-import { MemoryRouter } from "react-router"
-import { BrowserRouter } from "react-router-dom"
-import configureStore from "redux-mock-store"
+import { shallow } from 'enzyme'
+import { MemoryRouter } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+import configureStore from 'redux-mock-store'
 
-import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
-import AppWrapper from "./AppWrapper"
+import { transformConsoleMessagesToExceptions } from '../../utils/testUtils'
+import AppWrapper from './AppWrapper'
 
 let store: any
 
-describe("COMPONENT: <AppWrapper />", () => {
+describe('COMPONENT: <AppWrapper />', () => {
   beforeEach(() => {
     store = configureStore()()
     transformConsoleMessagesToExceptions()
   })
 
-  it("should render without crashing with no store", () => {
+  it('should render without crashing with no store', () => {
     const component = (
       <AppWrapper locale="en">
         <div />
@@ -25,7 +25,7 @@ describe("COMPONENT: <AppWrapper />", () => {
     shallow(component)
   })
 
-  it("should render without crashing with store", () => {
+  it('should render without crashing with store', () => {
     const component = (
       <AppWrapper store={store} locale="en">
         <div />
@@ -37,10 +37,10 @@ describe("COMPONENT: <AppWrapper />", () => {
   it("should render a BrowserRouter when process.env.NODE_ENV !== 'test'", () => {
     const backupNodeEnv = process.env.NODE_ENV
 
-    process.env.NODE_ENV = "development"
+    process.env.NODE_ENV = 'development'
     jest.resetModules()
 
-    const AppWrapperDev = require("./AppWrapper").default
+    const AppWrapperDev = require('./AppWrapper').default
 
     const component = (
       <AppWrapperDev store={store} locale="en">

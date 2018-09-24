@@ -1,15 +1,15 @@
-import React from "react"
+import React from 'react'
 
-import { connect } from "react-redux"
-import { withRouter } from "react-router"
-import { compose } from "recompose"
-import { Dispatch } from "redux"
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import { compose } from 'recompose'
+import { Dispatch } from 'redux'
 
-import { EVideoType } from "../../@types/EVideoType"
-import Home from "../../components/Home/Home"
-import IStoreState from "../../store/IStoreState"
-import IBaseAction from "../../store/reducers/IBaseAction"
-import { visibilityFilter as visibilityFilterAction } from "../../store/reducers/video/videoActions"
+import { EVideoType } from '../../@types/EVideoType'
+import Home from '../../components/Home/Home'
+import IStoreState from '../../store/IStoreState'
+import IBaseAction from '../../store/reducers/IBaseAction'
+import { visibilityFilter as visibilityFilterAction } from '../../store/reducers/video/videoActions'
 
 type TVisibilityFilterFunc = (filter: EVideoType) => void
 
@@ -19,24 +19,33 @@ interface IHocProps {
   history: any[]
 }
 
-const HomeContainer = ({ setVisibilityFilter, visibilityFilter, history }: IHocProps) => (
+const HomeContainer = ({
+  setVisibilityFilter,
+  visibilityFilter,
+  history,
+}: IHocProps) => (
   <Home
-    handleTabChange={(evt, index) => handleTabChange(index, setVisibilityFilter)}
+    handleTabChange={(evt, index) =>
+      handleTabChange(index, setVisibilityFilter)
+    }
     selectedTabIndex={getTabIndex(visibilityFilter)}
     changeRouteAdd={() => changeRouteToAdd(history)}
   />
 )
 
-const handleTabChange = (index: number, setVisibilityFilter: TVisibilityFilterFunc) => {
+const handleTabChange = (
+  index: number,
+  setVisibilityFilter: TVisibilityFilterFunc,
+) => {
   switch (index) {
     case 0:
-      setVisibilityFilter("serie")
+      setVisibilityFilter('serie')
       break
     case 1:
-      setVisibilityFilter("movie")
+      setVisibilityFilter('movie')
       break
     case 2:
-      setVisibilityFilter("anime")
+      setVisibilityFilter('anime')
       break
 
     default:
@@ -47,17 +56,17 @@ const handleTabChange = (index: number, setVisibilityFilter: TVisibilityFilterFu
 const getTabIndex = (visibilityFilter: EVideoType): number => {
   switch (visibilityFilter) {
     default:
-    case "serie":
+    case 'serie':
       return 0
-    case "movie":
+    case 'movie':
       return 1
-    case "anime":
+    case 'anime':
       return 2
   }
 }
 
 const changeRouteToAdd = (history: any[]) => {
-  history.push("/add")
+  history.push('/add')
 }
 
 const mapStateToProps = (state: IStoreState) => ({
@@ -65,7 +74,8 @@ const mapStateToProps = (state: IStoreState) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<IBaseAction>) => ({
-  setVisibilityFilter: (filter: EVideoType) => dispatch(visibilityFilterAction(filter)),
+  setVisibilityFilter: (filter: EVideoType) =>
+    dispatch(visibilityFilterAction(filter)),
 })
 
 export default compose<IHocProps, {}>(

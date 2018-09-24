@@ -1,1 +1,1 @@
-export type EVideoType = "anime" | "movie" | "serie"
+export type EVideoType = 'anime' | 'movie' | 'serie'

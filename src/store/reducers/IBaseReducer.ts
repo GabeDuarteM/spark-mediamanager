@@ -1,4 +1,4 @@
-import IBaseAction from "./IBaseAction"
+import IBaseAction from './IBaseAction'
 
 type IBaseReducer<T> = (state?: T, action?: IBaseAction) => T
 

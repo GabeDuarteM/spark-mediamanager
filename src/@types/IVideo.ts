@@ -1,5 +1,5 @@
-import IMovieApi from "./IMovieApi"
-import ISerieApi from "./ISerieApi"
+import IMovieApi from './IMovieApi'
+import ISerieApi from './ISerieApi'
 
 export default interface IVideo {
   id: string

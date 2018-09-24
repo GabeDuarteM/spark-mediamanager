@@ -1,13 +1,13 @@
-const { app, BrowserWindow, Menu } = require("electron")
-require("electron-debug")({ enabled: true })
+const { app, BrowserWindow, Menu } = require('electron')
+require('electron-debug')({ enabled: true })
 
 let win
 
 async function installExtensions() {
-  if (process.env.NODE_ENV === "development") {
-    const installer = require("electron-devtools-installer")
+  if (process.env.NODE_ENV === 'development') {
+    const installer = require('electron-devtools-installer')
 
-    const extensions = ["REACT_DEVELOPER_TOOLS", "REDUX_DEVTOOLS"]
+    const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
     const forceDownload = !!process.env.UPGRADE_EXTENSIONS
     for (const name of extensions) {
@@ -21,7 +21,7 @@ async function installExtensions() {
 }
 
 const getDefaultSize = () => {
-  const monWidth = require("electron").screen.getPrimaryDisplay().size.width
+  const monWidth = require('electron').screen.getPrimaryDisplay().size.width
   let size
 
   if (monWidth >= 1920) {
@@ -45,23 +45,23 @@ const createWindow = async () => {
   win = new BrowserWindow(size)
   win.setMenu(null)
 
-  win.loadURL("http://localhost:3000/")
+  win.loadURL('http://localhost:3000/')
 
-  win.on("closed", () => {
+  win.on('closed', () => {
     win = null
   })
 
-  win.webContents.on("did-finish-load", () => {
+  win.webContents.on('did-finish-load', () => {
     win.focus()
   })
 
-  if (process.env.NODE_ENV === "development") {
-    win.webContents.on("context-menu", (e, props) => {
+  if (process.env.NODE_ENV === 'development') {
+    win.webContents.on('context-menu', (e, props) => {
       const { x, y } = props
 
       Menu.buildFromTemplate([
         {
-          label: "Inspect element",
+          label: 'Inspect element',
           click() {
             win.inspectElement(x, y)
           },
@@ -71,15 +71,15 @@ const createWindow = async () => {
   }
 }
 
-app.on("ready", createWindow)
+app.on('ready', createWindow)
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
-app.on("activate", () => {
+app.on('activate', () => {
   if (win === null) {
     createWindow()
   }

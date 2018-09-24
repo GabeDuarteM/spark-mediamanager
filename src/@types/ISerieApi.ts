@@ -1,4 +1,4 @@
-import IVideoApi from "./IVideoApi"
+import IVideoApi from './IVideoApi'
 
 export default interface ISerieApi extends IVideoApi {
   number_of_episodes: number

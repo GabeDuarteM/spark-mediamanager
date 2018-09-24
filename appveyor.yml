@@ -1,5 +1,5 @@
 environment:
-  nodejs_version: "Stable"
+  nodejs_version: 'Stable'
 
 init:
   - git config --global core.autocrlf true

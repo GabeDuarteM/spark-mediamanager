@@ -1,17 +1,17 @@
-import React from "react"
+import React from 'react'
 
-import { mount, shallow } from "enzyme"
-import Modal from "material-ui/Modal/Modal"
-import { SyntheticEvent } from "react"
+import { mount, shallow } from 'enzyme'
+import Modal from 'material-ui/Modal/Modal'
+import { SyntheticEvent } from 'react'
 
-import AppWrapper from "../../components/AppWrapper/AppWrapper"
-import { transformConsoleMessagesToExceptions } from "../../utils/testUtils"
-import SearchVideoDialogContainer from "./SearchVideoDialogContainer"
+import AppWrapper from '../../components/AppWrapper/AppWrapper'
+import { transformConsoleMessagesToExceptions } from '../../utils/testUtils'
+import SearchVideoDialogContainer from './SearchVideoDialogContainer'
 
-describe("COMPONENT: <SearchVideoDialogContainer />", () => {
+describe('COMPONENT: <SearchVideoDialogContainer />', () => {
   beforeEach(() => transformConsoleMessagesToExceptions())
 
-  it("should render without crashing", () => {
+  it('should render without crashing', () => {
     const component = (
       <AppWrapper locale="en">
         <SearchVideoDialogContainer />
@@ -29,7 +29,7 @@ describe("COMPONENT: <SearchVideoDialogContainer />", () => {
     )
     const onClose = mount(component)
       .find(Modal)
-      .prop("onClose")
+      .prop('onClose')
     if (onClose) {
       onClose({} as SyntheticEvent<{}>)
     }
