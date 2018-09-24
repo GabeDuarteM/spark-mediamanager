@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { Button, Dialog, DialogActions, DialogContent, IconButton, MenuItem, TextField } from "material-ui"
 import { Search, Settings, Tv } from "material-ui-icons"

@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { connect } from "react-redux"
 
@@ -51,4 +51,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: IProps) => ({
   setVideoEdit: (video: IVideo, videoType: EVideoType) => dispatch(set(video)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PosterListContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PosterListContainer)

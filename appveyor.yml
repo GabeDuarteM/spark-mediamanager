@@ -6,10 +6,10 @@ init:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - yarn install
+  - npm install
 
 test_script:
-  - node --version && npm --version && yarn --version
-  - yarn build:ci
+  - node --version && npm --version
+  - npm run ci
 
 build: off

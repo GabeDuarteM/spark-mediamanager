@@ -1,6 +1,6 @@
-import * as React from "react"
+import React from "react"
 
-import * as classNames from "classnames"
+import classNames from "classnames"
 import Paper from "material-ui/Paper"
 import { withStyles } from "material-ui/styles"
 import { StyleRules } from "material-ui/styles/withStyles"

@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { Add } from "material-ui-icons"
 import AppBar from "material-ui/AppBar"
@@ -7,7 +7,7 @@ import { withStyles } from "material-ui/styles"
 import { StyleRulesCallback } from "material-ui/styles/withStyles"
 import Tabs, { Tab } from "material-ui/Tabs"
 import { injectIntl } from "react-intl"
-import * as ReactIntl from "react-intl"
+import ReactIntl from "react-intl"
 import { Route } from "react-router"
 
 import PosterListContainer from "../../containers/PosterListContainer/PosterListContainer"

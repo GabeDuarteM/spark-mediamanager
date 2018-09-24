@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux"
 import { withRouter } from "react-router"
@@ -39,6 +39,12 @@ const mapDispatchToProps: MapDispatchToProps<{}, {}> = dispatch => ({
   clearEditVideo: () => dispatch(clear()),
 })
 
-const enhance = compose<IHocProps, { video: IVideo }>(connect(mapStateToProps, mapDispatchToProps), withRouter)
+const enhance = compose<IHocProps, { video: IVideo }>(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withRouter,
+)
 
 export default enhance(VideoDetailsContainer)

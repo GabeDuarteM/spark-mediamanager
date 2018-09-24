@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { withStyles } from "material-ui/styles"
 import { StyleRulesCallback } from "material-ui/styles/withStyles"

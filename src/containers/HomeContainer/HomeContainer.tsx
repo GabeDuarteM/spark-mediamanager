@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
@@ -68,4 +68,10 @@ const mapDispatchToProps = (dispatch: Dispatch<IBaseAction>) => ({
   setVisibilityFilter: (filter: EVideoType) => dispatch(visibilityFilterAction(filter)),
 })
 
-export default compose<IHocProps, {}>(connect(mapStateToProps, mapDispatchToProps), withRouter)(HomeContainer)
+export default compose<IHocProps, {}>(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withRouter,
+)(HomeContainer)

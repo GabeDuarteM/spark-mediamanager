@@ -1,8 +1,8 @@
-import * as React from "react"
+import React from "react"
 
 import { addLocaleData, IntlProvider } from "react-intl"
-import * as en from "react-intl/locale-data/en"
-import * as pt from "react-intl/locale-data/pt"
+import en from "react-intl/locale-data/en"
+import pt from "react-intl/locale-data/pt"
 import { Provider } from "react-redux"
 
 import Theme from "../src/components/Theme/Theme"

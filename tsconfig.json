@@ -1,22 +1,3 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "strict": true,
-    "removeComments": true,
-    "allowJs": true,
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "jsx": "react",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": ["./node_modules/@types/", "./@types"]
-  },
-  "exclude": ["./node_modules"]
+  "extends": "./node_modules/gd-scripts/typescript.web.json"
 }
