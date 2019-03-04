@@ -49,7 +49,7 @@
     "@types/node": "^9.4.6",
     "@types/react-dom": "^16.0.4",
     "@types/react-intl": "^2.3.5",
-    "@types/react-redux": "^5.0.15",
+    "@types/react-redux": "^6.0.0",
     "@types/react-router-dom": "^4.2.4",
     "@types/recompose": "^0.24.5",
     "@types/redux-form": "^7.0.14",
